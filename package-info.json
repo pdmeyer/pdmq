@@ -1,0 +1,48 @@
+{
+	"name" : "pdm.fifo",
+	"displayname" : "",
+	"version" : "1.0.0",
+	"author" : "Philip Meyer",
+	"authors" : [  ],
+	"description" : "abstractions for first-in-first-out buffers",
+	"tags" : [ "fifo", "buffer" ],
+	"website" : "",
+	"extends" : "",
+	"extensible" : 0,
+	"max_version_min" : "9.0.0",
+	"max_version_max" : "none",
+	"os" : 	{
+		"macintosh" : 		{
+			"min_version" : "10.15.x",
+			"platform" : [ "aarch64", "x64" ]
+		}
+,
+		"windows" : 		{
+			"min_version" : "8",
+			"platform" : [ "x64" ]
+		}
+
+	}
+,
+	"homepatcher" : "pdm.fifo.maxpat",
+	"package_extra" : 	{
+		"copyright" : "Copyright (c) 2025 Philip Meyer"
+	}
+,
+	"filelist" : 	{
+		"examples" : [],
+		"patchers" : [ 
+			"pdm.fifo.frommtx.maxpat", 
+			"pdm.fifo.reader.maxpat", 
+			"pdm.fifo.writer.maxpat",
+			"pdmm.fifo.lpd2.maxpat"
+		],
+		"help" : [],
+		"docs" : [],
+		"javascript" : [ "pdm.fifoview.js", "pdm.fifo.reporter.js", "pdm.fifo.query.js" ],
+		"code" : [ "pdm.fifo.reader.gendsp" ]
+	}
+,
+	"c74install" : 1,
+	"installdate" : 3797865493
+}
