@@ -1,0 +1,3 @@
+[submodule "pdm.abstract"]
+	path = dependencies/pdm.abstract
+	url = https://github.com/pdmeyer/pdm.abstract.git
