@@ -1,11 +1,11 @@
 {
-	"name" : "pdm.fifo",
+	"name" : "pdm.queue",
 	"displayname" : "",
 	"version" : "1.0.0",
 	"author" : "Philip Meyer",
 	"authors" : [  ],
-	"description" : "abstractions for first-in-first-out buffers",
-	"tags" : [ "fifo", "buffer" ],
+	"description" : "abstractions for working with queues of values",
+	"tags" : [ "queue" ],
 	"website" : "",
 	"extends" : "",
 	"extensible" : 0,
@@ -24,23 +24,20 @@
 
 	}
 ,
-	"homepatcher" : "pdm.fifo.maxpat",
-	"package_extra" : 	{
-		"copyright" : "Copyright (c) 2025 Philip Meyer"
-	}
-,
+	"homepatcher" : "pdm.queue.maxpat",
 	"filelist" : 	{
 		"examples" : [],
 		"patchers" : [ 
-			"pdm.fifo.frommtx.maxpat", 
-			"pdm.fifo.reader.maxpat", 
-			"pdm.fifo.writer.maxpat",
-			"pdmm.fifo.lpd2.maxpat"
+			"pdm.queue.frommtx.maxpat", 
+			"pdm.queue.reader.maxpat", 
+			"pdm.queue.writer.maxpat",
+			"pdm.queue.lpd2.maxpat",
+			"pdm.queue.peek.maxpat"
 		],
 		"help" : [],
 		"docs" : [],
-		"javascript" : [ "pdm.fifoview.js", "pdm.fifo.reporter.js", "pdm.fifo.query.js" ],
-		"code" : [ "pdm.fifo.reader.gendsp" ]
+		"javascript" : [ "pdm.queue.js", "pdm.queue.reporter.js", "pdm.queue.query.js" ],
+		"code" : [ "pdm.queue.reader.gendsp" ]
 	}
 ,
 	"c74install" : 1,
