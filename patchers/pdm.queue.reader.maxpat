@@ -10,8 +10,9 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 119.0, 699.0, 369.0 ],
+		"rect" : [ 59.0, 119.0, 510.0, 319.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
+		"integercoordinates" : 1,
 		"boxes" : [ 			{
 				"box" : 				{
 					"comment" : "read index",
@@ -20,7 +21,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 151.0, 256.0, 30.0, 30.0 ]
+					"patching_rect" : [ 168.0, 256.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -30,7 +31,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 229.0, 220.0, 133.0, 22.0 ],
+					"patching_rect" : [ 248.0, 220.0, 133.0, 22.0 ],
 					"text" : "pdm.abstract.inputerror"
 				}
 
@@ -39,11 +40,11 @@
 				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "newobj",
-					"numinlets" : 5,
-					"numoutlets" : 5,
-					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 92.0, 135.0, 255.0, 22.0 ],
-					"text" : "routepass databuf readbuf datachan readchan"
+					"numinlets" : 6,
+					"numoutlets" : 6,
+					"outlettype" : [ "", "", "", "", "", "" ],
+					"patching_rect" : [ 92.0, 135.0, 297.0, 22.0 ],
+					"text" : "routepass databuf readbuf datachan readchan looplen"
 				}
 
 			}
@@ -55,7 +56,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 183.0, 256.0, 30.0, 30.0 ]
+					"patching_rect" : [ 204.0, 256.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -66,7 +67,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 183.0, 220.0, 42.0, 22.0 ],
+					"patching_rect" : [ 204.0, 220.0, 42.0, 22.0 ],
 					"text" : "edge~"
 				}
 
@@ -91,8 +92,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 89.0, 40.0, 248.199999999999989, 35.0 ],
-					"text" : "patcherargs @databuf databuf @readbuf readpos @datachan 1 @readchan 1"
+					"patching_rect" : [ 89.0, 40.0, 248.0, 35.0 ],
+					"text" : "patcherargs @databuf databuf @readbuf readpos @datachan 1"
 				}
 
 			}
@@ -115,8 +116,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 50.0, 220.0, 120.0, 22.0 ],
-					"text" : "gen~ pdm.fifo.reader"
+					"patching_rect" : [ 50.0, 220.0, 137.0, 22.0 ],
+					"text" : "gen~ pdm.queue.reader"
 				}
 
 			}
@@ -221,6 +222,13 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-164", 0 ],
+					"source" : [ "obj-8", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-164", 0 ],
 					"source" : [ "obj-8", 3 ]
 				}
 
@@ -249,7 +257,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"source" : [ "obj-8", 4 ]
+					"source" : [ "obj-8", 5 ]
 				}
 
 			}

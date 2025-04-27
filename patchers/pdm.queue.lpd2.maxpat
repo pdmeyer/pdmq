@@ -12,7 +12,32 @@
 		"classnamespace" : "box",
 		"rect" : [ 59.0, 119.0, 1000.0, 755.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
+		"integercoordinates" : 1,
 		"boxes" : [ 			{
+				"box" : 				{
+					"comment" : "connect to matrixctrl",
+					"id" : "obj-7",
+					"index" : 2,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 93.0, 262.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 50.0, 182.0, 62.0, 22.0 ],
+					"text" : "route cell"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-1",
 					"maxclass" : "newobj",
@@ -44,6 +69,7 @@
 						"classnamespace" : "box",
 						"rect" : [ 59.0, 106.0, 1000.0, 780.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
+						"integercoordinates" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-82",
@@ -454,37 +480,12 @@
 			}
 , 			{
 				"box" : 				{
-					"blinkcolor" : [ 1.0, 0.501960784313725, 0.0, 1.0 ],
-					"id" : "obj-7",
-					"maxclass" : "button",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 367.0, 359.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 287.0, 449.0, 47.0, 22.0 ],
 					"text" : "midiout"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 367.0, 394.0, 103.0, 22.0 ],
-					"text" : "pdm.lpd2.connect"
 				}
 
 			}
@@ -507,7 +508,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 216.0, 158.0, 22.0 ],
+					"patching_rect" : [ 50.0, 212.0, 158.0, 22.0 ],
 					"text" : "pdm.lpd2.tomtx @gridonly 1"
 				}
 
@@ -519,7 +520,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 156.0, 107.0, 22.0 ],
+					"patching_rect" : [ 50.0, 152.0, 107.0, 22.0 ],
 					"text" : "pdm.lpd2.tocoords"
 				}
 
@@ -531,7 +532,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 50.0, 127.0, 40.0, 22.0 ],
+					"patching_rect" : [ 50.0, 123.0, 40.0, 22.0 ],
 					"text" : "midiin"
 				}
 
@@ -550,26 +551,26 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "bang connects to launchpad, other messages control colors",
 					"id" : "obj-47",
 					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 50.00001319923399, 40.00000063674927, 30.0, 30.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "connect to matrixctrl",
 					"id" : "obj-48",
 					"index" : 1,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 50.0, 266.0, 30.0, 30.0 ]
+					"patching_rect" : [ 50.0, 262.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -654,6 +655,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
+					"order" : 1,
+					"source" : [ "obj-37", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"order" : 0,
 					"source" : [ "obj-37", 0 ]
 				}
 
@@ -662,13 +672,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-41", 0 ],
 					"source" : [ "obj-38", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"source" : [ "obj-4", 0 ]
 				}
 
 			}
@@ -690,6 +693,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"order" : 2,
+					"source" : [ "obj-41", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-48", 0 ],
 					"source" : [ "obj-42", 0 ]
 				}
@@ -704,8 +715,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
-					"source" : [ "obj-7", 0 ]
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-6", 1 ]
 				}
 
 			}

@@ -1,4 +1,4 @@
-class  FifoView {
+class  Queue {
     constructor(dataBufferName, dataChannel, readBufferName, readChannel, readBufferIndex = 0) {
         this.databuf = new Buffer(dataBufferName);
         this.readbuf = new Buffer(readBufferName);
@@ -40,7 +40,6 @@ class  FifoView {
     getQueue() {
         const readPos = this.getReadPosition();
         const writePos = this.getWritePosition();
-
         const readCycle = Math.floor(readPos / (this.bufferSize - 1));
         const writeCycle = Math.floor(writePos / (this.bufferSize - 1));
         let queueLength = 0;
@@ -49,7 +48,7 @@ class  FifoView {
 
         if(!(readPos == 0 && writePos == 0 && readCycle ==  0 && writeCycle == 0)) {
             if(readCycle == writeCycle) {
-                queueLength = Math.min(Math.max(writePos - readPos + 1, 1), this.bufferSize - 1);
+                queueLength = Math.min(Math.max(writePos - readPos + 1, 1), this.bufferSize - 1) - 1;
                 queue = this.databuf.peek(this.dataChannel, readPos % (this.bufferSize - 1), queueLength);
             } else {
                 queueLength = (readCycle + 1) * (this.bufferSize - 1) - readPos;
@@ -60,8 +59,6 @@ class  FifoView {
             }
         }
         if(!Array.isArray(queue)) queue = [queue];
-        // Use peek to get all values at once for better performance
-        // Clamp to minimum of 1 since read head always has a value
         return queue
     }
 
@@ -82,4 +79,4 @@ class  FifoView {
     }
 } 
 
-exports.FifoView = FifoView;
+exports.Queue = Queue;

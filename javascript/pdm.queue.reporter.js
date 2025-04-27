@@ -3,12 +3,12 @@ inlets = 1;
 outlets = 1;
 autowatch = 1;
 
-const FifoView = require('pdm.fifoview.js').FifoView;
+const Queue = require('pdm.queue.js').Queue;
 
 // Global variables
-let views = [];
+let qs = [];
 
-// Initialize the FifoView with arguments
+// Initialize the Queue with arguments
 function init() {
     const args = getJsArgsAsObject();
     // Check for required parameters
@@ -18,32 +18,31 @@ function init() {
     }
     const channels = args.channels[0] ? args.channels[0] : 1;
     let success = true;
-    views = [];
+    qs = [];
     for(let i = 1; i <= channels; i++) {
         try {
-            // Create new FifoView instance
-            views.push(new FifoView(
+            // Create new Queue instance
+            qs.push(new Queue(
                 args.databuf[0],
                 i,
                 args.readbuf[0],
                 i,
                 args.readix ? args.readix[0] : 0
             ));
-        post("FifoView initialized successfully\n");
+        post("Queue initialized successfully\n");
         success = true;
 
         } catch (error) {
-            post("Error initializing view ",i,": ", error.message, "\n");
+            post("Error initializing queue ",i,": ", error.message, "\n");
             success = false;
         }
     }
-    post('views.length', views.length, '\n');
     return success;
 }
 
 // Catch-all function for other messages
 function anything() {
-    if (views.length == 0) {
+    if (qs.length == 0) {
         if(!init()) return;
     }
     
@@ -51,16 +50,16 @@ function anything() {
     const args = arrayfromargs(arguments);  
 
     // Check if message is a property name
-    if (message in views[0]) {
+    if (message in qs[0]) {
         switch (message) {
             case "readix":
-                views.forEach(view => { view.readix = args[0]; });
+                qs.forEach(q => { q.readix = args[0]; });
                 break;
             case "readbuf":
-                views.forEach(view => { view.setBuffer(message, args[0]); });
+                qs.forEach(q => { q.setBuffer(message, args[0]); });
                 break;
             case "databuf":
-                views.forEach(view => { view.setBuffer(message, args[0]); });
+                qs.forEach(q => { q.setBuffer(message, args[0]); });
                 break;
             default:
                 post("Cannot set property:", message, "\n");
@@ -71,21 +70,21 @@ function anything() {
     // Handle method calls
     switch (message) {
         case "next":
-            views.forEach(view => { outlet(0, "next", view.getNext()); });
+            qs.forEach(q => { outlet(0, "next", q.getNext()); });
             break;
 
         case "last":
-            views.forEach(view => { outlet(0, "last", view.getLast()); });
+            qs.forEach(q => { outlet(0, "last", q.getLast()); });
             break;
 
         case "full":
-            views.forEach((view, index) => { outlet(0, "full", index, view.getFullBuffer()); });
+            qs.forEach((q, index) => { outlet(0, "full", index, q.getFullBuffer()); });
             break;
 
         case "free":
-            views.forEach(view => { view.free(); });
-            views = [];
-            post("FifoView freed\n");
+            qs.forEach(q => { q.free(); });
+            qs = [];
+            post("Queue freed\n");
             break;
 
         default:
@@ -93,23 +92,35 @@ function anything() {
     }
 }
 
-function queue() {
-    views.forEach((view, index) => {
-        const q = view.getQueue();
+function getqueue() {
+    qs.forEach((q, index) => {
+        const queue = q.getQueue();
         const ix = index + 1
-        if(q.length > 0) {
-            outlet(0, "queue", ix, q);
+        if(queue.length > 0) {
+            outlet(0, "queue", ix, queue);
         } else {
             outlet(0, "queue", ix, "none");
         }
     });
 }
 
+function getpositions() {
+    let readPositions = [];
+    let writePositions = [];
+    qs.forEach((q, index) => {
+        readPositions.push(q.getReadPosition());
+        writePositions.push(q.getWritePosition());
+        const ix = index + 1;
+    })
+    outlet(0, 'positions', 'write', writePositions)
+    outlet(0, 'positions', 'read', readPositions)
+}
+
 function free() {
-    if (views.length > 0) {
-        views.forEach(view => { view.free(); });
-        views = [];
-        post("FifoView freed\n");
+    if (qs.length > 0) {
+        qs.forEach(q => { q.free(); });
+        qs = [];
+        post("Queue freed\n");
     }
 }
 
@@ -118,7 +129,7 @@ function loadbang() {
 }
 
 function bang() {
-    queue();
+    getqueue();
 }
 
 // Helper function to parse arguments into an object

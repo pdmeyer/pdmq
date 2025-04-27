@@ -3,12 +3,12 @@ inlets = 1;
 outlets = 1;
 autowatch = 1;
 
-const FifoView = require('pdm.fifoview.js').FifoView;
+const Queue = require('pdm.queue.js').Queue;
 
 // Global variables
-let fifoView = null;
+let queue = null;
 
-// Initialize the FifoView with arguments
+// Initialize the Queue with arguments
 function init() {
     const args = getJsArgsAsObject();
     
@@ -18,26 +18,26 @@ function init() {
         return false;
     }
     try {
-        // Create new FifoView instance
-        fifoView = new FifoView(
+        // Create new Queue instance
+        queue = new Queue(
             args.databuf[0],
             args.datachan[0],
             args.readbuf[0],
             args.readchan[0] ? args.readchan[0] : args.datachan[0],
             args.readix ? args.readix[0] : 0
         );
-        post("FifoView initialized successfully\n");
+        post("Queue initialized successfully\n");
         return true;
     } catch (error) {
-        post("Error initializing FifoView:", error.message, "\n");
+        post("Error initializing Queue:", error.message, "\n");
         return false;
     }
 }
 
 // Catch-all function for other messages
 function anything() {
-    if (!fifoView) {
-        // post("Error: FifoView not initialized. Send 'init' message first.\n");
+    if (!queue) {
+        // post("Error: Queue not initialized. Send 'init' message first.\n");
         if(!init()) return;
     }
     
@@ -45,30 +45,30 @@ function anything() {
     const args = arrayfromargs(arguments);  
 
     // Check if message is a property name
-    if (message in fifoView) {
+    if (message in queue) {
         switch (message) {
             case "datachan":
-                if (args[0] >= fifoView.databuf.channelcount()) {
+                if (args[0] >= queue.databuf.channelcount()) {
                     post(`Error: Channel ${args[0]} is out of range\n`);
                     return;
                 }
-                fifoView.dataChannel = args[0];
+                queue.dataChannel = args[0];
                 break;
             case "readchan":
-                if (args[0] >= fifoView.readbuf.channelcount()) {
+                if (args[0] >= queue.readbuf.channelcount()) {
                     post(`Error: Channel ${args[0]} is out of range\n`);
                     return;
                 }
-                fifoView.readChannel = args[0];
+                queue.readChannel = args[0];
                 break;
             case "readix":
-                fifoView.readix = args[0];
+                queue.readix = args[0];
                 break;
             case "readbuf":
-                fifoView.setBuffer(message, args[0]);
+                queue.setBuffer(message, args[0]);
                 break;
             case "databuf":
-                fifoView.setBuffer(message,args[0]);
+                queue.setBuffer(message,args[0]);
                 break;
             default:
                 post("Cannot set property:", message, "\n");
@@ -80,15 +80,15 @@ function anything() {
     // Handle method calls
     switch (message) {
         case "next":
-            outlet(0, "next", fifoView.getNext());
+            outlet(0, "next", queue.getNext());
             break;
 
         case "last":
-            outlet(0, "last", fifoView.getLast());
+            outlet(0, "last", queue.getLast());
             break;
 
         case "queue":
-            const q = fifoView.getQueue();
+            const q = queue.getQueue();
             if(q.length > 0) {
                 outlet(0, "queue", q);
             } else {
@@ -97,13 +97,13 @@ function anything() {
             break;
 
         case "full":
-            outlet(0, "full", fifoView.getFullBuffer());
+            outlet(0, "full", queue.getFullBuffer());
             break;
 
         case "free":
-            fifoView.free();
-            fifoView = null;
-            post("FifoView freed\n");
+            queue.free();
+            queue = null;
+            post("Queue freed\n");
             break;
 
         default:
@@ -113,9 +113,9 @@ function anything() {
 
 // Clean up when the js object is deleted
 function notifydeleted() {
-    if (fifoView) {
-        fifoView.free();
-        fifoView = null;
+    if (queue) {
+        queue.free();
+        queue = null;
     }
 }
 
@@ -124,7 +124,7 @@ function loadbang() {
 }
 
 function bang() {
-    fifoView.getQueue();
+    queue.getQueue();
 }
 
 // Helper function to parse arguments into an object
