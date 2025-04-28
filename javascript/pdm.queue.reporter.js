@@ -3,156 +3,100 @@ inlets = 1;
 outlets = 1;
 autowatch = 1;
 
-const Queue = require('pdm.queue.js').Queue;
+const QueueBuffer = require('pdm.queue.js').QueueBuffer;
+const MaxJsObject = require('pdm.maxjsobject.js').MaxJsObject;
 
-// Global variables
-let qs = [];
-
-// Initialize the Queue with arguments
-function init() {
-    const args = getJsArgsAsObject();
-    // Check for required parameters
-    if (!args.databuf || !args.readbuf) {
-        post("Error: Missing required parameters. Usage: init @databuf <name> @readbuf <name> @datachan <number> [@readchan <number>] [@readix <number>]\n");
-        return false;
-    }
-    const channels = args.channels[0] ? args.channels[0] : 1;
-    let success = true;
-    qs = [];
-    for(let i = 1; i <= channels; i++) {
-        try {
-            // Create new Queue instance
-            qs.push(new Queue(
-                args.databuf[0],
-                i,
-                args.readbuf[0],
-                i,
-                args.readix ? args.readix[0] : 0
-            ));
-        post("Queue initialized successfully\n");
-        success = true;
-
-        } catch (error) {
-            post("Error initializing queue ",i,": ", error.message, "\n");
-            success = false;
-        }
-    }
-    return success;
-}
-
-// Catch-all function for other messages
-function anything() {
-    if (qs.length == 0) {
-        if(!init()) return;
-    }
-    
-    const message = messagename;
-    const args = arrayfromargs(arguments);  
-
-    // Check if message is a property name
-    if (message in qs[0]) {
-        switch (message) {
-            case "readix":
-                qs.forEach(q => { q.readix = args[0]; });
-                break;
-            case "readbuf":
-                qs.forEach(q => { q.setBuffer(message, args[0]); });
-                break;
-            case "databuf":
-                qs.forEach(q => { q.setBuffer(message, args[0]); });
-                break;
-            default:
-                post("Cannot set property:", message, "\n");
-        }
-        return;
-    }
-
-    // Handle method calls
-    switch (message) {
-        case "next":
-            qs.forEach(q => { outlet(0, "next", q.getNext()); });
-            break;
-
-        case "last":
-            qs.forEach(q => { outlet(0, "last", q.getLast()); });
-            break;
-
-        case "full":
-            qs.forEach((q, index) => { outlet(0, "full", index, q.getFullBuffer()); });
-            break;
-
-        case "free":
-            qs.forEach(q => { q.free(); });
-            qs = [];
-            post("Queue freed\n");
-            break;
-
-        default:
-            post("Unknown message:", message, "\n");
-    }
-}
-
-function getqueue() {
-    qs.forEach((q, index) => {
-        const queue = q.getQueue();
-        const ix = index + 1
-        if(queue.length > 0) {
-            outlet(0, "queue", ix, queue);
-        } else {
-            outlet(0, "queue", ix, "none");
-        }
-    });
-}
-
-function getpositions() {
-    let readPositions = [];
-    let writePositions = [];
-    qs.forEach((q, index) => {
-        readPositions.push(q.getReadPosition());
-        writePositions.push(q.getWritePosition());
-        const ix = index + 1;
-    })
-    outlet(0, 'positions', 'write', writePositions)
-    outlet(0, 'positions', 'read', readPositions)
-}
-
-function free() {
-    if (qs.length > 0) {
-        qs.forEach(q => { q.free(); });
-        qs = [];
-        post("Queue freed\n");
-    }
-}
-
-function loadbang() {
-    init();
-}
-
-function bang() {
-    getqueue();
-}
-
-// Helper function to parse arguments into an object
-function getJsArgsAsObject() {
-    var argsArray = jsarguments.slice(1);
-    var groupedArgs = { unaddressed: [] };
-    var currentKey = 'unaddressed';
-
-    argsArray.forEach(function (arg, index) {
-        if (String(arg).indexOf('@') === 0) {
-            currentKey = arg.substring(1);
-            groupedArgs[currentKey] = [];
-        } else {
-            if (!groupedArgs[currentKey]) {
-                groupedArgs[currentKey] = [];
+class QueueReporter extends MaxJsObject {
+    static get api() {
+        return {
+            parameters: {
+                databuf: { type: 'string', required: true },
+                readbuf: { type: 'string', required: true }
+            },
+            messages: {
+                next: { handler: 'handleNext' },
+                last: { handler: 'handleLast' },
+                full: { handler: 'handleFull' },
+                queue: { handler: 'handleQueue' },
+                positions: { handler: 'handlePositions' },
+                free: { handler: 'handleFree' }
             }
-            groupedArgs[currentKey].push(arg);
-        }
-    });
-    if (groupedArgs.unaddressed.length === 0) {
-        delete groupedArgs.unaddressed;
+        };
     }
-    return groupedArgs;
+
+    constructor() {
+        super();
+        this.queueBuffer = null;
+    }
+
+    _init() {
+        try {
+            this.queueBuffer = new QueueBuffer(
+                this.databuf,
+                this.readbuf
+            );
+            post("QueueBuffer initialized successfully with ", this.queueBuffer.channels, " channels\n");
+            return true;
+        } catch (error) {
+            post("Error initializing QueueBuffer: ", error.message, "\n");
+            return false;
+        }
+    }
+
+    handleNext() {
+        const nextValues = this.queueBuffer.getNext();
+        nextValues.forEach((value, index) => {
+            outlet(0, "next", index + 1, value);
+        });
+    }
+
+    handleLast() {
+        const lastValues = this.queueBuffer.getLast();
+        lastValues.forEach((value, index) => {
+            outlet(0, "last", index + 1, value);
+        });
+    }
+
+    handleFull() {
+        const fullBuffers = this.queueBuffer.getFullBuffer();
+        fullBuffers.forEach((buffer, index) => {
+            outlet(0, "full", index + 1, buffer);
+        });
+    }
+
+    handleQueue() {
+        const queues = this.queueBuffer.getQueueContents();
+        queues.forEach((queue, index) => {
+            if(queue.length > 0) {
+                outlet(0, "queue", index + 1, queue);
+            } else {
+                outlet(0, "queue", index + 1, "none");
+            }
+        });
+    }
+
+    handlePositions() {
+        const positions = this.queueBuffer.getPositions();
+        outlet(0, 'positions', 'write', positions.write);
+        outlet(0, 'positions', 'read', positions.read);
+    }
+
+    handleFree() {
+        this.queueBuffer.free();
+        this.queueBuffer = null;
+        post("QueueBuffer freed\n");
+    }
+
+    bang() {
+        this.handleQueue();
+    }
 }
 
-init();
+// Create and export instance
+const reporter = new QueueReporter();
+
+// Export functions for Max
+function init() { return reporter.init(); }
+function anything() { reporter.anything(messagename, ...arrayfromargs(arguments)); }
+function bang() { reporter.bang(); }
+function loadbang() { reporter.init(); }
