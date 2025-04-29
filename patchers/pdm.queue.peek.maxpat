@@ -20,7 +20,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 369.0, 69.0, 54.0, 22.0 ],
+					"patching_rect" : [ 380.0, 68.0, 54.0, 22.0 ],
 					"text" : "sel done"
 				}
 
@@ -141,8 +141,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 88.0, 36.0, 339.0, 22.0 ],
-					"text" : "patcherargs @channel 1 @databuf databuf @readbuf readbuf"
+					"patching_rect" : [ 88.0, 36.0, 311.0, 22.0 ],
+					"text" : "patcherargs @channel 1 @qbuf qbuf @metabuf metabuf"
 				}
 
 			}

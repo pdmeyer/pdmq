@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
+<c74object name="pdm.queue.manager">
+<metadatalist>
+<metadata name="author">Philip Meyer</metadata>
+<metadata name="tag">buffers</metadata>
+<metadata name="tag">queues</metadata>
+</metadatalist>
+<attributelist>
+  <attribute name="buffers" get="1" set="1" size="2" type="symbol">
+    <digest>Names of the queue and metadata buffers</digest>
+    <description>
+      Specifies the names of the two buffers used by the queue manager:
+      - First argument: Name of the queue buffer that holds the data
+      - Second argument: Name of the metadata buffer that holds read/write positions, loop lengths, and every values
+    </description>
+  </attribute>
+</attributelist>
+<methodlist>
+  <method name="write">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="value" optional="0" type="float" />
+    </arglist>
+    <digest>Write a value to the specified channel(s)</digest>
+    <description>
+      Writes a value to the specified channel in the queue buffer.
+      If channel is 0, the value is written to all channels.
+    </description>
+  </method>
+  <method name="back">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="steps" optional="1" type="int" />
+    </arglist>
+    <digest>Move the write position backward</digest>
+    <description>
+      Moves the write position backward by the specified number of steps.
+      If channel is 0, the position is moved for all channels.
+      If steps is omitted, it defaults to 1.
+    </description>
+  </method>
+  <method name="looplen">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="length" optional="0" type="int" />
+    </arglist>
+    <digest>Set the loop length for the specified channel(s)</digest>
+    <description>
+      Sets the loop length for the specified channel.
+      If channel is 0, the length is set for all channels.
+      The length must be a positive number.
+    </description>
+  </method>
+  <method name="every">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="every" optional="0" type="int" />
+    </arglist>
+    <digest>Set the every value for the specified channel(s)</digest>
+    <description>
+      Sets the every value for the specified channel.
+      If channel is 0, the value is set for all channels.
+      The every value must be a positive number.
+    </description>
+  </method>
+  <method name="dump">
+    <digest>Dump the current state of the queue buffer</digest>
+    <description>
+      Outputs a dictionary containing the state of all the queues,
+      including buffer names, sizes, channel counts, and queue states.
+    </description>
+  </method>
+</methodlist>
+<description>
+    Write to queues in a multichannel buffer, and set parameters for the queue reader. 
+    
+</description>
+<digest>Manage multi-channel queue buffers</digest>
+<seealsolist>
+  <seealso name="pdm.queue.reader" />
+  <seealso name="pdm.queue.peek" />
+</seealsolist>
+</c74object>

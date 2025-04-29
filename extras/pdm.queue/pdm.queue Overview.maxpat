@@ -32,7 +32,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1232.0, 750.0 ],
+						"rect" : [ 0.0, 26.0, 900.0, 699.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -425,7 +425,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
-									"outlettype" : [ "int", "bang" ],
+									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 19.0, 248.0, 163.0, 35.0 ],
 									"text" : "pdm.queue.writer @databuf pdm.queue.help.databuf"
 								}
@@ -719,7 +719,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1232.0, 750.0 ],
+						"rect" : [ 0.0, 26.0, 900.0, 699.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -937,7 +937,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
-									"outlettype" : [ "int", "bang" ],
+									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 24.0, 477.0, 163.0, 35.0 ],
 									"text" : "pdm.queue.writer @databuf pdm.queue.help.databuf"
 								}
@@ -1035,7 +1035,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1232.0, 750.0 ],
+						"rect" : [ 0.0, 26.0, 900.0, 699.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -1443,7 +1443,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 1232.0, 750.0 ],
+						"rect" : [ 134.0, 198.0, 900.0, 699.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -1456,17 +1456,6 @@
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 19.0, 306.0, 24.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-13",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 163.0, 243.0, 81.0, 22.0 ],
-									"text" : "s p.f.h.update"
 								}
 
 							}
@@ -1598,8 +1587,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "", "int", "int" ],
-									"patching_rect" : [ 19.0, 332.0, 197.0, 49.0 ],
-									"text" : "pdm.queue.peek @channel 1 @databuf pdm.queue.help.databuf @readbuf pdm.queue.help.readbuf"
+									"patching_rect" : [ 19.0, 332.0, 211.0, 49.0 ],
+									"text" : "pdm.queue.peek @channel 1 @databuf pdm.queue.help.qbuf @readbuf pdm.queue.help.metabuf"
 								}
 
 							}
@@ -1615,17 +1604,6 @@
 									"patching_rect" : [ 19.0, 397.0, 149.0, 65.0 ],
 									"setminmax" : [ 0.0, 8.0 ],
 									"size" : 8
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-37",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 163.0, 267.0, 108.0, 20.0 ],
-									"text" : "bang when written"
 								}
 
 							}
@@ -1968,7 +1946,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "bang" ],
 									"patching_rect" : [ 300.0, 199.0, 199.0, 49.0 ],
-									"text" : "pdm.queue.reader @databuf pdm.queue.help.databuf @readbuf pdm.queue.help.readbuf"
+									"text" : "pdm.queue.reader @qbuf pdm.queue.help.qbuf @meta pdm.queue.help.metabuf"
 								}
 
 							}
@@ -1991,8 +1969,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 615.0, 219.0, 260.0, 22.0 ],
-									"text" : "buffer~ pdm.queue.help.readbuf 1 8 @samps 1"
+									"patching_rect" : [ 615.0, 219.0, 263.0, 22.0 ],
+									"text" : "buffer~ pdm.queue.help.metabuf 1 8 @samps 4"
 								}
 
 							}
@@ -2000,13 +1978,11 @@
 								"box" : 								{
 									"color" : [ 0.290196078431373, 0.454901960784314, 0.776470588235294, 1.0 ],
 									"id" : "obj-247",
-									"linecount" : 2,
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "int", "bang" ],
-									"patching_rect" : [ 19.0, 206.0, 163.0, 35.0 ],
-									"text" : "pdm.queue.writer @databuf pdm.queue.help.databuf"
+									"numoutlets" : 0,
+									"patching_rect" : [ 19.0, 206.0, 256.0, 22.0 ],
+									"text" : "pdm.queue.writer @qbuf pdm.queue.help.qbuf"
 								}
 
 							}
@@ -2033,8 +2009,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 605.0, 186.0, 260.0, 22.0 ],
-									"text" : "buffer~ pdm.queue.help.databuf 1 8 @samps 9"
+									"patching_rect" : [ 605.0, 186.0, 243.0, 22.0 ],
+									"text" : "buffer~ pdm.queue.help.qbuf 1 8 @samps 8"
 								}
 
 							}
@@ -2071,13 +2047,6 @@
 								"patchline" : 								{
 									"destination" : [ "obj-247", 0 ],
 									"source" : [ "obj-2", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-13", 0 ],
-									"source" : [ "obj-247", 1 ]
 								}
 
 							}
@@ -2175,8 +2144,8 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "pdm.abstract.inputerror.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstraction/patchers",
-				"patcherrelativepath" : "../../../pdm.abstraction/patchers",
+				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/patchers",
+				"patcherrelativepath" : "../../../pdm.abstract/patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -2209,6 +2178,13 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "pdm.maxjsobject.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/javascript",
+				"patcherrelativepath" : "../../../pdm.abstract/javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "pdm.queue.frommtx.maxpat",
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
 				"patcherrelativepath" : "../../patchers",
@@ -2227,6 +2203,13 @@
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
 				"patcherrelativepath" : "../../patchers",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdm.queue.manager.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"patcherrelativepath" : "../../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
