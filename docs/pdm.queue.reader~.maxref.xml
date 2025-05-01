@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
+<c74object name="pdm.queue.reader~">
+<metadatalist>
+<metadata name="author">Philip Meyer</metadata>
+<metadata name="tag">buffers</metadata>
+<metadata name="tag">queues</metadata>
+<metadata name="tag">MSP</metadata>
+</metadatalist>
+<!--INLETS-->
+<inletlist>
+    <inlet id="0" type="signal, float">
+        <digest>
+            Input
+        </digest>
+        <description>
+            Impulses to the inlet output the next value in the queue and advance the reader.
+        </description>
+    </inlet>
+</inletlist>
+<!--OUTLETS-->
+<outletlist>
+    <outlet id="0" type="signal">
+        <digest>
+            Queue value
+        </digest>
+        <description>
+            The left outlet outputs the next value in the queue.
+        </description>
+    </outlet>
+    <outlet id="1" type="signal">
+        <digest>
+            Queue index
+        </digest>
+        <description>
+            The right outlet outputs the index of the next value in the queue. This value is also written to the second slot of the metadata buffer.
+        </description>
+    </outlet>
+</outletlist>
+<!--ARGUMENTS-->
+<objarglist>
+    <objarg name="name" optional="0" type="symbol">
+        <digest>
+            Set the name of the queue
+        </digest>
+        <description>
+            Sets the name of the queue. Will be used to name the queue and metadata buffers. 
+        </description>
+    </objarg>
+    <objarg name="channel" optional="0" type="number">
+        <digest>
+            Set the channel to read from.
+        </digest>
+        <description>
+            Sets the channel to read from.
+        </description>
+    </objarg>
+</objarglist>
+<description>
+    Reads from a queue using signals. For an event-based version, see <o>pdm.queue.reader</o>. For a gen~ version, use pdm.queue.reader.gendsp.
+</description>
+<digest>Create and manage queues.</digest>
+<seealsolist>
+  <seealso name="pdm.queue" />
+  <seealso name="pdm.queue.reader~" />
+</seealsolist>
+</c74object> 
