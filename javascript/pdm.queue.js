@@ -4,29 +4,46 @@
  * This module provides the fundamental queue buffer functionality used by pdm.queue.manager.
  * It implements a multi-channel buffer system with synchronized data and metadata buffers.
  * 
- * The module contains two main classes:
+ * The module contains several classes:
  * - Queue: Manages a single channel's queue with read/write positions and loop behavior
- * - QueueBuffer: Manages multiple Queue instances for multi-channel operation
- * 
- * Requires that buffers are created in the parent patch with the same number of channels: 
- * - qbuf: queue buffer that holds the queues
- * - metabuf: metadata buffer that holds the read/write positions, loop length, and every value
- * 
- * 
+ * - QueueBuffer: Manages multiple Queue instances in a multichannel buffer
+ * - QueueApi: Interface for QueueBuffer
+ * - QueueBufferManager: Handles Max patcher scripting for automatic buffer creation 
+ *        and management inside pdm.queue.maxpat
+ * - QueueHostApi: Extends QueueApi add interface for QueueBufferManager
+ *  
  * @module pdm.queue
+ * @requires pdm.maxjsobject.js
  */
 
-class  Queue {
-    constructor(qBufName, metaBufName, channel) {
+const MaxJsObject = require('pdm.maxjsobject.js').MaxJsObject;
+
+/**
+ * Manages a single channel's queue with read/write positions and loop behavior.
+ * Handles synchronization between data and metadata buffers for a single channel.
+ */
+class Queue {
+    constructor(qbufName, metabufName, channel) {
         this.qbuf = null;
         this.metabuf = null;
-        this.setBuffers(qBufName, metaBufName);
+        this.setBuffers(qbufName, metabufName);
 
         this.channel = Math.max(channel, 1); // Buffer API uses 1-based channel indexing
 
         // Initialize reader properties in read buffer
         this.setLoopLength(1);  // Default to no looping
         this.setEvery(1);       // Default to advancing every impulse
+    }
+
+    /**
+     * Updates the buffer names and reinitializes queues
+     * @param {string} qbufName - New data buffer name
+     * @param {string} metabufName - New metadata buffer name
+     * @returns {boolean} True if buffers were set successfully, false otherwise
+     */
+    setBuffers(qbufName, metabufName) {
+        this.qbuf = new Buffer(qbufName);
+        this.metabuf = new Buffer(metabufName);
     }
 
     // Get the every value from the read buffer
@@ -58,13 +75,12 @@ class  Queue {
     }
 
     // Get all remaining values in the queue
-    getQueue() {
+    getContents() {
         const readPos = this.getReadPosition();
         const writePos = this.getWritePosition();
         const readCycle = Math.floor(readPos / (this.getBufferSize() - 1));
         const writeCycle = Math.floor(writePos / (this.getBufferSize() - 1));
         let queueLength = 0;
-
         let queue = []
 
         if(!(readPos == 0 && writePos == 0 && readCycle ==  0 && writeCycle == 0)) {
@@ -80,6 +96,7 @@ class  Queue {
             }
         }
         if(!Array.isArray(queue)) queue = [queue];
+        if(queue.length == 0) queue = [0];
         return queue
     }
 
@@ -87,53 +104,6 @@ class  Queue {
     getFullBuffer() {
         // Get all values except the last frame which contains write position
         return this.qbuf.peek(this.channel, 0, this.getBufferSize() - 1);
-    }
-
-    /**
-     * Validates that both buffers exist and have matching channel counts
-     * @param {Buffer} qbuf - Queue buffer to validate
-     * @param {Buffer} metabuf - Metadata buffer to validate
-     * @param {string} qBufName - Name of the queue buffer (for error messages)
-     * @param {string} metaBufName - Name of the metadata buffer (for error messages)
-     * @returns {boolean} True if buffers are valid, false otherwise
-     * @static
-     */
-    static validateBuffers(qbuf, metabuf, qBufName, metaBufName) {
-        // Check if buffers exist
-        if (qbuf.channelcount() === -1) {
-            error("Error: Queue buffer '", qBufName, "' does not exist\n");
-            return false;
-        }
-
-        if (metabuf.channelcount() === -1) {
-            error("Error: Metadata buffer '", metaBufName, "' does not exist\n");
-            return false;
-        }
-
-        // Check if channel counts match
-        if (qbuf.channelcount() !== metabuf.channelcount()) {
-            error("Error: qbuf and metabuf must have the same number of channels\n");
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Updates the buffer names
-     * @param {string} qBufName - New data buffer name
-     * @param {string} metaBufName - New metadata buffer name
-     */
-    setBuffers(qBufName, metaBufName) {
-        let _tempQBuf = new Buffer(qBufName);
-        let _tempMetaBuf = new Buffer(metaBufName);
-
-        if (!Queue.validateBuffers(_tempQBuf, _tempMetaBuf, qBufName, metaBufName)) {
-            return;
-        }
-
-        this.qbuf = _tempQBuf;
-        this.metabuf = _tempMetaBuf;
     }
 
     getBufferSize() {
@@ -148,7 +118,7 @@ class  Queue {
 
     // Get the read position from the read buffer
     getReadPosition() {
-        return this.metabuf.peek(this.channel, 0, 1);
+        return this.metabuf.peek(this.channel, 1, 1);
     }
 
     // Get the loop length from the read buffer
@@ -177,14 +147,24 @@ class  Queue {
         this.advanceWritePosition();
     }
 
+    clear() {
+        let length = this.getBufferSize();
+        let mlength = this.metabuf.framecount();
+        let qClear = new Array(length).fill(0);
+        let mClear = new Array(mlength).fill(0);
+        this.qbuf.poke(this.channel, 0, qClear);
+        this.metabuf.poke(this.channel, 0, mClear);
+    }
+
     serialize() {
         const data = {
-            size: this.getBufferSize(),
             channel: this.channel,
-            read: this.getReadPosition(),
-            write: this.getWritePosition(),
-            loopLength: this.getLoopLength(),
-            every: this.getEvery()
+            read_position: this.getReadPosition(),
+            write_position: this.getWritePosition(),
+            loop_length: this.getLoopLength(),
+            every: this.getEvery(),
+            queue_contents: this.getContents(),
+            buffer_contents: this.getFullBuffer()
         };
         return data;
     }
@@ -197,29 +177,44 @@ class  Queue {
 } 
 
 /**
- * Manages a collection of queues for a multi-channel buffer system.
+ * Manages a collection of queues for a multi-channel buffer.
  * Handles synchronization between data and metadata buffers across multiple channels.
  */
 class QueueBuffer {
     /**
      * Creates a new QueueBuffer instance
-     * @param {string} qbufName - Name of the data buffer
+     * @param {string} qbufName - Name of the queue buffer
      * @param {string} metabufName - Name of the metadata buffer
      */
     constructor(qbufName, metabufName) {
-        this.qBufName = qbufName;
-        this.metaBufName = metabufName;
+        this.qbufName = null;
+        this.metabufName = null;
         this.qbuf = null;
         this.metabuf = null;
         this.queues = [];
-        
-        // Initialize buffers and queues
-        if (!this.setBuffers(qbufName, metabufName)) {
-            // If initialization fails, set queues to empty array
-            this.queues = [];
-            return;
-        }
+        this.setBuffers(qbufName, metabufName);
     }
+    /**
+     * Updates the buffer names and reinitializes queues
+     * @param {string} qbufName - New data buffer name
+     * @param {string} metabufName - New metadata buffer name
+     * @returns {boolean} True if buffers were set successfully, false otherwise
+     */
+    setBuffers(qbufName, metabufName) {
+        if (!QueueBuffer.validateBuffers(qbufName, metabufName)) {
+            post("Error: Queue buffer '", qbufName, "' or metadata buffer '", metabufName, "' does not exist or is invalid\n");
+            return false;
+        }
+        
+        this.qbufName = qbufName;
+        this.metabufName = metabufName;
+        this.qbuf = new Buffer(qbufName);
+        this.metabuf = new Buffer(metabufName);
+        
+        // Update queue count to match new buffer
+        return this._updateQueues();
+    }
+
 
     /**
      * Updates the queue collection to match the current buffer channel count
@@ -231,10 +226,10 @@ class QueueBuffer {
         
         if (qbufChannels !== metabufChannels) {
             error("Error: qbuf and metabuf must have the same number of channels\n");
-            return;
+            return false;
         }
 
-        post("Updating queues to match ", qbufChannels, " channels\n");
+        // post("Updating queues to match ", qbufChannels, " channels\n");
         
         // Remove excess queues if we have too many
         while (this.queues.length > qbufChannels) {
@@ -243,12 +238,12 @@ class QueueBuffer {
         
         // Add new queues if we need more
         while (this.queues.length < qbufChannels) {
-            const queue = new Queue(this.qBufName, this.metaBufName, this.queues.length + 1);
-            post("Created queue ", this.queues.length + 1, "\n");
+            const queue = new Queue(this.qbufName, this.metabufName, this.queues.length + 1);
+            // post("Created queue ", this.queues.length + 1, "\n");
             this.queues.push(queue);
         }
-        
-        post("QueueBuffer now has ", this.queues.length, " queues\n");
+        return true;
+        // post("QueueBuffer now has ", this.queues.length, " queues\n");
     }
 
     /**
@@ -267,12 +262,27 @@ class QueueBuffer {
         return this.qbuf.channelcount();
     }
 
+    getBuffers() {
+        if(!this.qbuf || !this.metabuf) {
+            error("Error: Buffers not set. Please set buffers before calling this method.\n");
+            return null;
+        }
+        return {
+            qbuf: this.qbufName,
+            metabuf: this.metabufName
+        };
+    }
+
     /**
      * Gets a specific queue by channel number
      * @param {number} channel - Channel number (1-based)
      * @returns {Queue} The queue for the specified channel
      */
     getQueue(channel) {
+        if(channel < 1 || channel > this.getChannelCount()) {
+            error("Error: Invalid channel number. Please use a number between 1 and ", this.getChannelCount(), "\n");
+            return null;
+        }
         return this.queues[channel - 1];
     }
 
@@ -305,11 +315,8 @@ class QueueBuffer {
      * @param {number} channel - Channel to get from (0 for all channels)
      * @returns {Array<number>|Array<Array<number>>} Queue contents
      */
-    getQueueContents(channel = 0) {
-        if (channel !== 0) {
-            return this.getQueue(channel).getQueue();
-        }
-        return this.queues.map(q => q.getQueue());
+    getContents(channel = 0) {
+        return this.getQueue(channel).getContents();
     }
 
     /**
@@ -424,11 +431,15 @@ class QueueBuffer {
     }
 
     /**
-     * Sets the loop length(s)
+     * Sets the loop length for the specified channel(s)
      * @param {number} length - New loop length
      * @param {number} channel - Channel to set (0 for all channels)
      */
     setLoopLength(length, channel = 0) {
+        if (typeof length !== 'number' || length < 1) {
+            error("Error: loop length must be a positive number\n");
+            return;
+        }
         if (channel !== 0) {
             this.getQueue(channel).setLoopLength(length);
         } else {
@@ -449,40 +460,20 @@ class QueueBuffer {
     }
 
     /**
-     * Sets the every value(s)
+     * Sets the every value for the specified channel(s)
      * @param {number} every - New every value
      * @param {number} channel - Channel to set (0 for all channels)
      */
     setEvery(every, channel = 0) {
+        if (typeof every !== 'number' || every < 1) {
+            error("Error: every must be a positive number\n");
+            return;
+        }
         if (channel !== 0) {
             this.getQueue(channel).setEvery(every);
         } else {
             this.queues.forEach(q => q.setEvery(every));
         }
-    }
-
-    /**
-     * Updates the buffer names and reinitializes queues
-     * @param {string} qBufName - New data buffer name
-     * @param {string} metaBufName - New metadata buffer name
-     * @returns {boolean} True if buffers were set successfully, false otherwise
-     */
-    setBuffers(qBufName, metaBufName) {
-        let _tempQBuf = new Buffer(qBufName);
-        let _tempMetaBuf = new Buffer(metaBufName);
-
-        if (!Queue.validateBuffers(_tempQBuf, _tempMetaBuf, qBufName, metaBufName)) {
-            return false;
-        }
-        
-        this.qBufName = qBufName;
-        this.metaBufName = metaBufName;
-        this.qbuf = _tempQBuf;
-        this.metabuf = _tempMetaBuf;
-        
-        // Update queue count to match new buffer
-        this._updateQueues();
-        return true;
     }
 
     /**
@@ -499,15 +490,26 @@ class QueueBuffer {
     }
 
     /**
+     * Clears the queue buffer
+     */
+    clear(channel = 0) {
+        if (channel !== 0) {
+            this.queues[channel - 1].clear();
+        } else {
+            this.queues.forEach(q => q.clear());
+        }
+    }
+
+    /**
      * Serializes the current state of the queue buffer
      * @returns {Object} Serialized state
      */
     serialize() {
         return {
-            qBufName: this.qBufName,
-            metaBufName: this.metaBufName,
+            queue_buffer_name: this.qbufName,
+            metadata_buffer_name: this.metabufName,
+            num_queues: this.getChannelCount(),
             size: this.getBufferSize(),
-            channels: this.getChannelCount(),
             queues: this.queues.map(queue => queue.serialize())
         };
     }
@@ -519,7 +521,431 @@ class QueueBuffer {
         this.queues.forEach(q => q.free());
         this.queues = [];
     }
+
+    /**
+     * Validates that both buffers exist and have matching channel counts
+     * @param {Buffer} qbuf - Queue buffer to validate
+     * @param {Buffer} metabuf - Metadata buffer to validate
+     * @param {string} qbufName - Name of the queue buffer (for error messages)
+     * @param {string} metabufName - Name of the metadata buffer (for error messages)
+     * @returns {boolean} True if buffers are valid, false otherwise
+     * @static
+     */
+    static validateBuffers(qbufName, metabufName) {
+        const [qbufExists, metabufExists] = QueueBuffer.queueBuffersExist(qbufName, metabufName);
+        const output = {
+            "exists": false,
+            "isValid": false
+        }
+        output.exists = qbufExists || metabufExists;
+        if(!output.exists) {
+            return output;
+        }
+        // Check if channel counts match
+        output.isValid = QueueBuffer.validateChannelCount(qbufName, metabufName);
+        return output;
+    }
+
+    static queueBuffersExist(qbufName, metabufName) {
+        const qbufExists = QueueBuffer.bufferExists(qbufName);
+        const metabufExists = QueueBuffer.bufferExists(metabufName);
+        return [qbufExists, metabufExists];
+    }
+
+    static bufferExists(bufferName) {
+        const _temp_buffer = new Buffer(bufferName);
+        const exists = _temp_buffer.channelcount() !== -1;
+        _temp_buffer.freepeer();
+        return exists;
+    }
+
+    static validateChannelCount(qbufName, metabufName) {
+        const qbuf = new Buffer(qbufName);
+        const metabuf = new Buffer(metabufName);
+        const valid = qbuf.channelcount() === metabuf.channelcount();
+        qbuf.freepeer();
+        metabuf.freepeer();
+        return valid;
+    }
+
+    /**
+     * Creates buffer names from a base name
+     * @param {string} name - Base name for the buffers
+     * @returns {Object} Object containing the buffer names
+     */
+    static createBufferNames(name) {
+        return {
+            qbufName: name,
+            metabufName: name + "_meta"
+        };
+    }
+    
+    /**
+     * Validates a queue name and returns the corresponding buffer names
+     * @param {string} name - Base name for the queue
+     * @returns {Object} Object containing the buffer names and validation status
+     * @property {string} qbufName - Name of the queue buffer
+     * @property {string} metabufName - Name of the metadata buffer
+     * @property {boolean} isValid - Whether the buffers exist and are valid
+     */
+    static validateQueueName(name) {
+        const {qbufName, metabufName} = QueueBuffer.createBufferNames(name);
+        const {exists, isValid} = QueueBuffer.validateBuffers(qbufName, metabufName);
+        return {qbufName, metabufName, exists, isValid};
+    }
+}
+
+/**
+ * Manages scripting within the Max patcher to dynamically create and remove buffer~ objects.
+ * Handles the creation, naming, and removal of buffer boxes in the Max patcher.
+ */
+class QueueBufferManager {
+    /**
+     * Creates a new QueueBufferManager instance
+     * @param {Object} patcher - The Max patcher instance
+     */
+    constructor(jsthis) {
+        this.jsthis = jsthis;
+        this.patcher = jsthis.patcher;
+        this.qbufBox = null;
+        this.metabufBox = null;
+    }
+
+    /**
+     * Creates new buffer boxes with the specified parameters
+     * @param {string} qbufName - Name of the queue buffer
+     * @param {string} metabufName - Name of the metadata buffer
+     * @param {number} channelCount - Number of channels
+     * @param {number} length - Buffer length
+     * @returns {Object} Object containing the created buffer boxes
+     */
+    createBufferBoxes(qbufName, metabufName, channelCount, length) {
+        var box = this.jsthis.box.rect;
+        let left = box[2] + 10;
+        let top = box[1];
+        
+        const qbufBox = this.patcher.newdefault(left, top, 'buffer~', qbufName, 1, channelCount, '@samps', length);
+        qbufBox.varname = "pdm_queue_qbuf_box";
+        left = qbufBox.rect[2] + 10;
+        const metabufBox = this.patcher.newdefault(left, top, 'buffer~', metabufName, 1, channelCount, '@samps', 4);
+        metabufBox.varname = "pdm_queue_metabuf_box";
+        return { qbufBox, metabufBox };
+    }
+
+    /**
+     * Removes existing buffer boxes if they exist
+     */
+    removeBufferBoxes() {
+        if(this.qbufBox) {
+            if(this.qbufBox.valid) {
+                this.patcher.remove(this.qbufBox);
+            }
+            this.qbufBox = null;
+        }
+        if(this.metabufBox) {
+            if(this.metabufBox.valid) {
+                this.patcher.remove(this.metabufBox);
+            }
+            this.metabufBox = null;
+        }
+    }
+
+    /**
+     * Sets the buffer boxes
+     * @param {Object} boxes - Object containing the buffer boxes
+     */
+    setBufferBoxes(boxes) {
+        this.qbufBox = boxes.qbufBox;
+        this.metabufBox = boxes.metabufBox;
+    }
+
+    /**
+     * Creates new buffers with the specified parameters
+     * @param {string} name - Base name for the buffers
+     * @param {number} channelCount - Number of channels
+     * @param {number} length - Buffer length
+     * @returns {Object|null} Object containing buffer names if successful, null if failed
+     */
+    createBuffers(name, channelCount, length) {
+        const {qbufName, metabufName} = QueueBuffer.createBufferNames(name);
+        const buffersExist = QueueBuffer.validateBuffers(qbufName, metabufName).exists;
+        
+        if(buffersExist) {
+            error("Error: Buffers with name", name, "already exist. Please choose a different name.\n");
+            return null;
+        }
+
+        this.removeBufferBoxes();
+        const boxes = this.createBufferBoxes(qbufName, metabufName, channelCount, length);
+        this.setBufferBoxes(boxes);
+        return { qbufName, metabufName };
+    }
+}
+
+/**
+ * Provides an interface for interacting with QueueBuffer.
+ * Handles message routing and basic queue operations.
+ * Can be extended to add additional functionality like buffer management.
+ */
+class QueueApi extends MaxJsObject {
+    /**
+     * @returns {Object} API specification for parameters and messages
+     */
+    static get api() {
+        return {
+            parameters: {
+            },
+            messages: {
+                buffernames: {
+                    handler: '_buffernames',
+                },
+                write: {
+                    handler: '_write',
+                    parameters: ['channel', 'value']
+                },
+                back: { 
+                    handler: '_back',
+                    parameters: ['channel?', 'steps?']
+                },
+                looplen: {
+                    handler: '_looplen',
+                    parameters: ['channel?', 'length']
+                },
+                every: {
+                    handler: '_every',
+                    parameters: ['channel?', 'every']
+                },
+                getbuffers: {
+                    handler: '_getbuffers',
+                },
+                getqueue: {
+                    handler: '_getqueue',
+                },
+                clear : {
+                    handler: '_clear',
+                },
+                dump: {
+                    handler: '_dump',
+                }
+            },
+            signatures: [
+                {
+                    count: 2,
+                    params: ['buffers', 'buffers']
+                }
+            ]
+        };
+    }
+
+    /**
+     * Creates a new QueueApi instance
+     */
+    constructor() {
+        super();
+        this.queueBuffer = null;
+        this.init();
+    }
+
+    /**
+     * Initializes the QueueApi
+     * @returns {boolean} True if initialization was successful
+     */
+    _init() {
+        return true;
+    }
+
+    /**
+     * Helper method to safely execute operations on the queue buffer
+     * @param {Function} callback - Function to execute with the queue buffer
+     * @returns {any} Result of the callback function
+     */
+    _withQueueBuffer(callback) {
+        if (!this.queueBuffer) {
+            error("Error: No buffers set. Please set buffers before calling this method.\n");
+            return;
+        }
+        return callback(this.queueBuffer);
+    }
+
+    /**
+     * Sets up the queue buffer with the specified names
+     * @param {string} qbufName - Name of the queue buffer
+     * @param {string} metabufName - Name of the metadata buffer
+     */
+    _setBuffers(qbufName, metabufName) {
+        if(!this.queueBuffer) {
+            this.queueBuffer = new QueueBuffer(qbufName, metabufName);
+        } else {
+            this.queueBuffer.setBuffers(qbufName, metabufName);
+        }
+        this._getbuffers();
+    }
+
+    /**
+     * Handles buffer name changes
+     * @param {string} qbufName - Name of the queue buffer
+     * @param {string} metabufName - Name of the metadata buffer
+     */
+    _buffernames(qbufName, metabufName) {
+        this._setBuffers(qbufName, metabufName);
+    }
+
+    /**
+     * Writes a value to the specified channel(s)
+     * @param {number} channel - Channel to write to (0 for all channels)
+     * @param {number} value - Value to write
+     */
+    _write(channel, value) {
+        this._withQueueBuffer(queueBuffer => queueBuffer.write(value, channel));
+    }
+
+    /**
+     * Moves the write position backward
+     * @param {number} channel - Channel to affect (0 for all channels)
+     * @param {number} steps - Number of steps to move back
+     */
+    _back(channel, steps) {
+        this._withQueueBuffer(queueBuffer => queueBuffer.advanceWritePosition(-steps, channel));
+    }
+
+    /**
+     * Sets the loop length for the specified channel(s)
+     * @param {number} channel - Channel to affect (0 for all channels)
+     * @param {number} length - New loop length
+     */
+    _looplen(channel, length) {
+        this._withQueueBuffer(queueBuffer => queueBuffer.setLoopLength(length, channel));
+    }
+
+    /**
+     * Sets the every value for the specified channel(s)
+     * @param {number} channel - Channel to affect (0 for all channels)
+     * @param {number} every - New every value
+     */
+    _every(channel, every) {
+        this._withQueueBuffer(queueBuffer => queueBuffer.setEvery(every, channel));
+    }
+
+    /**
+     * Gets the current buffer names
+     */
+    _getbuffers() {
+        let buffers = this._withQueueBuffer(queueBuffer => queueBuffer.getBuffers());
+        if(buffers) {
+            outlet(0, 'buffers', buffers.qbuf, buffers.metabuf);
+        }
+    }
+
+    _getqueue(channel = 0) {
+        post('getqueue', channel);
+        if(channel != 0) {
+            let queue = this._withQueueBuffer(queueBuffer => queueBuffer.getContents(channel));
+            if(queue) {
+                outlet(0, 'queue', channel, queue);
+            }
+        } else  {
+            this._withQueueBuffer(queueBuffer => {
+                queueBuffer.queues.forEach((queue, index) => {
+                    post('queue', index, queue.getContents());
+                    outlet(0, 'queue', index + 1, queue.getContents());
+                });
+            });
+        }
+    }
+
+    /**
+     * Clears the queue buffer
+     */
+    _clear() {
+        this._withQueueBuffer(queueBuffer => queueBuffer.clear());
+    }
+
+    /**
+     * Dumps the current state of the queue buffer to a dictionary
+     */
+    _dump() {
+        this._withQueueBuffer(queueBuffer => {
+            let dump = queueBuffer.serialize();
+            let d = new Dict();
+            d.parse(JSON.stringify(dump));
+            outlet(0, 'dump', 'dictionary', d.name);
+        });
+    }
+}
+
+/**
+ * Extends QueueApi to interact with the QueueBufferManager.
+ * Adds buffer management capabilities to the base QueueApi functionality.
+ * Handles creation and removal of buffer boxes in the Max patcher.
+ */
+class QueueHostApi extends QueueApi {
+    /**
+     * @returns {Object} API specification for parameters and messages
+     */
+    static get api() {
+        return {
+            ...super.api,
+            messages: {
+                ...super.api.messages,
+                create: {
+                    handler: '_create',
+                    parameters: ['name', 'channelCount', 'length']
+                },
+                remove: {
+                    handler: '_remove',
+                }
+            }
+        };
+    }
+
+    /**
+     * Creates a new QueueHostApi instance
+     * @param {Object} patcher - The Max patcher instance
+     */
+    constructor(jsthis) {
+        super();
+        this.bufferManager = new QueueBufferManager(jsthis);
+        this.init();
+    }
+
+    /**
+     * Handles buffer creation
+     * @param {string} name - Base name for the buffers
+     * @param {number} channelCount - Number of channels
+     * @param {number} length - Buffer length
+     */
+    _create(name, channelCount = 1, length = 16) {
+        const {qbufName, metabufName, exists, isValid} = QueueBuffer.validateQueueName(name);
+        if(!exists) {
+            const bufferNames = this.bufferManager.createBuffers(name, channelCount, length);
+            this._setBuffers(bufferNames.qbufName, bufferNames.metabufName);
+        } else if(isValid) {
+            this._setBuffers(qbufName, metabufName);
+        } else {
+            error("Error: Buffers with name", qbufName, "and/or", metabufName, "already exist. Please choose a different name.\n");
+        }
+    }
+
+    /**
+     * Removes existing buffer boxes if they exist
+     */
+    _remove() {
+        this.bufferManager.removeBufferBoxes();
+    }
+
+    /**
+     * Handles buffer name changes
+     * @param {string} qbufName - Name of the queue buffer
+     * @param {string} metabufName - Name of the metadata buffer
+     */
+    _buffernames(qbufName, metabufName) {
+        this.bufferManager.removeBufferBoxes();
+        super._buffernames(qbufName, metabufName);
+    }
 }
 
 exports.Queue = Queue;
 exports.QueueBuffer = QueueBuffer;
+exports.QueueApi = QueueApi;
+exports.QueueHostApi = QueueHostApi;
+exports.QueueBufferManager = QueueBufferManager;

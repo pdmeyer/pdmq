@@ -65,13 +65,9 @@ class QueueReporter extends MaxJsObject {
     }
 
     handleQueue() {
-        const queues = this.queueBuffer.getQueueContents();
-        queues.forEach((queue, index) => {
-            if(queue.length > 0) {
-                outlet(0, "queue", index + 1, queue);
-            } else {
-                outlet(0, "queue", index + 1, "none");
-            }
+        const contents = this.queueBuffer.getContents(0);
+        contents.forEach((value, index) => {
+            outlet(0, "queue", index + 1, value);
         });
     }
 

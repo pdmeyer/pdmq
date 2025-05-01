@@ -17,11 +17,11 @@ class QueueQuery extends MaxJsObject {
                 readix: { type: 'number', required: false, default: 0 }
             },
             messages: {
-                next: { handler: 'handleNext' },
-                last: { handler: 'handleLast' },
-                queue: { handler: 'handleQueue' },
-                full: { handler: 'handleFull' },
-                free: { handler: 'handleFree' }
+                next: { handler: '_next' },
+                last: { handler: '_last' },
+                queue: { handler: '_queue' },
+                full: { handler: '_full' },
+                free: { handler: '_free' }
             }
         };
     }
@@ -52,15 +52,15 @@ class QueueQuery extends MaxJsObject {
         }
     }
 
-    handleNext() {
+    _next() {
         outlet(0, "next", this.queue.getNext());
     }
 
-    handleLast() {
+    _last() {
         outlet(0, "last", this.queue.getLast());
     }
 
-    handleQueue() {
+    _queue() {
         const q = this.queue.getQueue();
         if(q.length > 0) {
             outlet(0, "queue", q);
@@ -69,14 +69,18 @@ class QueueQuery extends MaxJsObject {
         }
     }
 
-    handleFull() {
+    _full() {
         outlet(0, "full", this.queue.getFullBuffer());
     }
 
-    handleFree() {
+    _free() {
         this.queue.free();
         this.queue = null;
         post("Queue freed\n");
+    }
+
+    bang() {
+        this._queue();
     }
 
     // Override parameter setting to handle channel validation
@@ -90,10 +94,6 @@ class QueueQuery extends MaxJsObject {
             }
         }
         super._handleParameterSet(name, value);
-    }
-
-    bang() {
-        this.handleQueue();
     }
 
     // Clean up when the js object is deleted
