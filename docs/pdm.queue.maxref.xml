@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
+<c74object name="pdm.queue">
+<metadatalist>
+<metadata name="author">Philip Meyer</metadata>
+<metadata name="tag">buffers</metadata>
+<metadata name="tag">queues</metadata>
+</metadatalist>
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg name="name" optional="0" type="symbol">
+			<digest>
+				Set the name of the queue
+			</digest>
+			<description>
+				Sets the name of the queue. Will be used to name the queue and metadata buffers. 
+			</description>
+		</objarg>
+		<objarg name="channels" optional="0" type="number">
+			<digest>
+				Set the queues to create.
+			</digest>
+			<description>
+				Sets the number of queues to create by specifying the number of buffer channels.
+			</description>
+		</objarg>
+		<objarg name="length" optional="0" type="number">
+			<digest>
+				Set the length of the queues.
+			</digest>
+			<description>
+				Sets the number of values the queue can hold. 
+			</description>
+		</objarg>
+	</objarglist>
+<methodlist>
+  <method name="write">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="value" optional="0" type="float" />
+    </arglist>
+    <digest>Write a value to the specified channel(s)</digest>
+    <description>
+      Writes a value to the specified channel in the queue buffer.
+      If channel is 0, the value is written to all channels.
+    </description>
+  </method>
+  <method name="back">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="steps" optional="1" type="int" />
+    </arglist>
+    <digest>Move the write position backward</digest>
+    <description>
+      Moves the write position backward by the specified number of steps.
+      If channel is 0, the position is moved for all channels.
+      If steps is omitted, it defaults to 1.
+    </description>
+  </method>
+  <method name="looplen">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="length" optional="0" type="int" />
+    </arglist>
+    <digest>Set the loop length for the specified channel(s)</digest>
+    <description>
+      Sets the loop length for the specified channel.
+      If channel is 0, the length is set for all channels.
+      The length must be a positive number.
+    </description>
+  </method>
+  <method name="every">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+      <arg name="every" optional="0" type="int" />
+    </arglist>
+    <digest>Set the every value for the specified channel(s)</digest>
+    <description>
+      Sets the every value for the specified channel.
+      If channel is 0, the value is set for all channels.
+      The every value must be a positive number.
+    </description>
+  </method>
+  <method name="getqueue">
+    <arglist>
+      <arg name="channel" optional="1" type="int" />
+    </arglist>
+    <digest>Get the contents of the specified queue</digest>
+    <description>
+      Outputs a dictionary containing the contents of the specified queue.
+      If channel is 0, the contents of all queues are output.
+    </description>
+  </method>
+  <method name="dump">
+    <digest>Dump the current state of the queue buffer</digest>
+    <description>
+      Outputs a dictionary containing the state of all the queues,
+      including buffer names, sizes, channel counts, and queue states.
+    </description>
+  </method>
+</methodlist>
+<description>
+    Create and manage multi-channel queues inside buffers. pdm.queue creates buffers internally that hold lists of numbers. You can write to the queue get its contents, and set settings for the reader. The queues can be read in the Max, MSP and gen~ domains.
+
+</description>
+<digest>Create and manage queues.</digest>
+<seealsolist>
+  <seealso name="pdm.queue.reader~" />
+  <seealso name="pdm.queue.reader" />
+</seealsolist>
+</c74object> 

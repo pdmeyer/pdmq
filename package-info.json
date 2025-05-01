@@ -24,20 +24,31 @@
 
 	}
 ,
-	"homepatcher" : "pdm.queue.maxpat",
+	"homepatcher" : "pdm.queue overview.maxpat",
 	"filelist" : 	{
 		"examples" : [],
 		"patchers" : [ 
 			"pdm.queue.frommtx.maxpat", 
-			"pdm.queue.reader.maxpat", 
-			"pdm.queue.writer.maxpat",
+			"pdm.queue.reader~.maxpat", 
+			"pdm.queue.manager.maxpat",
 			"pdm.queue.lpd2.maxpat",
 			"pdm.queue.peek.maxpat"
 		],
-		"help" : [],
-		"docs" : [],
-		"javascript" : [ "pdm.queue.js", "pdm.queue.reporter.js", "pdm.queue.query.js" ],
-		"code" : [ "pdm.queue.reader.gendsp" ]
+		"help" : [
+			"pdm.queue.manager.maxhelp"
+		],
+		"docs" : [
+			"pdm.queue.manager.maxref.xml"
+		],
+		"javascript" : [ 
+			"pdm.queue.js", 
+			"pdm.queue.reporter.js", 
+			"pdm.queue.query.js",
+			"pdm.queue.manager.js"
+		],
+		"code" : [ 
+			"pdm.queue.reader.gendsp" 
+		]
 	}
 ,
 	"c74install" : 1,
