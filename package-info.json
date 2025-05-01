@@ -24,7 +24,7 @@
 
 	}
 ,
-	"homepatcher" : "pdm.queue Overview.maxpat",
+	"homepatcher" : "pdm.queue overview.maxpat",
 	"filelist" : 	{
 		"examples" : [],
 		"patchers" : [ 
