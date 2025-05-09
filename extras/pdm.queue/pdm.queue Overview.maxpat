@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 276.0, 136.0, 638.0, 755.0 ],
+		"openrect" : [ 50.0, 50.0, 400.0, 300.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
@@ -19,7 +19,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 176.0, 175.0, 250.0, 20.0 ],
+					"patching_rect" : [ 176.0, 175.0, 178.0, 20.0 ],
 					"text" : "read from a queue (signals)"
 				}
 
@@ -30,7 +30,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 176.0, 144.0, 250.0, 20.0 ],
+					"patching_rect" : [ 176.0, 144.0, 178.0, 20.0 ],
 					"text" : "read from a queue (events)"
 				}
 
@@ -41,7 +41,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 176.0, 114.0, 250.0, 20.0 ],
+					"patching_rect" : [ 176.0, 114.0, 178.0, 20.0 ],
 					"text" : "create and manage queues"
 				}
 
@@ -80,7 +80,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 86.0, 273.0, 51.0, 22.0 ],
+					"patching_rect" : [ 86.0, 268.0, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -93,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 86.0, 213.0, 110.0, 22.0 ],
+					"patching_rect" : [ 87.0, 212.0, 110.0, 22.0 ],
 					"text" : "sprintf %s.maxhelp"
 				}
 
@@ -130,7 +130,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 69.0, 399.0, 20.0 ],
+					"patching_rect" : [ 23.0, 69.0, 327.0, 20.0 ],
 					"text" : "a package for working buffer-based queues"
 				}
 
@@ -143,7 +143,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 23.0, 15.0, 399.0, 50.0 ],
+					"patching_rect" : [ 23.0, 15.0, 327.0, 50.0 ],
 					"text" : "pdm.queue "
 				}
 

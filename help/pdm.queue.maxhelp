@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"openrect" : [ 50.0, 50.0, 770.0, 700.0 ],
+		"openrect" : [ 450.0, 50.0, 770.0, 700.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
@@ -34,7 +34,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 785.0, 702.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -377,7 +377,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"openrect" : [ 50.0, 50.0, 770.0, 700.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -660,7 +660,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 785.0, 702.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -1090,31 +1090,41 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 785.0, 702.0 ],
+						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-1",
-									"maxclass" : "newobj",
+									"id" : "obj-7",
+									"linecount" : 7,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 477.0, 361.0, 238.0, 108.0 ],
+									"text" : "buffers are generated automatically by pdm.queue using the name given as the 1st argument\n\nthe first buffer holds the queues, while the second (with the '_meta' suffix) holds queue metadata"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 36.0, 218.0, 37.0, 23.0 ],
-									"text" : "del 1"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 167.0, 404.0, 238.0, 23.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"id" : "obj-89",
-									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 336.0, 218.0, 150.0, 36.0 ],
+									"patching_rect" : [ 336.0, 218.0, 184.0, 21.0 ],
 									"text" : "*all queue indices are 1-based"
 								}
 
@@ -1171,19 +1181,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 307.0, 324.0, 136.884002685546875, 69.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-80",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 36.0, 184.0, 62.0, 23.0 ],
-									"text" : "loadbang"
+									"patching_rect" : [ 307.0, 289.0, 137.0, 69.0 ]
 								}
 
 							}
@@ -1536,7 +1534,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 449.0, 559.0, 62.0, 21.0 ],
-									"text" : "0"
+									"text" : "25"
 								}
 
 							}
@@ -1626,7 +1624,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 104.0, 392.0, 81.0, 23.0 ],
+									"patching_rect" : [ 104.0, 317.0, 81.0, 23.0 ],
 									"text" : "route buffers"
 								}
 
@@ -1708,18 +1706,6 @@
 ,
 									"patching_rect" : [ 162.0, 453.0, 40.0, 23.0 ],
 									"text" : "p plot"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-10",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 36.0, 259.0, 66.0, 23.0 ],
-									"text" : "getbuffers"
 								}
 
 							}
@@ -1828,7 +1814,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 104.0, 324.0, 199.0, 23.0 ],
+									"patching_rect" : [ 104.0, 289.0, 199.0, 23.0 ],
 									"text" : "pdm.queue pdm.queue.help 8 16"
 								}
 
@@ -1852,20 +1838,6 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-10", 0 ],
-									"source" : [ "obj-1", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-12", 0 ],
-									"source" : [ "obj-10", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-16", 0 ],
 									"source" : [ "obj-12", 0 ]
 								}
@@ -1883,6 +1855,13 @@
 									"destination" : [ "obj-33", 0 ],
 									"order" : 1,
 									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 1 ],
+									"source" : [ "obj-16", 1 ]
 								}
 
 							}
@@ -1964,13 +1943,6 @@
 								}
 
 							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-1", 0 ],
-									"source" : [ "obj-80", 0 ]
-								}
-
-							}
  ]
 					}
 ,
@@ -2019,7 +1991,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 785.0, 702.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
