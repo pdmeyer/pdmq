@@ -915,12 +915,20 @@ class QueueHostApi extends QueueApi {
      * @param {number} length - Buffer length
      */
     _create(name, channelCount = 1, length = 16) {
-        const {qbufName, metabufName, exists, isValid} = QueueBuffer.validateQueueName(name);
+        let {qbufName, metabufName, exists, isValid} = QueueBuffer.validateQueueName(name);
+        let valid = false;
         if(!exists) {
             const bufferNames = this.bufferManager.createBuffers(name, channelCount, length);
-            this._setBuffers(bufferNames.qbufName, bufferNames.metabufName);
+            qbufName = bufferNames.qbufName;
+            metabufName = bufferNames.metabufName;
+            valid = true;
         } else if(isValid) {
+            valid = true;
+        } 
+
+        if(valid) {
             this._setBuffers(qbufName, metabufName);
+            this._getbuffers();
         } else {
             error("Error: Buffers with name", qbufName, "and/or", metabufName, "already exist. Please choose a different name.\n");
         }
