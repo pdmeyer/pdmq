@@ -28,6 +28,7 @@ function loadbang() {init();}
 
 function init(){
     initialized = assignQbuf(jsarguments);
+    mgraphics.redraw();
 }
 
 function name() {
