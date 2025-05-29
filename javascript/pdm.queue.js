@@ -48,7 +48,7 @@ class Queue {
 
     // Get the every value from the read buffer
     getEvery() {
-        return this.metabuf.peek(this.channel, 2, 1);
+        return this.metabuf.peek(this.channel, 3, 1);
     }
 
     // Set the loop length in the read buffer
@@ -65,45 +65,71 @@ class Queue {
     getNext() {
         const readPos = this.getReadPosition();
         const writePos = this.getWritePosition();
-        return this.qbuf.peek(this.channel, Math.min((readPos + 1), writePos) % (this.getBufferSize() - 1), 1);
+        return this.qbuf.peek(this.channel, Math.min((readPos + 1), writePos) % this.getBufferSize(), 1);
     }
 
     // Get the last value read (at read head position)
     getLast() {
         const readPos = this.getReadPosition();
-        return this.qbuf.peek(this.channel, readPos % (this.getBufferSize() - 1), 1);
+        return this.qbuf.peek(this.channel, readPos % this.getBufferSize(), 1);
     }
 
-    // Get all remaining values in the queue
+    // // Get all remaining values in the queue
+    // getContents() {
+    //     const readPos = this.getReadPosition();
+    //     const writePos = this.getWritePosition();
+    //     const readCycle = Math.floor(readPos / (this.getBufferSize() - 1));
+    //     const writeCycle = Math.floor(writePos / (this.getBufferSize() - 1));
+    //     let queueLength = 0;
+    //     let queue = []
+
+    //     if(!(readPos == 0 && writePos == 0 && readCycle ==  0 && writeCycle == 0)) {
+    //         if(readCycle == writeCycle) {
+    //             queueLength = Math.min(Math.max(writePos - readPos + 1, 1), this.getBufferSize() - 1) - 1;
+    //             queue = this.qbuf.peek(this.channel, readPos % (this.getBufferSize() - 1), queueLength);
+    //         } else {
+    //             queueLength = (readCycle + 1) * (this.getBufferSize() - 1) - readPos;
+    //             queue = this.qbuf.peek(this.channel, readPos % (this.getBufferSize() - 1), queueLength);
+    //             if(!Array.isArray(queue)) queue = [queue];
+    //             queueLength = (writePos + 1) % (this.getBufferSize() - 1);
+    //             queue = queue.concat(this.qbuf.peek(this.channel, 0, queueLength));
+    //         }
+    //     }
+    //     if(!Array.isArray(queue)) queue = [queue];
+    //     if(queue.length == 0) queue = [0];
+    //     return queue
+    // }
+
     getContents() {
+        let contents = [];
+
+        const fullBuf = this.getFullBuffer();
+        const bufSize = this.getBufferSize();
         const readPos = this.getReadPosition();
         const writePos = this.getWritePosition();
-        const readCycle = Math.floor(readPos / (this.getBufferSize() - 1));
-        const writeCycle = Math.floor(writePos / (this.getBufferSize() - 1));
-        let queueLength = 0;
-        let queue = []
-
-        if(!(readPos == 0 && writePos == 0 && readCycle ==  0 && writeCycle == 0)) {
-            if(readCycle == writeCycle) {
-                queueLength = Math.min(Math.max(writePos - readPos + 1, 1), this.getBufferSize() - 1) - 1;
-                queue = this.qbuf.peek(this.channel, readPos % (this.getBufferSize() - 1), queueLength);
-            } else {
-                queueLength = (readCycle + 1) * (this.getBufferSize() - 1) - readPos;
-                queue = this.qbuf.peek(this.channel, readPos % (this.getBufferSize() - 1), queueLength);
-                if(!Array.isArray(queue)) queue = [queue];
-                queueLength = (writePos + 1) % (this.getBufferSize() - 1);
-                queue = queue.concat(this.qbuf.peek(this.channel, 0, queueLength));
+        const loopLength = this.getLoopLength();
+        const startPos = Math.max(0, Math.min(readPos, writePos - loopLength));
+        const endPos = writePos;
+        // post('startPos', startPos, 'endPos', endPos, '\n');
+        for(var i = startPos; i < endPos; i++) {
+            const bufIx = i % bufSize
+            const value = fullBuf[bufIx];
+            if(value == null) {
+                post('value is null at index ', bufIx, '\n');
             }
+            contents.push(value);
         }
-        if(!Array.isArray(queue)) queue = [queue];
-        if(queue.length == 0) queue = [0];
-        return queue
+        if(contents.length == 0) {
+            contents.push(0);
+        }
+        return contents;
+
     }
 
     // Get all values in the buffer
     getFullBuffer() {
         // Get all values except the last frame which contains write position
-        return this.qbuf.peek(this.channel, 0, this.getBufferSize() - 1);
+        return this.qbuf.peek(this.channel, 0, this.getBufferSize());
     }
 
     getBufferSize() {
@@ -123,7 +149,7 @@ class Queue {
 
     // Get the loop length from the read buffer
     getLoopLength() {
-        return this.metabuf.peek(this.channel, 1, 1);
+        return this.metabuf.peek(this.channel, 2, 1);
     }
 
     setReadPosition(position) {
@@ -225,7 +251,7 @@ class QueueBuffer {
         const metabufChannels = this.metabuf.channelcount();
         
         if (qbufChannels !== metabufChannels) {
-            error("Error: qbuf and metabuf must have the same number of channels\n");
+            error("Error: qbuf and metabuf must have the same number of channels. qbuf: ", qbufChannels, " metabuf: ", metabufChannels, "\n");
             return false;
         }
 
@@ -438,6 +464,10 @@ class QueueBuffer {
     setLoopLength(length, channel = 0) {
         if (typeof length !== 'number' || length < 1) {
             error("Error: loop length must be a positive number\n");
+            return;
+        }
+        if (channel < 0 || channel >= this.getChannelCount()) {
+            error("Error: invalid channel number\n");
             return;
         }
         if (channel !== 0) {
@@ -696,6 +726,9 @@ class QueueApi extends MaxJsObject {
             parameters: {
             },
             messages: {
+                name: {
+                    handler: '_name',
+                },
                 buffernames: {
                     handler: '_buffernames',
                 },
@@ -721,6 +754,12 @@ class QueueApi extends MaxJsObject {
                 getqueue: {
                     handler: '_getqueue',
                 },
+                getchannelcount: {
+                    handler: '_getchannelcount',
+                },
+                getlength: {
+                    handler: '_getlength',
+                },  
                 clear : {
                     handler: '_clear',
                 },
@@ -772,7 +811,10 @@ class QueueApi extends MaxJsObject {
      * @param {string} qbufName - Name of the queue buffer
      * @param {string} metabufName - Name of the metadata buffer
      */
-    _setBuffers(qbufName, metabufName) {
+    setBuffers(qbufName, metabufName) {
+        if(!metabufName) {
+            metabufName = qbufName + "_meta";
+        }
         if(!this.queueBuffer) {
             this.queueBuffer = new QueueBuffer(qbufName, metabufName);
         } else {
@@ -781,13 +823,18 @@ class QueueApi extends MaxJsObject {
         this._getbuffers();
     }
 
+    _name(name) {
+        const {qbufName, metabufName} = QueueBuffer.createBufferNames(name);
+        this.setBuffers(qbufName, metabufName);
+    }
+
     /**
      * Handles buffer name changes
      * @param {string} qbufName - Name of the queue buffer
      * @param {string} metabufName - Name of the metadata buffer
      */
     _buffernames(qbufName, metabufName) {
-        this._setBuffers(qbufName, metabufName);
+        this.setBuffers(qbufName, metabufName);
     }
 
     /**
@@ -852,6 +899,20 @@ class QueueApi extends MaxJsObject {
             });
         }
     }
+
+    _getchannelcount() {
+        this._withQueueBuffer(queueBuffer => {
+            return queueBuffer.getChannelCount();
+        });
+    }   
+
+    _getlength() {
+        this._withQueueBuffer(queueBuffer => {
+            return queueBuffer.getBufferSize();
+        });
+    }
+    
+    
 
     /**
      * Clears the queue buffer
@@ -927,7 +988,7 @@ class QueueHostApi extends QueueApi {
         } 
 
         if(valid) {
-            this._setBuffers(qbufName, metabufName);
+            this.setBuffers(qbufName, metabufName);
             this._getbuffers();
         } else {
             error("Error: Buffers with name", qbufName, "and/or", metabufName, "already exist. Please choose a different name.\n");

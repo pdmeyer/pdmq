@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 9,
 			"minor" : 0,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -69,7 +69,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 207.0, 81.0, 104.0, 60.0 ],
+					"patching_rect" : [ 207.0, 81.0, 107.0, 60.0 ],
 					"text" : "args: \n  name (required)  \n  chans (optional) \n  length (optional)"
 				}
 
@@ -105,7 +105,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 44.0, 318.0, 30.0, 30.0 ]
+					"patching_rect" : [ 44.0, 316.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -129,7 +129,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 284.0, 111.0, 22.0 ],
+					"patching_rect" : [ 44.0, 282.0, 111.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
