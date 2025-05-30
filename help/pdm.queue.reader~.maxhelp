@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 9,
 			"minor" : 0,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"openrect" : [ 50.0, 50.0, 770.0, 700.0 ],
+		"openrect" : [ 50.0, 50.0, 700.0, 500.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
@@ -28,7 +28,7 @@
 						"appversion" : 						{
 							"major" : 9,
 							"minor" : 0,
-							"revision" : 6,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -84,7 +84,7 @@
 										"appversion" : 										{
 											"major" : 9,
 											"minor" : 0,
-											"revision" : 6,
+											"revision" : 7,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -494,7 +494,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 45.0, 395.0, 236.0, 23.0 ],
-									"text" : "2 5 4 3 1 1 1 5 5 4 5 6 4 5 4 0 5 4 3"
+									"text" : "2 2 2 6 1 3 3 5 1 2 6 4 6 2 0 1 1"
 								}
 
 							}
@@ -640,13 +640,13 @@
 						"appversion" : 						{
 							"major" : 9,
 							"minor" : 0,
-							"revision" : 6,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"openrect" : [ 50.0, 50.0, 770.0, 700.0 ],
+						"openrect" : [ 50.0, 50.0, 700.0, 500.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -1101,13 +1101,13 @@
 						"appversion" : 						{
 							"major" : 9,
 							"minor" : 0,
-							"revision" : 6,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 700.0, 500.0 ],
+						"rect" : [ 0.0, 26.0, 700.0, 474.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -1188,6 +1188,13 @@
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/code",
 				"patcherrelativepath" : "../code",
 				"type" : "gDSP",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdm.queue.reader.validateattrs.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
