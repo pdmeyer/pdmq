@@ -9,41 +9,101 @@ mgraphics.autofill = 0;
 const QueueBuffer = require('pdm.queue.js').QueueBuffer;
 const DynamicColor = require('pdm.dynamiccolor.js').DynamicColor;
 
+//parameters 
 const PADDING_LEFT = 0;
-const MARKER_SIZE = 4;
-const FONT_SIZE = 14;
+let MARKER_SIZE = 4;
+let FONT_SIZE = 14;
+let SHOW_MARKERS = true;
+let SHOW_HEADERS = true;
 const FONT_FACE = "Andale Mono";
-
-const colors = {
+const COLORS = {
     text : new DynamicColor('live_control_fg'),
     indicator : new DynamicColor('live_control_selection')
 }
 
+//global variables
 let qbuf = null; 
-let size_changed = 1;
+let size_changed = true;
 let initialized = false;
 const self = this;
+let char_dim = [0, 0];
+let max_text_length = 0;
 
+//initialization
 function loadbang() {init();}
 
 function init(){
-    initialized = assignQbuf(jsarguments);
-    mgraphics.redraw();
+    if(jsarguments.length > 1) {
+        name(jsarguments.slice(1));
+    }
 }
 
-function name() {
-    var args = arrayfromargs(arguments);
-    assignQbuf(args);
+//parameter setters
+function name(args) {
+    initialized = assignQbuf(args);
+    redraw();
 }
 
+function markersize(size) {
+    size = Math.round(size);
+    if(size < 1) {
+        error('Error: Marker size must be greater than 0. size: ', size, '\n');
+        return;
+    }
+    MARKER_SIZE = size;
+    size_changed = true;
+    redraw();
+}
+
+function fontsize(size) {
+    size = Math.round(size);
+    if(size < 1) {
+        error('Error: Font size must be greater than 0. size: ', size, '\n');
+        return;
+    }
+    FONT_SIZE = size;
+    size_changed = true;
+    redraw();
+}
+
+function showmarkers(show) {
+    SHOW_MARKERS = show;
+    size_changed = true;
+    redraw();
+}
+
+function showheaders(show) {
+    SHOW_HEADERS = show;
+    size_changed = true;
+    redraw();
+}
+
+//event handlers
+function onresize() {
+    size_changed = true;
+}
+
+function bang() {
+    redraw();
+}
+
+function redraw() {
+    if(initialized) mgraphics.redraw();
+}
+
+//helper functions
 function assignQbuf(args) {
     let names = {}
-    if(args.length == 3) {
-        names.qbufName = args[1];
-        names.metabufName = args[2]
-    } else if (args.length == 2) {
-        names = QueueBuffer.createBufferNames(args[1]);
-    } 
+    if(!Array.isArray(args)) {
+        args = [args];
+    }
+    if(args.length == 2) {
+        names.qbufName = args[0];
+        names.metabufName = args[1]
+    } else if (args.length == 1) {
+        names = QueueBuffer.createBufferNames(args[0]);
+    }
+    
     const {qbufName, metabufName, exists, isValid} = QueueBuffer.validateQueueName(names.qbufName);
     if(!exists || !isValid) {
         error('Error: Queue buffer does not exist or is not valid. qbufName: ', qbufName, ' metabufName: ', metabufName, '\n');
@@ -69,15 +129,14 @@ findCharDim.local = 1;
 
 function getMaxTextLength() {
     const dim = getDim();
-    const rowHeaderWidth = 3 * char_dim[0];
+    const rowHeaderWidth = SHOW_HEADERS ? 3 * char_dim[0] : 0;
     const max_px = dim[0] - PADDING_LEFT - rowHeaderWidth;
     const max_chars = Math.floor(max_px / char_dim[0]) / 2;
     return max_chars;
 }
 getMaxTextLength.local = 1;
 
-let char_dim = [0, 0];
-let max_text_length = 0;
+//drawing
 function paint() {
     if(!qbuf) return;
 
@@ -89,7 +148,7 @@ function paint() {
     if(size_changed) {
         char_dim = mgraphics.text_measure(" ");
         max_text_length = getMaxTextLength();
-        size_changed = 0;
+        size_changed = false;
     }
 
     for(let i = 0; i < num_queues; i++) {
@@ -108,67 +167,51 @@ function paint() {
 
         //format text
         if(contents.length > max_text_length) {
-            // post('contents.length', contents.length, '\n');
-            // post('max_text_length', max_text_length, '\n');
-            // post('before', contents, '\n');
             contents = contents.slice(read_pos, read_pos + max_text_length);
-            // post('after', contents, '\n');
-            // return;
         }
-        const display_text = i+1 + ": " + contents.map(x => (x ?? 0).toString()).join(" ");
+        let display_text = contents.map(x => (x ?? 0).toString()).join(" ");
+        if(SHOW_HEADERS) {
+            display_text = i+1 + ": " + display_text;
+        }
 
         //draw text
-        mgraphics.set_source_rgba(colors.text.getRGBA());
+        mgraphics.set_source_rgba(COLORS.text.getRGBA());
         mgraphics.move_to(PADDING_LEFT, text_y);
         mgraphics.text_path(display_text);
         mgraphics.fill();
 
         //calculate marker position
-        const marker_y = text_y + leading * 0.25;
-        const marker_x = PADDING_LEFT + 3 * char_dim[0] + (read_pos * 2 + 0.5) * char_dim[0];
-        
-        //draw marker
-        mgraphics.set_source_rgba(colors.indicator.getRGBA());
-        mgraphics.move_to(marker_x, marker_y);
-        mgraphics.line_to(marker_x + MARKER_SIZE / 2, marker_y + MARKER_SIZE);
-        mgraphics.line_to(marker_x - MARKER_SIZE / 2, marker_y + MARKER_SIZE);
-        mgraphics.close_path();
-        mgraphics.fill();
+        if(SHOW_MARKERS) {
+            const marker_y = text_y + leading * 0.25;
+            let marker_x = PADDING_LEFT + (read_pos * 2 + 0.5) * char_dim[0];
+            if(SHOW_HEADERS) {
+                marker_x += char_dim[0] * 3;
+            }
+            
+            //draw marker
+            mgraphics.set_source_rgba(COLORS.indicator.getRGBA());
+            mgraphics.move_to(marker_x, marker_y);
+            mgraphics.line_to(marker_x + MARKER_SIZE / 2, marker_y + MARKER_SIZE);
+            mgraphics.line_to(marker_x - MARKER_SIZE / 2, marker_y + MARKER_SIZE);
+            mgraphics.close_path();
+            mgraphics.fill();
+        }
     }
 }
 paint.local = 1;
 
-function onclick(x, y, button, modifier1, shift, capslock, option, ctrl) {
-
+if(!initialized) {
+    init();
 }
 
-function ondrag(x, y, button, modifier1, shift, capslock, option, ctrl) {
-    
-}
+// function onclick(x, y, button, modifier1, shift, capslock, option, ctrl) {}
 
-function ondblclick(x, y, button, modifier1, shift, capslock, option, ctrl) {
+// function ondrag(x, y, button, modifier1, shift, capslock, option, ctrl) {}
 
-}
+// function ondblclick(x, y, button, modifier1, shift, capslock, option, ctrl) {}
 
-function onidle(x, y, button, modifier1, shift, capslock, option, ctrl) {
+// function onidle(x, y, button, modifier1, shift, capslock, option, ctrl) {}
 
-}
+// function onidleout(x, y, button, modifier1, shift, capslock, option, ctrl) {}
 
-function onidleout(x, y, button, modifier1, shift, capslock, option, ctrl) {
-
-}
-
-function onresize() {
-}
-
-function onresize() {
-    size_changed = 1;
-}
-
-function bang() {
-    mgraphics.redraw();
-}
-
-function anything() {  
-
-}
+// function anything() {}
