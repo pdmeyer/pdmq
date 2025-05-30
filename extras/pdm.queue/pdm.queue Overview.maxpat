@@ -15,6 +15,30 @@
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 176.0, 238.0, 178.0, 20.0 ],
+					"text" : "use matrixctrl as a queue UI"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 25.0, 236.0, 144.0, 23.0 ],
+					"text" : "pdm.queue.frommtx"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-3",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -32,7 +56,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 25.0, 206.0, 144.0, 23.0 ],
+					"patching_rect" : [ 25.0, 205.0, 144.0, 23.0 ],
 					"text" : "pdm.queue.view"
 				}
 
@@ -43,7 +67,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 176.0, 175.0, 178.0, 20.0 ],
+					"patching_rect" : [ 176.0, 176.0, 178.0, 20.0 ],
 					"text" : "read from a queue (signals)"
 				}
 
@@ -54,7 +78,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 176.0, 144.0, 178.0, 20.0 ],
+					"patching_rect" : [ 176.0, 145.0, 178.0, 20.0 ],
 					"text" : "read from a queue (events)"
 				}
 
@@ -78,7 +102,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 24.0, 173.0, 144.0, 23.0 ],
+					"patching_rect" : [ 24.0, 174.0, 144.0, 23.0 ],
 					"text" : "pdm.queue.reader~"
 				}
 
@@ -91,7 +115,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 24.0, 142.0, 144.0, 23.0 ],
+					"patching_rect" : [ 24.0, 143.0, 144.0, 23.0 ],
 					"text" : "pdm.queue.reader"
 				}
 
@@ -104,7 +128,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 87.0, 297.0, 51.0, 22.0 ],
+					"patching_rect" : [ 88.0, 349.0, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -117,7 +141,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 87.0, 246.0, 110.0, 22.0 ],
+					"patching_rect" : [ 88.0, 298.0, 110.0, 22.0 ],
 					"text" : "sprintf %s.maxhelp"
 				}
 
@@ -130,7 +154,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 87.0, 273.0, 48.0, 22.0 ],
+					"patching_rect" : [ 88.0, 325.0, 48.0, 22.0 ],
 					"text" : "load $1"
 				}
 
@@ -202,6 +226,14 @@
 					"destination" : [ "obj-10", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-14", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-4", 1 ]
 				}
 
 			}
