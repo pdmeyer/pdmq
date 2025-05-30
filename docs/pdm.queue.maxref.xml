@@ -7,32 +7,32 @@
 <metadata name="tag">queues</metadata>
 </metadatalist>
 	<!--ARGUMENTS-->
-	<objarglist>
-		<objarg name="name" optional="0" type="symbol">
-			<digest>
-				Set the name of the queue
-			</digest>
-			<description>
-				Sets the name of the queue. Will be used to name the queue and metadata buffers. 
-			</description>
-		</objarg>
-		<objarg name="channels" optional="0" type="number">
-			<digest>
-				Set the queues to create.
-			</digest>
-			<description>
-				Sets the number of queues to create by specifying the number of buffer channels.
-			</description>
-		</objarg>
-		<objarg name="length" optional="0" type="number">
-			<digest>
-				Set the length of the queues.
-			</digest>
-			<description>
-				Sets the number of values the queue can hold. 
-			</description>
-		</objarg>
-	</objarglist>
+<objarglist>
+  <objarg name="name" optional="0" type="symbol">
+    <digest>
+      Set the name of the queue
+    </digest>
+    <description>
+      Sets the name of the queue. Will be used to name the queue and metadata buffers. 
+    </description>
+  </objarg>
+  <objarg name="channels" optional="0" type="number">
+    <digest>
+      Set the queues to create.
+    </digest>
+    <description>
+      Sets the number of queues to create by specifying the number of buffer channels.
+    </description>
+  </objarg>
+  <objarg name="length" optional="0" type="number">
+    <digest>
+      Set the length of the queues.
+    </digest>
+    <description>
+      Sets the number of values the queue can hold. 
+    </description>
+  </objarg>
+</objarglist>
 <methodlist>
   <method name="write">
     <arglist>
