@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
+<c74object name="pdm.queue.frommtx">
+<metadatalist>
+<metadata name="author">Philip Meyer</metadata>
+<metadata name="tag">buffers</metadata>
+<metadata name="tag">queues</metadata>
+</metadatalist>
+<methodlist>
+  <method name="list">
+    <arglist>
+      <arg name="channel (0-based)" optional="1" type="int" />
+      <arg name="value" optional="0" type="float" />
+      <arg name="state" optional="0" type="boolean" />
+    </arglist>
+    <digest>Write a value to the specified channel(s)</digest>
+    <description>
+      A three-item list containin the channel to write to, the value to write, and 1 will output the queue index (1-based) and the value, suitable for the "write" message to pdm.queue.
+    </description>
+  </method>
+</methodlist>
+<description>
+    Simple abstraction that allows you to use a matrixctrl as a basic grid controller for writing values into queues. 
+</description>
+<digest>Use a matrixctrl to write to a queue.</digest>
+<seealsolist>
+  <seealso name="pdm.queue" />
+</seealsolist>
+</c74object> 
