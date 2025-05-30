@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 9,
 			"minor" : 0,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -14,6 +14,30 @@
 		"gridsize" : [ 15.0, 15.0 ],
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 176.0, 207.0, 178.0, 20.0 ],
+					"text" : "visualize queues"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 25.0, 206.0, 144.0, 23.0 ],
+					"text" : "pdm.queue.view"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-18",
 					"maxclass" : "comment",
@@ -41,8 +65,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 176.0, 114.0, 178.0, 20.0 ],
-					"text" : "create and manage queues"
+					"patching_rect" : [ 176.0, 114.0, 213.0, 20.0 ],
+					"text" : "create, manage, and write to queues"
 				}
 
 			}
@@ -80,7 +104,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 86.0, 268.0, 51.0, 22.0 ],
+					"patching_rect" : [ 87.0, 297.0, 51.0, 22.0 ],
 					"text" : "pcontrol"
 				}
 
@@ -93,7 +117,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 87.0, 212.0, 110.0, 22.0 ],
+					"patching_rect" : [ 87.0, 246.0, 110.0, 22.0 ],
 					"text" : "sprintf %s.maxhelp"
 				}
 
@@ -106,7 +130,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 86.0, 244.0, 48.0, 22.0 ],
+					"patching_rect" : [ 87.0, 273.0, 48.0, 22.0 ],
 					"text" : "load $1"
 				}
 
@@ -150,6 +174,14 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
 					"hidden" : 1,
