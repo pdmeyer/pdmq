@@ -139,7 +139,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 44.0, 54.0, 208.0, 20.0 ],
+					"patching_rect" : [ 44.0, 50.0, 208.0, 20.0 ],
 					"text" : "create, manage, and write to queues"
 				}
 
@@ -206,7 +206,7 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "list: channel, value to write",
+					"comment" : "messages in",
 					"id" : "obj-194",
 					"index" : 1,
 					"maxclass" : "inlet",

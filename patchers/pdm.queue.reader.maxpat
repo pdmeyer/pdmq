@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 98.0, 100.0, 941.0, 817.0 ],
+		"rect" : [ 98.0, 100.0, 600.0, 500.0 ],
 		"openrect" : [ 0.0, 0.0, 600.0, 500.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"integercoordinates" : 1,
@@ -351,7 +351,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 88.0, 158.0, 172.0, 35.0 ],
+					"patching_rect" : [ 88.0, 158.0, 175.0, 35.0 ],
 					"text" : "pdm.abstract.validatemessage channel mode name"
 				}
 
@@ -418,13 +418,13 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "bang advances reader",
 					"id" : "obj-23",
 					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "bang" ],
 					"patching_rect" : [ 41.0, 76.0, 30.0, 30.0 ]
 				}
 
@@ -437,7 +437,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 41.0, 375.0, 30.0, 30.0 ]
+					"patching_rect" : [ 42.0, 375.0, 30.0, 30.0 ]
 				}
 
 			}

@@ -10,20 +10,31 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 426.0, 165.0, 551.0, 499.0 ],
+		"rect" : [ 426.0, 165.0, 550.0, 500.0 ],
 		"openrect" : [ 0.0, 0.0, 550.0, 500.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"enablevscroll" : 0,
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 195.0, 315.0, 55.0, 22.0 ],
+					"text" : "change~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-30",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 39.0, 373.0, 270.0, 47.0 ],
-					"presentation_linecount" : 3,
+					"patching_rect" : [ 39.0, 407.0, 270.0, 47.0 ],
 					"text" : "the gen~ patch can also be used on its own. it requires the parameters qbuf, metabuf, and channel."
 				}
 
@@ -35,7 +46,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 94.0, 216.0, 172.0, 22.0 ],
+					"patching_rect" : [ 94.0, 197.0, 172.0, 22.0 ],
 					"text" : "routepass mode"
 				}
 
@@ -47,7 +58,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 289.0, 159.0, 22.0, 22.0 ],
+					"patching_rect" : [ 289.0, 140.0, 22.0, 22.0 ],
 					"text" : "t b"
 				}
 
@@ -59,7 +70,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 289.0, 216.0, 121.0, 22.0 ],
+					"patching_rect" : [ 289.0, 197.0, 121.0, 22.0 ],
 					"text" : "name $1, channel $2"
 				}
 
@@ -71,7 +82,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 289.0, 131.0, 118.0, 22.0 ],
+					"patching_rect" : [ 289.0, 112.0, 118.0, 22.0 ],
 					"text" : "route pdm.queue.init"
 				}
 
@@ -83,7 +94,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 289.0, 99.0, 104.0, 22.0 ],
+					"patching_rect" : [ 289.0, 80.0, 104.0, 22.0 ],
 					"text" : "udpreceive 54889"
 				}
 
@@ -94,7 +105,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 315.0, 160.0, 187.0, 20.0 ],
+					"patching_rect" : [ 315.0, 141.0, 187.0, 20.0 ],
 					"text" : "arguments: queue_name channel"
 				}
 
@@ -107,7 +118,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 289.0, 255.0, 202.0, 22.0 ],
+					"patching_rect" : [ 289.0, 236.0, 202.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
@@ -130,7 +141,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 289.0, 186.0, 179.0, 22.0 ],
+					"patching_rect" : [ 289.0, 167.0, 179.0, 22.0 ],
 					"text" : "pdm.abstract.validatenumargs 2"
 				}
 
@@ -143,8 +154,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 94.0, 173.0, 175.0, 35.0 ],
-					"presentation_linecount" : 2,
+					"patching_rect" : [ 94.0, 154.0, 175.0, 35.0 ],
 					"text" : "pdm.abstract.validatemessage channel mode name"
 				}
 
@@ -156,7 +166,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 165.0, 135.0, 54.0, 22.0 ],
+					"patching_rect" : [ 165.0, 116.0, 54.0, 22.0 ],
 					"text" : "sel done"
 				}
 
@@ -168,7 +178,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 112.0, 99.0, 72.0, 22.0 ],
+					"patching_rect" : [ 112.0, 80.0, 72.0, 22.0 ],
 					"text" : "patcherargs"
 				}
 
@@ -180,21 +190,21 @@
 					"numinlets" : 1,
 					"numoutlets" : 6,
 					"outlettype" : [ "signal", "bang", "int", "float", "", "list" ],
-					"patching_rect" : [ 41.0, 135.0, 72.0, 22.0 ],
+					"patching_rect" : [ 41.0, 116.0, 72.0, 22.0 ],
 					"text" : "typeroute~"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "impulse advances reader",
 					"id" : "obj-29",
 					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 41.0, 91.0, 30.0, 30.0 ]
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 41.0, 72.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -229,7 +239,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 159.0, 336.0, 30.0, 30.0 ]
+					"patching_rect" : [ 159.0, 370.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -241,7 +251,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 195.0, 336.0, 30.0, 30.0 ]
+					"patching_rect" : [ 195.0, 370.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -252,7 +262,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "bang" ],
-					"patching_rect" : [ 195.0, 300.0, 42.0, 22.0 ],
+					"patching_rect" : [ 195.0, 343.0, 42.0, 22.0 ],
 					"text" : "edge~"
 				}
 
@@ -264,7 +274,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
-					"patching_rect" : [ 41.0, 300.0, 137.0, 22.0 ],
+					"patching_rect" : [ 41.0, 281.0, 137.0, 22.0 ],
 					"text" : "gen~ pdm.queue.reader"
 				}
 
@@ -277,7 +287,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 41.0, 336.0, 30.0, 30.0 ]
+					"patching_rect" : [ 41.0, 370.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -299,6 +309,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
+					"order" : 1,
+					"source" : [ "obj-164", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"order" : 0,
 					"source" : [ "obj-164", 1 ]
 				}
 
@@ -340,16 +359,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"order" : 0,
-					"source" : [ "obj-28", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-164", 0 ],
-					"order" : 1,
 					"source" : [ "obj-28", 0 ]
 				}
 
@@ -414,6 +424,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-21", 0 ],
 					"source" : [ "obj-47", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-5", 0 ]
 				}
 
 			}
