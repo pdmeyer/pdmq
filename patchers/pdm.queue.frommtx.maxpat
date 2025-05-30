@@ -4,24 +4,83 @@
 		"appversion" : 		{
 			"major" : 9,
 			"minor" : 0,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 119.0, 1000.0, 755.0 ],
+		"rect" : [ 59.0, 119.0, 641.0, 588.0 ],
+		"openrect" : [ 0.0, 0.0, 300.0, 400.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
 				"box" : 				{
-					"comment" : "",
+					"id" : "obj-13",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 44.0, 50.0, 208.0, 20.0 ],
+					"text" : "use a matrixctrl to write to queues"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 14.0,
+					"id" : "obj-20",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 44.0, 26.0, 174.0, 22.0 ],
+					"text" : "pdm.queue.frommtx"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 44.0, 319.0, 86.0, 33.0 ],
+					"text" : "queue index and value"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 152.0, 319.0, 68.0, 33.0 ],
+					"text" : "connect to matrixctrl"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 73.0, 95.0, 150.0, 20.0 ],
+					"text" : "connect to matrixctrl"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "connect to matrixctrl",
 					"id" : "obj-5",
 					"index" : 2,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 125.0, 254.0, 30.0, 30.0 ]
+					"patching_rect" : [ 152.0, 287.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -32,7 +91,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 50.0, 76.0, 94.0, 22.0 ],
+					"patching_rect" : [ 44.0, 127.0, 127.0, 22.0 ],
 					"text" : "t l l"
 				}
 
@@ -44,7 +103,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 125.0, 118.0, 68.0, 22.0 ],
+					"patching_rect" : [ 152.0, 261.0, 68.0, 22.0 ],
 					"text" : "set $1 $2 0"
 				}
 
@@ -56,7 +115,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 224.0, 60.0, 22.0 ],
+					"patching_rect" : [ 44.0, 261.0, 60.0, 22.0 ],
 					"text" : "pack i f"
 				}
 
@@ -68,7 +127,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
-					"patching_rect" : [ 50.0, 197.0, 30.0, 22.0 ],
+					"patching_rect" : [ 44.0, 233.0, 30.0, 22.0 ],
 					"text" : "+ 1"
 				}
 
@@ -80,7 +139,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "float" ],
-					"patching_rect" : [ 50.0, 170.0, 60.0, 22.0 ],
+					"patching_rect" : [ 44.0, 206.0, 60.0, 22.0 ],
 					"text" : "unpack i f"
 				}
 
@@ -92,7 +151,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 50.0, 146.0, 46.0, 22.0 ],
+					"patching_rect" : [ 44.0, 179.0, 46.0, 22.0 ],
 					"text" : "route 1"
 				}
 
@@ -104,21 +163,21 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 50.0, 118.0, 37.0, 22.0 ],
+					"patching_rect" : [ 44.0, 153.0, 37.0, 22.0 ],
 					"text" : "zl.rev"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "connect to matrixctrl",
 					"id" : "obj-199",
 					"index" : 1,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "list" ],
-					"patching_rect" : [ 50.000000040313722, 40.000014887489328, 30.0, 30.0 ]
+					"patching_rect" : [ 44.0, 95.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -130,7 +189,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 50.0, 254.0, 30.0, 30.0 ]
+					"patching_rect" : [ 44.0, 287.0, 30.0, 30.0 ]
 				}
 
 			}
