@@ -512,6 +512,10 @@ class QueueBuffer {
      * @param {number} channel - Channel to write to (0 for all channels)
      */
     write(value, channel = 0) {
+        if(channel < 0 || channel > this.getChannelCount()) {
+            error("Error: Invalid channel number. Please use a number between 1 and ", this.getChannelCount(), "\n");
+            return;
+        }
         if (channel !== 0) {
             this.queues[channel - 1].write(value);
         } else {
@@ -589,10 +593,17 @@ class QueueBuffer {
         return exists;
     }
 
+    static getChannelCount(bufferName) {
+        const _temp_buffer = new Buffer(bufferName);
+        const count = _temp_buffer.channelcount();
+        _temp_buffer.freepeer();
+        return count;
+    }
+
     static validateChannelCount(qbufName, metabufName) {
         const qbuf = new Buffer(qbufName);
         const metabuf = new Buffer(metabufName);
-        const valid = qbuf.channelcount() === metabuf.channelcount();
+        const valid = qbuf.channelcount() > 0 && qbuf.channelcount() === metabuf.channelcount();
         qbuf.freepeer();
         metabuf.freepeer();
         return valid;
@@ -609,6 +620,10 @@ class QueueBuffer {
             metabufName: name + "_meta"
         };
     }
+
+    static validateChannelIndex(channel, channelCount) {
+        return channel > 0 && channel <= channelCount;
+    }
     
     /**
      * Validates a queue name and returns the corresponding buffer names
@@ -622,6 +637,12 @@ class QueueBuffer {
         const {qbufName, metabufName} = QueueBuffer.createBufferNames(name);
         const {exists, isValid} = QueueBuffer.validateBuffers(qbufName, metabufName);
         return {qbufName, metabufName, exists, isValid};
+    }
+
+    static getValidationData(name) {
+        const output = QueueBuffer.validateQueueName(name);
+        output.channelcount = QueueBuffer.getChannelCount(output.qbufName);
+        return output;
     }
 }
 
@@ -990,8 +1011,10 @@ class QueueHostApi extends QueueApi {
         if(valid) {
             this.setBuffers(qbufName, metabufName);
             this._getbuffers();
+            outlet(0, 'create', 1);
         } else {
             error("Error: Buffers with name", qbufName, "and/or", metabufName, "already exist. Please choose a different name.\n");
+            outlet(0, 'create', 0);
         }
     }
 
