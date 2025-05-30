@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
+<c74object name="pdm.queue.view">
+<metadatalist>
+<metadata name="author">Philip Meyer</metadata>
+<metadata name="tag">buffers</metadata>
+<metadata name="tag">queues</metadata>
+<metadata name="tag">jsui</metadata>
+<metadata name="tag">v8ui</metadata>
+</metadatalist>
+<methodlist>
+  <method name="bang">
+    <digest>Redraw the view</digest>
+    <description>
+      Redraws the view.
+    </description>
+  </method>
+  <method name="name">
+    <arglist>
+      <arg name="queue name" optional="0" type="symbol" />
+    </arglist>
+    <digest>Set the name of the queue</digest>
+    <description>
+      Links this view to a queue buffer.
+    </description>
+  </method>
+  <method name="markersize">
+    <arglist>
+      <arg name="size" optional="0" type="int" />
+    </arglist>
+    <digest>Set the size of the markers</digest>
+    <description>
+      Sets the size of the markers that indicate the read position.
+    </description>
+  </method>
+  <method name="showmarkers">
+    <arglist>
+      <arg name="show" optional="0" type="int" />
+    </arglist>
+    <digest>Set the visibility of the markers</digest>
+    <description>
+      Sets the visibility of the markers that indicate the read position.
+    </description>
+  </method>
+  <method name="showheaders">
+    <arglist>
+      <arg name="show" optional="0" type="int" />
+    </arglist>
+    <digest>Set the visibility of the headers</digest>
+    <description>
+      Sets the visibility of the row headers that indicate the queue number.
+    </description>
+  </method>
+  <method name="fontsize">
+    <arglist>
+      <arg name="size" optional="0" type="int" />
+    </arglist>
+    <digest>Set the font size</digest>
+    <description>
+      Sets the font size of the text.
+    </description>
+  </method>
+</methodlist>
+<description>
+  Visualizes queue contents and read position.
+</description>
+<digest>V8ui view for pdm.queue.</digest>
+<seealsolist>
+  <seealso name="pdm.queue" />
+  <seealso name="pdm.queue.reader" />
+  <seealso name="pdm.queue.reader~" />
+</seealsolist>
+</c74object> 
