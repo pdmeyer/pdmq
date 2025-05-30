@@ -34,7 +34,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 190.0, 151.0, 770.0, 674.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -47,7 +47,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 82.0, 265.0, 237.0, 65.0 ],
-									"presentation_linecount" : 4,
 									"text" : "this is used internally inside queue readers to set the bindings from patcher arguments after the queue buffers have been created"
 								}
 
@@ -59,7 +58,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 199.0, 191.0, 236.0, 50.0 ],
+									"patching_rect" : [ 199.0, 191.0, 237.0, 50.0 ],
 									"text" : "the message \"pdm.queue.init' over udp channel 54889 indicates that a new queue buffer has been created"
 								}
 
@@ -519,7 +518,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
+						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -1393,12 +1392,11 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-26",
@@ -1512,7 +1510,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 582.0, 336.0, 137.0, 69.0 ]
+									"patching_rect" : [ 582.0, 336.0, 136.884002685546875, 69.0 ]
 								}
 
 							}

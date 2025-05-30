@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 9,
 			"minor" : 0,
-			"revision" : 6,
+			"revision" : 7,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"openrect" : [ 400.0, 50.0, 770.0, 700.0 ],
+		"openrect" : [ 400.0, 50.0, 550.0, 500.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
@@ -47,13 +47,14 @@
 						"appversion" : 						{
 							"major" : 9,
 							"minor" : 0,
-							"revision" : 6,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 655.0, 181.0, 408.0, 674.0 ],
+						"rect" : [ 134.0, 198.0, 550.0, 474.0 ],
+						"openrect" : [ 0.0, 0.0, 550.0, 500.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -90,7 +91,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 406.0, 301.0, 171.0, 50.0 ],
+									"patching_rect" : [ 339.0, 300.0, 171.0, 50.0 ],
 									"text" : "note that the read position can overflow the length of the buffer. this is normal"
 								}
 
@@ -308,7 +309,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 10.0, 10.0, 620.0, 118.0 ]
+									"patching_rect" : [ 10.0, 10.0, 465.0, 116.0 ]
 								}
 
 							}
@@ -432,13 +433,13 @@
 						"appversion" : 						{
 							"major" : 9,
 							"minor" : 0,
-							"revision" : 6,
+							"revision" : 7,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 408.0, 674.0 ],
+						"rect" : [ 0.0, 26.0, 550.0, 474.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -526,6 +527,13 @@
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdm.queue.reader.validateattrs.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],
