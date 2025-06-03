@@ -26,6 +26,7 @@
 			}
 , 			{
 				"box" : 				{
+					"align" : 0,
 					"id" : "obj-4",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -33,7 +34,16 @@
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 25.0, 236.0, 144.0, 23.0 ],
-					"text" : "pdm.queue.frommtx"
+					"saved_attribute_attributes" : 					{
+						"textoncolor" : 						{
+							"expression" : "themecolor.theme_selectioncolor"
+						}
+
+					}
+,
+					"text" : "pdm.queue.frommtx",
+					"textjustification" : 0,
+					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
 
 			}
@@ -50,6 +60,7 @@
 			}
 , 			{
 				"box" : 				{
+					"align" : 0,
 					"id" : "obj-1",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -57,7 +68,16 @@
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 25.0, 205.0, 144.0, 23.0 ],
-					"text" : "pdm.queue.view"
+					"saved_attribute_attributes" : 					{
+						"textoncolor" : 						{
+							"expression" : "themecolor.theme_selectioncolor"
+						}
+
+					}
+,
+					"text" : "pdm.queue.view",
+					"textjustification" : 0,
+					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
 
 			}
@@ -96,6 +116,7 @@
 			}
 , 			{
 				"box" : 				{
+					"align" : 0,
 					"id" : "obj-14",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -103,12 +124,22 @@
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 24.0, 174.0, 144.0, 23.0 ],
-					"text" : "pdm.queue.reader~"
+					"saved_attribute_attributes" : 					{
+						"textoncolor" : 						{
+							"expression" : "themecolor.theme_selectioncolor"
+						}
+
+					}
+,
+					"text" : "pdm.queue.reader~",
+					"textjustification" : 0,
+					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"align" : 0,
 					"id" : "obj-12",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -116,7 +147,16 @@
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 24.0, 143.0, 144.0, 23.0 ],
-					"text" : "pdm.queue.reader"
+					"saved_attribute_attributes" : 					{
+						"textoncolor" : 						{
+							"expression" : "themecolor.theme_selectioncolor"
+						}
+
+					}
+,
+					"text" : "pdm.queue.reader",
+					"textjustification" : 0,
+					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
 
 			}
@@ -161,6 +201,7 @@
 			}
 , 			{
 				"box" : 				{
+					"align" : 0,
 					"id" : "obj-7",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -168,7 +209,16 @@
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 23.0, 112.0, 144.0, 23.0 ],
-					"text" : "pdm.queue"
+					"saved_attribute_attributes" : 					{
+						"textoncolor" : 						{
+							"expression" : "themecolor.theme_selectioncolor"
+						}
+
+					}
+,
+					"text" : "pdm.queue",
+					"textjustification" : 0,
+					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
 
 			}
