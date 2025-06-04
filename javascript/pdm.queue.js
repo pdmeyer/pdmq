@@ -793,7 +793,7 @@ class QueueApi extends MaxJsObject {
      */
     _withQueueBuffer(callback) {
         if (!this.queueBuffer) {
-            error("Error: No buffers set. Please set buffers before calling this method.\n");
+            error("Error: No buffers set. Please set buffers using 'name' or 'buffernames' before calling " + callback.name + ".\n");
             return;
         }
         return callback(this.queueBuffer);
@@ -836,44 +836,41 @@ class QueueApi extends MaxJsObject {
      * @param {number} value - Value to write
      */
     _write(channel, value) {
-        this._withQueueBuffer(queueBuffer => queueBuffer.write(value, channel));
+        function write(queueBuffer) {
+            queueBuffer.write(value, channel);
+        }
+        this._withQueueBuffer(write);
         this._notify("write", channel, value);
     }
 
-    /**
-     * Moves the write position backward
-     * @param {number} channel - Channel to affect (0 for all channels)
-     * @param {number} steps - Number of steps to move back
-     */
     _back(channel, steps) {
-        this._withQueueBuffer(queueBuffer => queueBuffer.advanceWritePosition(-steps, channel));
+        function back(queueBuffer) {
+            queueBuffer.advanceWritePosition(-steps, channel);
+        }
+        this._withQueueBuffer(back);
         this._notify("back", channel, steps);
     }
 
-    /**
-     * Sets the loop length for the specified channel(s)
-     * @param {number} channel - Channel to affect (0 for all channels)
-     * @param {number} length - New loop length
-     */
     _looplen(channel, length) {
-        this._withQueueBuffer(queueBuffer => queueBuffer.setLoopLength(length, channel));
+        function looplen(queueBuffer) {
+            queueBuffer.setLoopLength(length, channel);
+        }
+        this._withQueueBuffer(looplen);
         this._notify("looplen", channel, length);
     }
 
-    /**
-     * Sets the every value for the specified channel(s)
-     * @param {number} channel - Channel to affect (0 for all channels)
-     * @param {number} every - New every value
-     */
     _every(channel, every) {
-        this._withQueueBuffer(queueBuffer => queueBuffer.setEvery(every, channel));
+        function every(queueBuffer) {
+            queueBuffer.setEvery(every, channel);
+        }
+        this._withQueueBuffer(everyOperation);
     }
 
-    /**
-     * Gets the current buffer names
-     */
     _getbuffers() {
-        let buffers = this._withQueueBuffer(queueBuffer => queueBuffer.getBuffers());
+        function getbuffers(queueBuffer) {
+            return queueBuffer.getBuffers();
+        }
+        let buffers = this._withQueueBuffer(getbuffers);
         if(buffers) {
             outlet(0, 'buffers', buffers.qbuf, buffers.metabuf);
         }
@@ -881,50 +878,61 @@ class QueueApi extends MaxJsObject {
 
     _getqueue(channel = 0) {
         if(channel != 0) {
-            let queue = this._withQueueBuffer(queueBuffer => queueBuffer.getContents(channel));
+            function getqueue(queueBuffer) {
+                return queueBuffer.getContents(channel);
+            }
+            let queue = this._withQueueBuffer(getqueue);
             if(queue) {
                 outlet(0, 'queue', channel, queue);
             }
         } else  {
-            this._withQueueBuffer(queueBuffer => {
+            function getqueueall(queueBuffer) {
                 queueBuffer.queues.forEach((queue, index) => {
                     outlet(0, 'queue', index + 1, queue.getContents());
                 });
-            });
+            }
+            this._withQueueBuffer(getqueueall);
         }
     }
 
     _getchannelcount() {
-        this._withQueueBuffer(queueBuffer => {
+        function getchannelcount(queueBuffer) {
             return queueBuffer.getChannelCount();
-        });
+        }
+        this._withQueueBuffer(getchannelcount);
     }   
 
     _getlength() {
-        this._withQueueBuffer(queueBuffer => {
+        function getlength(queueBuffer) {
             return queueBuffer.getBufferSize();
-        });
+        }
+        this._withQueueBuffer(getlength);
     }
     
-    
-
-    /**
-     * Clears the queue buffer
-     */
     _clear() {
-        this._withQueueBuffer(queueBuffer => queueBuffer.clear());
+        function clear(queueBuffer) {
+            queueBuffer.clear();
+        }
+        this._withQueueBuffer(clear);
     }
 
-    /**
-     * Dumps the current state of the queue buffer to a dictionary
-     */
     _dump() {
-        this._withQueueBuffer(queueBuffer => {
-            let dump = queueBuffer.serialize();
+        function dump(queueBuffer) {
+            let dumped = queueBuffer.serialize();
             let d = new Dict();
-            d.parse(JSON.stringify(dump));
+            d.parse(JSON.stringify(dumped));
             outlet(0, 'dump', 'dictionary', d.name);
-        });
+        }
+        this._withQueueBuffer(dump);
+    }
+
+    _notify(message, ...args) {
+        g.msg = [message, this.queueBuffer.qbufName, ...args];
+        if(this.queueBuffer.qbufName) {
+            g.sendnamed("pdm_queue", "msg");
+        } else {
+            error("Error: No queue buffer name set. Please set buffers before calling this method.\n");
+        }
     }
 }
 
