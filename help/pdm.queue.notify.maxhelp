@@ -51,12 +51,62 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 119.0, 1000.0, 755.0 ],
+						"rect" : [ 59.0, 145.0, 632.0, 406.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 5.0, 5.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-10",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 267.0, 288.0, 246.0, 65.0 ],
+									"presentation_linecount" : 11,
+									"text" : "note: if you want to use notifications to trigger a `getqueue` query a queue or refresh pdm.queue.view, use the bang right outlet to do so."
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 133.0, 262.0, 103.0, 50.0 ],
+									"presentation_linecount" : 4,
+									"text" : "right outlet: bang on queue changes"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 44.0, 262.0, 91.0, 50.0 ],
+									"text" : "left outlet: detailed queue events"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 133.0, 231.0, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"format" : 6,
 									"id" : "obj-15",
@@ -65,7 +115,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 202.0, 200.0, 50.0, 23.0 ]
+									"patching_rect" : [ 293.0, 177.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -76,7 +126,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 202.0, 229.0, 65.0, 23.0 ],
+									"patching_rect" : [ 293.0, 206.0, 65.0, 23.0 ],
 									"text" : "write 1 $1"
 								}
 
@@ -88,7 +138,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 202.0, 262.0, 193.0, 23.0 ],
+									"patching_rect" : [ 293.0, 239.0, 193.0, 23.0 ],
 									"text" : "pdm.queue pdmq.notify.help 8 8"
 								}
 
@@ -99,7 +149,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 43.0, 237.0, 34.0, 23.0 ],
+									"patching_rect" : [ 44.0, 231.0, 34.0, 23.0 ],
 									"text" : "print"
 								}
 
@@ -109,9 +159,9 @@
 									"id" : "obj-5",
 									"maxclass" : "newobj",
 									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 43.0, 200.0, 108.0, 23.0 ],
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"patching_rect" : [ 44.0, 175.0, 108.0, 23.0 ],
 									"text" : "pdm.queue.notify"
 								}
 
@@ -144,6 +194,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-5", 1 ]
 								}
 
 							}
@@ -200,7 +257,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 119.0, 1000.0, 755.0 ],
+						"rect" : [ 0.0, 26.0, 632.0, 406.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
