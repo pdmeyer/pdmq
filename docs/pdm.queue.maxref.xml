@@ -107,5 +107,6 @@
 <seealsolist>
   <seealso name="pdm.queue.reader~" />
   <seealso name="pdm.queue.reader" />
+  <seealso name="pdm.queue.view" />
 </seealsolist>
 </c74object> 

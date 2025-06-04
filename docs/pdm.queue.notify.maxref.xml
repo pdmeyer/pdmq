@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
+<c74object name="pdm.queue">
+<metadatalist>
+<metadata name="author">Philip Meyer</metadata>
+<metadata name="tag">buffers</metadata>
+<metadata name="tag">queues</metadata>
+</metadatalist>
+<description>
+    pdm.queue outputs notifications on events like creating and writing to queues. It can be used to initialize and update objects such as pdm.queue.view.
+</description>
+<digest>Receive notifications from pdm.queue.</digest>
+<seealsolist>
+  <seealso name="pdm.queue.reader~" />
+  <seealso name="pdm.queue.reader" />
+  <seealso name="pdm.queue.view" />
+</seealsolist>
+</c74object> 
