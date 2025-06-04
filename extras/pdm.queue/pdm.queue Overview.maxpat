@@ -229,7 +229,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 23.0, 69.0, 327.0, 20.0 ],
-					"text" : "a package for working buffer-based queues"
+					"text" : "a package for working buffer-based queues."
 				}
 
 			}
