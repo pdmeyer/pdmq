@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
-<c74object name="pdm.queue">
+<c74object name="pdmq">
 <metadatalist>
 <metadata name="author">Philip Meyer</metadata>
 <metadata name="tag">buffers</metadata>
 <metadata name="tag">queues</metadata>
 </metadatalist>
 <description>
-    pdm.queue outputs notifications on events like creating and writing to queues. It can be used to initialize and update objects such as pdm.queue.view.
+    pdmq outputs notifications on events like creating and writing to queues. It can be used to initialize and update objects such as pdmq.view.
 </description>
-<digest>Receive notifications from pdm.queue.</digest>
+<digest>Receive notifications from pdmq.</digest>
 <seealsolist>
-  <seealso name="pdm.queue.reader~" />
-  <seealso name="pdm.queue.reader" />
-  <seealso name="pdm.queue.view" />
+  <seealso name="pdmq.reader~" />
+  <seealso name="pdmq.reader" />
+  <seealso name="pdmq.view" />
 </seealsolist>
 </c74object> 

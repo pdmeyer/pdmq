@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
-<c74object name="pdm.queue.reader~">
+<c74object name="pdmq.reader~">
 <metadatalist>
 <metadata name="author">Philip Meyer</metadata>
 <metadata name="tag">buffers</metadata>
@@ -57,11 +57,11 @@
     </objarg>
 </objarglist>
 <description>
-    Reads from a queue using signals. For an event-based version, see <o>pdm.queue.reader</o>. For a gen~ version, use pdm.queue.reader.gendsp.
+    Reads from a queue using signals. For an event-based version, see <o>pdmq.reader</o>. For a gen~ version, use pdmq.reader.gendsp.
 </description>
 <digest>Create and manage queues.</digest>
 <seealsolist>
-  <seealso name="pdm.queue" />
-  <seealso name="pdm.queue.reader~" />
+  <seealso name="pdmq" />
+  <seealso name="pdmq.reader~" />
 </seealsolist>
 </c74object> 

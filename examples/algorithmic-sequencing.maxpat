@@ -461,7 +461,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 10.0, 70.0, 707.0, 47.0 ],
-					"text" : "here we have a sequencer with a variable clock speed. the gen~ version of pdm.queue.reader is inside the clock generator to vary the clock speed on each iteration. pdm.queue.reader~ is also used throughout this patch to vary the pattern subdivision, synth timbre, and the melody"
+					"text" : "here we have a sequencer with a variable clock speed. the gen~ version of pdmq.reader is inside the clock generator to vary the clock speed on each iteration. pdmq.reader~ is also used throughout this patch to vary the pattern subdivision, synth timbre, and the melody"
 				}
 
 			}
@@ -567,7 +567,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "bang" ],
 					"patching_rect" : [ 253.0, 514.0, 196.0, 22.0 ],
-					"text" : "pdm.queue.reader~ pdmq.ex.seq 4"
+					"text" : "pdmq.reader~ pdmq.ex.seq 4"
 				}
 
 			}
@@ -591,7 +591,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "bang" ],
 					"patching_rect" : [ 103.0, 222.0, 196.0, 22.0 ],
-					"text" : "pdm.queue.reader~ pdmq.ex.seq 2"
+					"text" : "pdmq.reader~ pdmq.ex.seq 2"
 				}
 
 			}
@@ -1107,7 +1107,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "bang" ],
 					"patching_rect" : [ 69.0, 452.0, 196.0, 22.0 ],
-					"text" : "pdm.queue.reader~ pdmq.ex.seq 3"
+					"text" : "pdmq.reader~ pdmq.ex.seq 3"
 				}
 
 			}
@@ -1154,7 +1154,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"patching_rect" : [ 313.0, 205.0, 101.0, 22.0 ],
-					"text" : "pdm.queue.notify"
+					"text" : "pdmq.notify"
 				}
 
 			}
@@ -1173,7 +1173,7 @@
 , 			{
 				"box" : 				{
 					"border" : 0,
-					"filename" : "pdm.queue.view.js",
+					"filename" : "pdmq.view.js",
 					"id" : "obj-20",
 					"maxclass" : "v8ui",
 					"numinlets" : 1,
@@ -1182,7 +1182,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 313.0, 295.0, 153.0, 98.0 ],
 					"textfile" : 					{
-						"filename" : "pdm.queue.view.js",
+						"filename" : "pdmq.view.js",
 						"flags" : 0,
 						"embed" : 0,
 						"autowatch" : 1
@@ -1328,7 +1328,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 143.0, 108.0, 174.0, 22.0 ],
-									"text" : "pdm.queue.reader @channel 1"
+									"text" : "pdmq.reader @channel 1"
 								}
 
 							}
@@ -1482,7 +1482,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 502.0, 292.0, 115.0, 22.0 ],
-					"text" : "pdm.queue.frommtx"
+					"text" : "pdmq.frommtx"
 				}
 
 			}
@@ -1494,7 +1494,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 502.0, 368.0, 174.0, 22.0 ],
-					"text" : "pdm.queue pdmq.ex.seq 4 256"
+					"text" : "pdmq pdmq.ex.seq 4 256"
 				}
 
 			}
@@ -1945,64 +1945,64 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.frommtx.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.frommtx.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.host.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.host.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.notify.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.notify.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.gendsp",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/code",
+				"name" : "pdmq.reader.gendsp",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/code",
 				"patcherrelativepath" : "../code",
 				"type" : "gDSP",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.validateattrs.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.reader.validateattrs.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader~.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.reader~.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.view.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.view.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1

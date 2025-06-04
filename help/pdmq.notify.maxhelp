@@ -30,7 +30,7 @@
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js helpstarter.js pdm.queue.notify"
+					"text" : "js helpstarter.js pdmq.notify"
 				}
 
 			}
@@ -65,7 +65,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 267.0, 288.0, 246.0, 65.0 ],
 									"presentation_linecount" : 11,
-									"text" : "note: if you want to use notifications to trigger a `getqueue` query a queue or refresh pdm.queue.view, use the bang right outlet to do so."
+									"text" : "note: if you want to use notifications to trigger a `getqueue` query a queue or refresh pdmq.view, use the bang right outlet to do so."
 								}
 
 							}
@@ -139,7 +139,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 293.0, 239.0, 193.0, 23.0 ],
-									"text" : "pdm.queue pdmq.notify.help 8 8"
+									"text" : "pdmq pdmq.notify.help 8 8"
 								}
 
 							}
@@ -162,7 +162,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"patching_rect" : [ 44.0, 175.0, 108.0, 23.0 ],
-									"text" : "pdm.queue.notify"
+									"text" : "pdmq.notify"
 								}
 
 							}
@@ -172,7 +172,7 @@
 									"filename" : "helpdetails.js",
 									"id" : "obj-2",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue.notify" ],
+									"jsarguments" : [ "pdmq.notify" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -230,7 +230,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-4",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue.notify" ],
+					"jsarguments" : [ "pdmq.notify" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -306,29 +306,29 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.host.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.host.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.notify.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.notify.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1

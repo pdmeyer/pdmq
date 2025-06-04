@@ -172,7 +172,7 @@
 													"numoutlets" : 2,
 													"outlettype" : [ "", "" ],
 													"patching_rect" : [ 40.0, 106.0, 159.0, 22.0 ],
-													"text" : "pdm.queue.reader"
+													"text" : "pdmq.reader"
 												}
 
 											}
@@ -227,7 +227,7 @@
 									}
 ,
 									"patching_rect" : [ 351.0, 331.0, 277.0, 52.0 ],
-									"text" : "gen~ @channel 2 @qbuf pdm.queue.reader.help @metabuf pdm.queue.reader.help_meta"
+									"text" : "gen~ @channel 2 @qbuf pdmq.reader.help @metabuf pdmq.reader.help_meta"
 								}
 
 							}
@@ -239,7 +239,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 10.0, 75.0, 417.0, 36.0 ],
-									"text" : "pdm.queue.reader~ uses a gen~ patch under the hood, which you can use inside your own gen~ patches"
+									"text" : "pdmq.reader~ uses a gen~ patch under the hood, which you can use inside your own gen~ patches"
 								}
 
 							}
@@ -249,7 +249,7 @@
 									"filename" : "helpname.js",
 									"id" : "obj-1",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue.reader~" ],
+									"jsarguments" : [ "pdmq.reader~" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -506,7 +506,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 49.0, 331.0, 240.0, 23.0 ],
-									"text" : "pdm.queue pdm.queue.reader.help 8 16"
+									"text" : "pdmq pdmq.reader.help 8 16"
 								}
 
 							}
@@ -623,7 +623,7 @@
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js helpstarter.js pdm.queue.reader~"
+					"text" : "js helpstarter.js pdmq.reader~"
 				}
 
 			}
@@ -794,7 +794,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "signal", "signal", "bang" ],
 									"patching_rect" : [ 355.0, 334.0, 270.0, 23.0 ],
-									"text" : "pdm.queue.reader~ pdm.queue.reader.help 1"
+									"text" : "pdmq.reader~ pdmq.reader.help 1"
 								}
 
 							}
@@ -954,7 +954,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 53.0, 334.0, 240.0, 23.0 ],
-									"text" : "pdm.queue pdm.queue.reader.help 8 16"
+									"text" : "pdmq pdmq.reader.help 8 16"
 								}
 
 							}
@@ -964,7 +964,7 @@
 									"filename" : "helpdetails.js",
 									"id" : "obj-2",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue.reader~" ],
+									"jsarguments" : [ "pdmq.reader~" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -1078,7 +1078,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-5",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue.reader~" ],
+					"jsarguments" : [ "pdmq.reader~" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -1163,43 +1163,43 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.host.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.host.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.gendsp",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/code",
+				"name" : "pdmq.reader.gendsp",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/code",
 				"patcherrelativepath" : "../code",
 				"type" : "gDSP",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.validateattrs.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.reader.validateattrs.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader~.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.reader~.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1

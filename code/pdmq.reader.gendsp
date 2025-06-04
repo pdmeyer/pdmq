@@ -718,7 +718,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 177.0, 13.0, 444.0, 22.0 ],
-					"text" : "pdm.queue.reader"
+					"text" : "pdmq.reader"
 				}
 
 			}

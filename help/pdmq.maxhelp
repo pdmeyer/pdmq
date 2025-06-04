@@ -34,7 +34,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -297,7 +297,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 101.0, 335.0, 199.0, 23.0 ],
-									"text" : "pdm.queue pdm.queue.help 8 16"
+									"text" : "pdmq pdmq.help 8 16"
 								}
 
 							}
@@ -309,7 +309,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 15.0, 80.0, 426.0, 36.0 ],
-									"text" : "Send the getqueue message to pdm.queue to see the numbers remaining in the queue"
+									"text" : "Send the getqueue message to pdmq to see the numbers remaining in the queue"
 								}
 
 							}
@@ -319,13 +319,13 @@
 									"filename" : "helpname.js",
 									"id" : "obj-1",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue" ],
+									"jsarguments" : [ "pdmq" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 10.0, 10.0, 238.423995971679688, 57.599853515625 ]
+									"patching_rect" : [ 10.0, 10.0, 124.568008422851562, 57.599853515625 ]
 								}
 
 							}
@@ -512,7 +512,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 370.0, 112.0, 165.0, 36.0 ],
-									"text" : "use pdm.queue.notify to monitor for queue changes"
+									"text" : "use pdmq.notify to monitor for queue changes"
 								}
 
 							}
@@ -543,7 +543,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"patching_rect" : [ 257.0, 118.0, 108.0, 23.0 ],
-									"text" : "pdm.queue.notify"
+									"text" : "pdmq.notify"
 								}
 
 							}
@@ -615,7 +615,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 68.0, 333.0, 164.0, 38.0 ],
-									"text" : "pdm.queue.help pdm.queue.help_meta"
+									"text" : "pdmq.help pdmq.help_meta"
 								}
 
 							}
@@ -633,7 +633,7 @@
 							}
 , 							{
 								"box" : 								{
-									"code" : "{\n\t\"queue_buffer_name\" : \"pdm.queue.help\",\n\t\"metadata_buffer_name\" : \"pdm.queue.help_meta\",\n\t\"num_queues\" : 8,\n\t\"size\" : 16,\n\t\"queues\" : [ \t\t{\n\t\t\t\"channel\" : 1,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 2,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 3,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 16,\n\t\t\t\"loop_length\" : 0,\n\t\t\t\"every\" : 0,\n\t\t\t\"queue_contents\" : [ 1, 6, 2, 2, 6, 2, 5, 0, 0, 3, 2, 0, 5, 4, 0, 6 ],\n\t\t\t\"buffer_contents\" : [ 1, 6, 2, 2, 6, 2, 5, 0, 0, 3, 2, 0, 5, 4, 0, 6 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 4,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 5,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 6,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 7,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 8,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n ]\n}\n",
+									"code" : "{\n\t\"queue_buffer_name\" : \"pdmq.help\",\n\t\"metadata_buffer_name\" : \"pdmq.help_meta\",\n\t\"num_queues\" : 8,\n\t\"size\" : 16,\n\t\"queues\" : [ \t\t{\n\t\t\t\"channel\" : 1,\n\t\t\t\"read_position\" : 12,\n\t\t\t\"write_position\" : 23,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 7, 5, 4, 2, 0, 1, 2, 3, 4, 6, 8 ],\n\t\t\t\"buffer_contents\" : [ 0, 1, 2, 3, 4, 6, 8, 0, 2, 4, 6, 8, 7, 5, 4, 2 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 2,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 3,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 4,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 5,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 6,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 7,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 8,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n ]\n}\n",
 									"fontface" : 0,
 									"fontname" : "<Monospaced>",
 									"fontsize" : 13.0,
@@ -684,7 +684,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 33.0, 265.0, 199.0, 23.0 ],
-									"text" : "pdm.queue pdm.queue.help 8 16"
+									"text" : "pdmq pdmq.help 8 16"
 								}
 
 							}
@@ -695,7 +695,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 15.0, 80.0, 426.0, 21.0 ],
-									"text" : "pdm.queue can also report back to you about the status of the queue"
+									"text" : "pdmq can also report back to you about the status of the queue"
 								}
 
 							}
@@ -705,13 +705,13 @@
 									"filename" : "helpname.js",
 									"id" : "obj-1",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue" ],
+									"jsarguments" : [ "pdmq" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 10.0, 10.0, 238.423995971679688, 57.599853515625 ]
+									"patching_rect" : [ 10.0, 10.0, 124.568008422851562, 57.599853515625 ]
 								}
 
 							}
@@ -838,7 +838,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 363.0, 143.0, 20.0, 20.0 ],
+									"patching_rect" : [ 363.0, 158.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"saved_attribute_attributes" : 									{
 										"bgcolor" : 										{
@@ -859,7 +859,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 103.0, 294.0, 37.0, 23.0 ],
+									"patching_rect" : [ 103.0, 309.0, 37.0, 23.0 ],
 									"text" : "clear"
 								}
 
@@ -870,7 +870,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 564.0, 210.0, 182.0, 21.0 ],
+									"patching_rect" : [ 564.0, 225.0, 182.0, 21.0 ],
 									"text" : "args: name and queue index"
 								}
 
@@ -882,7 +882,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 35.0, 440.0, 86.0, 23.0 ],
+									"patching_rect" : [ 35.0, 455.0, 86.0, 23.0 ],
 									"text" : "chanoffset $1"
 								}
 
@@ -896,7 +896,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 35.0, 413.0, 33.0, 23.0 ]
+									"patching_rect" : [ 35.0, 428.0, 33.0, 23.0 ]
 								}
 
 							}
@@ -908,7 +908,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 360.0, 158.0, 185.0, 40.0 ],
+									"patching_rect" : [ 360.0, 173.0, 185.0, 40.0 ],
 									"text" : "click to advance the reader along the queue"
 								}
 
@@ -926,7 +926,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 86.0, 148.0, 20.0, 20.0 ],
+									"patching_rect" : [ 86.0, 163.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"saved_attribute_attributes" : 									{
 										"bgcolor" : 										{
@@ -946,7 +946,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 336.0, 296.0, 150.0, 21.0 ],
+									"patching_rect" : [ 336.0, 311.0, 150.0, 21.0 ],
 									"text" : "queue value"
 								}
 
@@ -958,7 +958,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 539.0, 296.0, 150.0, 36.0 ],
+									"patching_rect" : [ 539.0, 311.0, 150.0, 36.0 ],
 									"text" : "the queue slot most recently read"
 								}
 
@@ -971,7 +971,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 109.0, 216.0, 185.0, 54.0 ],
+									"patching_rect" : [ 109.0, 231.0, 185.0, 54.0 ],
 									"text" : "every sets the number of pulses required to advance the reader one step"
 								}
 
@@ -984,7 +984,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 90.0, 151.0, 171.0, 54.0 ],
+									"patching_rect" : [ 90.0, 166.0, 171.0, 54.0 ],
 									"text" : "increase the loop length to make the reader loop at the end of the queue"
 								}
 
@@ -996,7 +996,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 264.0, 69.0, 23.0 ],
+									"patching_rect" : [ 50.0, 279.0, 69.0, 23.0 ],
 									"text" : "every 1 $1"
 								}
 
@@ -1011,7 +1011,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 50.0, 231.0, 50.0, 23.0 ]
+									"patching_rect" : [ 50.0, 246.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -1022,7 +1022,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 31.0, 199.0, 79.0, 23.0 ],
+									"patching_rect" : [ 31.0, 214.0, 79.0, 23.0 ],
 									"text" : "looplen 1 $1"
 								}
 
@@ -1037,7 +1037,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 31.0, 167.0, 50.0, 23.0 ]
+									"patching_rect" : [ 31.0, 182.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -1049,7 +1049,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 539.0, 271.0, 50.0, 23.0 ]
+									"patching_rect" : [ 539.0, 286.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -1061,7 +1061,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 336.0, 271.0, 50.0, 23.0 ]
+									"patching_rect" : [ 336.0, 286.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -1073,19 +1073,19 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 336.0, 166.0, 24.0, 24.0 ]
+									"patching_rect" : [ 336.0, 181.0, 24.0, 24.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"buffername" : "pdm.queue.help_meta",
+									"buffername" : "pdmq.help_meta",
 									"id" : "obj-17",
 									"maxclass" : "waveform~",
 									"numinlets" : 5,
 									"numoutlets" : 6,
 									"outlettype" : [ "float", "float", "float", "float", "list", "" ],
-									"patching_rect" : [ 388.0, 483.0, 256.0, 64.0 ],
+									"patching_rect" : [ 388.0, 498.0, 256.0, 64.0 ],
 									"voffset" : 1.0,
 									"vzoom" : 4.0
 								}
@@ -1100,19 +1100,19 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 388.0, 440.0, 246.0, 23.0 ]
+									"patching_rect" : [ 388.0, 455.0, 246.0, 23.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"buffername" : "pdm.queue.help",
+									"buffername" : "pdmq.help",
 									"id" : "obj-9",
 									"maxclass" : "waveform~",
 									"numinlets" : 5,
 									"numoutlets" : 6,
 									"outlettype" : [ "float", "float", "float", "float", "list", "" ],
-									"patching_rect" : [ 125.0, 483.0, 256.0, 64.0 ],
+									"patching_rect" : [ 125.0, 498.0, 256.0, 64.0 ],
 									"voffset" : 1.0,
 									"vzoom" : 4.0
 								}
@@ -1125,8 +1125,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 336.0, 209.0, 222.0, 23.0 ],
-									"text" : "pdm.queue.reader pdm.queue.help 1"
+									"patching_rect" : [ 336.0, 224.0, 222.0, 23.0 ],
+									"text" : "pdmq.reader pdmq.help 1"
 								}
 
 							}
@@ -1137,8 +1137,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 31.0, 329.0, 199.0, 23.0 ],
-									"text" : "pdm.queue pdm.queue.help 8 16"
+									"patching_rect" : [ 31.0, 344.0, 199.0, 23.0 ],
+									"text" : "pdmq pdmq.help 8 16"
 								}
 
 							}
@@ -1151,19 +1151,19 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 125.0, 440.0, 246.0, 23.0 ]
+									"patching_rect" : [ 125.0, 455.0, 246.0, 23.0 ]
 								}
 
 							}
 , 							{
 								"box" : 								{
 									"id" : "obj-34",
-									"linecount" : 3,
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 10.0, 72.0, 426.0, 50.0 ],
-									"text" : "The queues are FIFO (first in, first out) queues. The reader will read the first value written to the queue until it has exhausted the queue. You can also tell the reader to loop over a section at the end of the queue. "
+									"patching_rect" : [ 10.0, 72.0, 671.0, 79.0 ],
+									"text" : "Use pdmq.reader and pdmq.reader~ to read from the queues in a FIFO  (first in, first out) fashion. When it gets to the end of the queue, it will continue to output the final value. You can also tell the reader to loop over a section at the end of the queue. \n\nFor more info, check out the helpfiles for pdmq.reader and pdmq.reader~."
 								}
 
 							}
@@ -1173,13 +1173,13 @@
 									"filename" : "helpname.js",
 									"id" : "obj-1",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue" ],
+									"jsarguments" : [ "pdmq" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 10.0, 10.0, 238.423995971679688, 57.599853515625 ]
+									"patching_rect" : [ 10.0, 10.0, 124.568008422851562, 57.599853515625 ]
 								}
 
 							}
@@ -1305,7 +1305,7 @@
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js helpstarter.js pdm.queue"
+					"text" : "js helpstarter.js pdmq"
 				}
 
 			}
@@ -1328,7 +1328,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
+						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -1404,7 +1404,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 102.0, 328.0, 238.0, 108.0 ],
-									"text" : "buffers are generated automatically by pdm.queue using the name given as the 1st argument\n\nthe first buffer holds the queues, while the second (with the '_meta' suffix) holds queue metadata"
+									"text" : "buffers are generated automatically by pdmq using the name given as the 1st argument\n\nthe first buffer holds the queues, while the second (with the '_meta' suffix) holds queue metadata"
 								}
 
 							}
@@ -1440,7 +1440,7 @@
 									"filename" : "helpargs.js",
 									"id" : "obj-83",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue" ],
+									"jsarguments" : [ "pdmq" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -1799,7 +1799,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 74.0, 564.0, 62.0, 21.0 ],
-									"text" : "71"
+									"text" : "23"
 								}
 
 							}
@@ -2068,7 +2068,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 377.0, 336.0, 199.0, 23.0 ],
-									"text" : "pdm.queue pdm.queue.help 8 16"
+									"text" : "pdmq pdmq.help 8 16"
 								}
 
 							}
@@ -2078,7 +2078,7 @@
 									"filename" : "helpdetails.js",
 									"id" : "obj-2",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue" ],
+									"jsarguments" : [ "pdmq" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -2232,7 +2232,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-5",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue" ],
+					"jsarguments" : [ "pdmq" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -2323,50 +2323,50 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.host.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.host.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.notify.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.notify.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.gendsp",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/code",
+				"name" : "pdmq.reader.gendsp",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/code",
 				"patcherrelativepath" : "../code",
 				"type" : "gDSP",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.reader.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.validateattrs.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.reader.validateattrs.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1

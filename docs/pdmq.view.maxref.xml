@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
-<c74object name="pdm.queue.view">
+<c74object name="pdmq.view">
 <metadatalist>
 <metadata name="author">Philip Meyer</metadata>
 <metadata name="tag">buffers</metadata>
@@ -64,10 +64,10 @@
 <description>
   Visualizes queue contents and read position.
 </description>
-<digest>V8ui view for pdm.queue.</digest>
+<digest>V8ui view for pdmq.</digest>
 <seealsolist>
-  <seealso name="pdm.queue" />
-  <seealso name="pdm.queue.reader" />
-  <seealso name="pdm.queue.reader~" />
+  <seealso name="pdmq" />
+  <seealso name="pdmq.reader" />
+  <seealso name="pdmq.reader~" />
 </seealsolist>
 </c74object> 

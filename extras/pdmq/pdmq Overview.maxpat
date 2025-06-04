@@ -41,7 +41,7 @@
 
 					}
 ,
-					"text" : "pdm.queue.frommtx",
+					"text" : "pdmq.frommtx",
 					"textjustification" : 0,
 					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
@@ -75,7 +75,7 @@
 
 					}
 ,
-					"text" : "pdm.queue.view",
+					"text" : "pdmq.view",
 					"textjustification" : 0,
 					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
@@ -131,7 +131,7 @@
 
 					}
 ,
-					"text" : "pdm.queue.reader~",
+					"text" : "pdmq.reader~",
 					"textjustification" : 0,
 					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
@@ -154,7 +154,7 @@
 
 					}
 ,
-					"text" : "pdm.queue.reader",
+					"text" : "pdmq.reader",
 					"textjustification" : 0,
 					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
@@ -216,7 +216,7 @@
 
 					}
 ,
-					"text" : "pdm.queue",
+					"text" : "pdmq",
 					"textjustification" : 0,
 					"textoncolor" : [ 0.922234290352602, 0.71007200526417, 0.329758341965716, 1.0 ]
 				}
@@ -242,7 +242,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 23.0, 15.0, 327.0, 50.0 ],
-					"text" : "pdm.queue "
+					"text" : "pdmq"
 				}
 
 			}

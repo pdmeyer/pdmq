@@ -52,7 +52,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 9.0, 75.0, 707.0, 100.0 ],
-					"text" : "pdm.queue is a performance interface for your Max patch. Therefore, it makes sense to map your control surfaces to pdm.queue to populate queues. Grid-style controllers work great, as does the most uniquitous of control surfaces: the humble QWERTY keyboard.\n\nIn this example, the  ` (backtick) key can be used to toggle key commands on or off while the patcher is locked. Once enabled, the home row and the four keys below the home row on the left hand choose a queue to write to. The keys on the right side set the value and trigger the `write` message to pdm.queue."
+					"text" : "pdmq is a performance interface for your Max patch. Therefore, it makes sense to map your control surfaces to pdmq to populate queues. Grid-style controllers work great, as does the most uniquitous of control surfaces: the humble QWERTY keyboard.\n\nIn this example, the  ` (backtick) key can be used to toggle key commands on or off while the patcher is locked. Once enabled, the home row and the four keys below the home row on the left hand choose a queue to write to. The keys on the right side set the value and trigger the `write` message to pdmq."
 				}
 
 			}
@@ -244,7 +244,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 46.0, 672.0, 167.0, 22.0 ],
-					"text" : "pdm.queue kb.example 8 256"
+					"text" : "pdmq kb.example 8 256"
 				}
 
 			}
@@ -388,22 +388,22 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.host.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.host.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1

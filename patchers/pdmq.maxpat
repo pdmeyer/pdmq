@@ -135,7 +135,7 @@
 			}
 , 			{
 				"box" : 				{
-					"filename" : "pdm.queue.host.js",
+					"filename" : "pdmq.host.js",
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -146,9 +146,9 @@
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "v8 pdm.queue.host",
+					"text" : "v8 pdmq.host",
 					"textfile" : 					{
-						"filename" : "pdm.queue.host.js",
+						"filename" : "pdmq.host.js",
 						"flags" : 0,
 						"embed" : 0,
 						"autowatch" : 1
@@ -165,7 +165,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 44.0, 26.0, 174.0, 22.0 ],
-					"text" : "pdm.queue"
+					"text" : "pdmq"
 				}
 
 			}

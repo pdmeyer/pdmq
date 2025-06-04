@@ -54,7 +54,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-5",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue.view" ],
+					"jsarguments" : [ "pdmq.view" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -93,7 +93,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 43.0, 427.0, 150.0, 20.0 ],
-									"text" : "pdm.queue.view"
+									"text" : "pdmq.view"
 								}
 
 							}
@@ -156,7 +156,7 @@
 , 							{
 								"box" : 								{
 									"border" : 0,
-									"filename" : "pdm.queue.view.js",
+									"filename" : "pdmq.view.js",
 									"id" : "obj-9",
 									"maxclass" : "v8ui",
 									"numinlets" : 1,
@@ -165,7 +165,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 43.0, 329.0, 173.0, 94.0 ],
 									"textfile" : 									{
-										"filename" : "pdm.queue.view.js",
+										"filename" : "pdmq.view.js",
 										"flags" : 0,
 										"embed" : 0,
 										"autowatch" : 1
@@ -267,7 +267,7 @@
 									"filename" : "helpdetails.js",
 									"id" : "obj-2",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue.view" ],
+									"jsarguments" : [ "pdmq.view" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -642,7 +642,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
 									"patching_rect" : [ 429.0, 522.0, 179.0, 22.0 ],
-									"text" : "pdm.queue.reader q.view.help 4"
+									"text" : "pdmq.reader q.view.help 4"
 								}
 
 							}
@@ -654,7 +654,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
 									"patching_rect" : [ 370.0, 497.0, 179.0, 22.0 ],
-									"text" : "pdm.queue.reader q.view.help 3"
+									"text" : "pdmq.reader q.view.help 3"
 								}
 
 							}
@@ -666,7 +666,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
 									"patching_rect" : [ 310.0, 472.0, 179.0, 22.0 ],
-									"text" : "pdm.queue.reader q.view.help 2"
+									"text" : "pdmq.reader q.view.help 2"
 								}
 
 							}
@@ -678,7 +678,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
 									"patching_rect" : [ 251.0, 447.0, 179.0, 22.0 ],
-									"text" : "pdm.queue.reader q.view.help 1"
+									"text" : "pdmq.reader q.view.help 1"
 								}
 
 							}
@@ -810,7 +810,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 382.0, 232.0, 158.0, 22.0 ],
-									"text" : "pdm.queue q.view.help 4 16"
+									"text" : "pdmq q.view.help 4 16"
 								}
 
 							}
@@ -1012,7 +1012,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-7",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue" ],
+					"jsarguments" : [ "pdmq" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -1028,7 +1028,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-8",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue.view.js" ],
+					"jsarguments" : [ "pdmq.view.js" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -1044,7 +1044,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-9",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue.view.js" ],
+					"jsarguments" : [ "pdmq.view.js" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -1060,7 +1060,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-10",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue.view" ],
+					"jsarguments" : [ "pdmq.view" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -1123,50 +1123,50 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.host.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.host.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.gendsp",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/code",
+				"name" : "pdmq.reader.gendsp",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/code",
 				"patcherrelativepath" : "../code",
 				"type" : "gDSP",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.reader.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.reader.validateattrs.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.reader.validateattrs.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.view.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.view.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1

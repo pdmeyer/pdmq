@@ -319,7 +319,7 @@
 			}
 , 			{
 				"box" : 				{
-					"filename" : "pdm.queue.reader.validateattrs.js",
+					"filename" : "pdmq.reader.validateattrs.js",
 					"id" : "obj-21",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -330,9 +330,9 @@
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "v8 pdm.queue.reader.validateattrs.js",
+					"text" : "v8 pdmq.reader.validateattrs.js",
 					"textfile" : 					{
-						"filename" : "pdm.queue.reader.validateattrs.js",
+						"filename" : "pdmq.reader.validateattrs.js",
 						"flags" : 0,
 						"embed" : 0,
 						"autowatch" : 1
@@ -434,7 +434,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 41.0, 12.0, 173.0, 22.0 ],
-					"text" : "pdm.queue.reader~"
+					"text" : "pdmq.reader~"
 				}
 
 			}
@@ -482,7 +482,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "signal" ],
 					"patching_rect" : [ 41.0, 315.0, 137.0, 22.0 ],
-					"text" : "gen~ pdm.queue.reader"
+					"text" : "gen~ pdmq.reader"
 				}
 
 			}

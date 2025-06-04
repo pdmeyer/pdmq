@@ -55,7 +55,7 @@
 					"filename" : "helpname.js",
 					"id" : "obj-5",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "pdm.queue.frommtx" ],
+					"jsarguments" : [ "pdmq.frommtx" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -93,7 +93,7 @@
 									"filename" : "helpdetails.js",
 									"id" : "obj-3",
 									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue.frommtx" ],
+									"jsarguments" : [ "pdmq.frommtx" ],
 									"maxclass" : "jsui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
@@ -147,7 +147,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 363.0, 163.0, 22.0 ],
-									"text" : "pdm.queue q.mtxctrl.help 8 8"
+									"text" : "pdmq q.mtxctrl.help 8 8"
 								}
 
 							}
@@ -173,7 +173,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 50.0, 294.0, 158.0, 22.0 ],
-									"text" : "pdm.queue.frommtx.maxpat"
+									"text" : "pdmq.frommtx.maxpat"
 								}
 
 							}
@@ -258,29 +258,29 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.frommtx.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.frommtx.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.host.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.host.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/javascript",
+				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.queue.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"name" : "pdmq.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1

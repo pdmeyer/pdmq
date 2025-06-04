@@ -33,7 +33,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 44.0, 26.0, 174.0, 22.0 ],
-					"text" : "pdm.queue.frommtx"
+					"text" : "pdmq.frommtx"
 				}
 
 			}

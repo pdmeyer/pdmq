@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
-<c74object name="pdm.queue">
+<c74object name="pdmq">
 <metadatalist>
 <metadata name="author">Philip Meyer</metadata>
 <metadata name="tag">buffers</metadata>
@@ -100,13 +100,13 @@
   </method>
 </methodlist>
 <description>
-    Create and manage multi-channel queues inside buffers. pdm.queue creates buffers internally that hold lists of numbers. You can write to the queue get its contents, and set settings for the reader. The queues can be read in the Max, MSP and gen~ domains.
+    Create and manage multi-channel queues inside buffers. pdmq creates buffers internally that hold lists of numbers. You can write to the queue get its contents, and set settings for the reader. The queues can be read in the Max, MSP and gen~ domains.
 
 </description>
 <digest>Create and manage queues.</digest>
 <seealsolist>
-  <seealso name="pdm.queue.reader~" />
-  <seealso name="pdm.queue.reader" />
-  <seealso name="pdm.queue.view" />
+  <seealso name="pdmq.reader~" />
+  <seealso name="pdmq.reader" />
+  <seealso name="pdmq.view" />
 </seealsolist>
 </c74object> 
