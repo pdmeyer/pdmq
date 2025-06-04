@@ -17,6 +17,7 @@
  */
 
 const MaxJsObject = require('pdm.maxjsobject.js').MaxJsObject;
+const g = new Global('pdm_queue_global');
 
 /**
  * Manages a single channel's queue with read/write positions and loop behavior.
@@ -74,32 +75,6 @@ class Queue {
         return this.qbuf.peek(this.channel, readPos % this.getBufferSize(), 1);
     }
 
-    // // Get all remaining values in the queue
-    // getContents() {
-    //     const readPos = this.getReadPosition();
-    //     const writePos = this.getWritePosition();
-    //     const readCycle = Math.floor(readPos / (this.getBufferSize() - 1));
-    //     const writeCycle = Math.floor(writePos / (this.getBufferSize() - 1));
-    //     let queueLength = 0;
-    //     let queue = []
-
-    //     if(!(readPos == 0 && writePos == 0 && readCycle ==  0 && writeCycle == 0)) {
-    //         if(readCycle == writeCycle) {
-    //             queueLength = Math.min(Math.max(writePos - readPos + 1, 1), this.getBufferSize() - 1) - 1;
-    //             queue = this.qbuf.peek(this.channel, readPos % (this.getBufferSize() - 1), queueLength);
-    //         } else {
-    //             queueLength = (readCycle + 1) * (this.getBufferSize() - 1) - readPos;
-    //             queue = this.qbuf.peek(this.channel, readPos % (this.getBufferSize() - 1), queueLength);
-    //             if(!Array.isArray(queue)) queue = [queue];
-    //             queueLength = (writePos + 1) % (this.getBufferSize() - 1);
-    //             queue = queue.concat(this.qbuf.peek(this.channel, 0, queueLength));
-    //         }
-    //     }
-    //     if(!Array.isArray(queue)) queue = [queue];
-    //     if(queue.length == 0) queue = [0];
-    //     return queue
-    // }
-
     getContents() {
         let contents = [];
 
@@ -110,12 +85,13 @@ class Queue {
         const loopLength = this.getLoopLength();
         const startPos = Math.max(0, Math.min(readPos, writePos - loopLength));
         const endPos = writePos;
-        // post('startPos', startPos, 'endPos', endPos, '\n');
+
+        
         for(var i = startPos; i < endPos; i++) {
             const bufIx = i % bufSize
             const value = fullBuf[bufIx];
             if(value == null) {
-                post('value is null at index ', bufIx, '\n');
+                error('value is null at index ', bufIx, '\n');
             }
             contents.push(value);
         }
@@ -123,7 +99,6 @@ class Queue {
             contents.push(0);
         }
         return contents;
-
     }
 
     // Get all values in the buffer
@@ -228,7 +203,7 @@ class QueueBuffer {
      */
     setBuffers(qbufName, metabufName) {
         if (!QueueBuffer.validateBuffers(qbufName, metabufName)) {
-            post("Error: Queue buffer '", qbufName, "' or metadata buffer '", metabufName, "' does not exist or is invalid\n");
+            error("Error: Queue buffer '", qbufName, "' or metadata buffer '", metabufName, "' does not exist or is invalid\n");
             return false;
         }
         
@@ -236,7 +211,6 @@ class QueueBuffer {
         this.metabufName = metabufName;
         this.qbuf = new Buffer(qbufName);
         this.metabuf = new Buffer(metabufName);
-        
         // Update queue count to match new buffer
         return this._updateQueues();
     }
@@ -255,8 +229,6 @@ class QueueBuffer {
             return false;
         }
 
-        // post("Updating queues to match ", qbufChannels, " channels\n");
-        
         // Remove excess queues if we have too many
         while (this.queues.length > qbufChannels) {
             this.queues.pop();
@@ -306,7 +278,7 @@ class QueueBuffer {
      */
     getQueue(channel) {
         if(channel < 1 || channel > this.getChannelCount()) {
-            error("Error: Invalid channel number. Please use a number between 1 and ", this.getChannelCount(), "\n");
+            error("Error: Invflid channel number. Please use a number between 1 and ", this.getChannelCount(), "\n");
             return null;
         }
         return this.queues[channel - 1];
@@ -466,7 +438,7 @@ class QueueBuffer {
             error("Error: loop length must be a positive number\n");
             return;
         }
-        if (channel < 0 || channel >= this.getChannelCount()) {
+        if (channel < 0 || channel > this.getChannelCount()) {
             error("Error: invalid channel number\n");
             return;
         }
@@ -865,6 +837,7 @@ class QueueApi extends MaxJsObject {
      */
     _write(channel, value) {
         this._withQueueBuffer(queueBuffer => queueBuffer.write(value, channel));
+        this._notify("write", channel, value);
     }
 
     /**
@@ -874,6 +847,7 @@ class QueueApi extends MaxJsObject {
      */
     _back(channel, steps) {
         this._withQueueBuffer(queueBuffer => queueBuffer.advanceWritePosition(-steps, channel));
+        this._notify("back", channel, steps);
     }
 
     /**
@@ -883,6 +857,7 @@ class QueueApi extends MaxJsObject {
      */
     _looplen(channel, length) {
         this._withQueueBuffer(queueBuffer => queueBuffer.setLoopLength(length, channel));
+        this._notify("looplen", channel, length);
     }
 
     /**
@@ -905,7 +880,6 @@ class QueueApi extends MaxJsObject {
     }
 
     _getqueue(channel = 0) {
-        post('getqueue', channel);
         if(channel != 0) {
             let queue = this._withQueueBuffer(queueBuffer => queueBuffer.getContents(channel));
             if(queue) {
@@ -914,7 +888,6 @@ class QueueApi extends MaxJsObject {
         } else  {
             this._withQueueBuffer(queueBuffer => {
                 queueBuffer.queues.forEach((queue, index) => {
-                    post('queue', index, queue.getContents());
                     outlet(0, 'queue', index + 1, queue.getContents());
                 });
             });
@@ -1012,6 +985,7 @@ class QueueHostApi extends QueueApi {
             this.setBuffers(qbufName, metabufName);
             this._getbuffers();
             outlet(0, 'create', 1);
+            this._notify("create", 1);
         } else {
             error("Error: Buffers with name", qbufName, "and/or", metabufName, "already exist. Please choose a different name.\n");
             outlet(0, 'create', 0);
@@ -1033,6 +1007,15 @@ class QueueHostApi extends QueueApi {
     _buffernames(qbufName, metabufName) {
         this.bufferManager.removeBufferBoxes();
         super._buffernames(qbufName, metabufName);
+    }
+
+    _notify(message, ...args) {
+        g.msg = [message, this.queueBuffer.qbufName, ...args];
+        if(this.queueBuffer.qbufName) {
+            g.sendnamed("pdm_queue", "msg");
+        } else {
+            error("Error: No queue buffer name set. Please set buffers before calling this method.\n");
+        }
     }
 }
 
