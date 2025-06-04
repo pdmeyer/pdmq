@@ -19,127 +19,6 @@
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
-					"id" : "obj-8",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 0,
-					"patcher" : 					{
-						"fileversion" : 1,
-						"appversion" : 						{
-							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
-							"architecture" : "x64",
-							"modernui" : 1
-						}
-,
-						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
-						"default_fontsize" : 13.0,
-						"gridsize" : [ 15.0, 15.0 ],
-						"showontab" : 1,
-						"integercoordinates" : 1,
-						"boxes" : [ 							{
-								"box" : 								{
-									"id" : "obj-6",
-									"linecount" : 4,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 82.0, 265.0, 237.0, 65.0 ],
-									"text" : "this is used internally inside queue readers to set the bindings from patcher arguments after the queue buffers have been created"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-5",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 199.0, 191.0, 237.0, 50.0 ],
-									"text" : "the message \"pdm.queue.init' over udp channel 54889 indicates that a new queue buffer has been created"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-4",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 82.0, 232.0, 112.0, 23.0 ],
-									"text" : "pdm.queue.init"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 82.0, 191.0, 112.0, 23.0 ],
-									"text" : "udpreceive 54889"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-34",
-									"linecount" : 4,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 15.0, 80.0, 427.0, 65.0 ],
-									"text" : "Because pdm.queue dynamically creates buffers, it's sometimes useful to know when it has completed that process. to do so, you can watch for the 'create' message from the outlet of pdm.queue, or you can listen to udp port 54889"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"border" : 0,
-									"filename" : "helpname.js",
-									"id" : "obj-1",
-									"ignoreclick" : 1,
-									"jsarguments" : [ "pdm.queue" ],
-									"maxclass" : "jsui",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 10.0, 10.0, 238.423995971679688, 57.599853515625 ]
-								}
-
-							}
- ],
-						"lines" : [ 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 1 ],
-									"source" : [ "obj-2", 0 ]
-								}
-
-							}
- ]
-					}
-,
-					"patching_rect" : [ 94.0, 211.0, 82.0, 22.0 ],
-					"saved_object_attributes" : 					{
-						"fontsize" : 13.0
-					}
-,
-					"text" : "p notifications",
-					"varname" : "basic_tab[4]"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"fontname" : "Arial",
-					"fontsize" : 12.0,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -161,17 +40,6 @@
 						"showontab" : 1,
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
-								"box" : 								{
-									"id" : "obj-38",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 234.0, 267.0, 155.0, 23.0 ],
-									"text" : "s pdm.queue.help.update"
-								}
-
-							}
-, 							{
 								"box" : 								{
 									"bubble" : 1,
 									"id" : "obj-18",
@@ -417,15 +285,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-16", 0 ],
-									"order" : 1,
-									"source" : [ "obj-13", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-38", 0 ],
-									"order" : 0,
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -525,24 +384,57 @@
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-59",
-									"maxclass" : "newobj",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 315.0, 131.0, 153.0, 23.0 ],
-									"text" : "r pdm.queue.help.update"
+									"id" : "obj-6",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 542.0, 184.0, 162.0, 50.0 ],
+									"presentation_linecount" : 7,
+									"text" : "getbuffers returns the names of the queue data and metadata buffers"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-44",
-									"maxclass" : "newobj",
+									"id" : "obj-5",
+									"linecount" : 2,
+									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 33.0, 398.0, 74.0, 23.0 ],
-									"text" : "print queue"
+									"patching_rect" : [ 427.0, 125.0, 165.0, 36.0 ],
+									"text" : "use pdm.queue.notify to monitor for queue changes"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"embed" : 0,
+									"fontface" : 0,
+									"fontname" : "<Monospaced>",
+									"fontsize" : 13.0,
+									"id" : "obj-3",
+									"maxclass" : "coll.codebox",
+									"numinlets" : 1,
+									"numoutlets" : 4,
+									"outlettype" : [ "", "", "", "" ],
+									"patching_rect" : [ 33.0, 419.0, 215.0, 202.0 ],
+									"saved_object_attributes" : 									{
+										"precision" : 6
+									}
+
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-59",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 315.0, 131.0, 108.0, 23.0 ],
+									"text" : "pdm.queue.notify"
 								}
 
 							}
@@ -553,7 +445,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 364.0, 172.0, 77.0, 36.0 ],
+									"patching_rect" : [ 364.0, 184.0, 77.0, 36.0 ],
 									"text" : "dump gets a dictionary"
 								}
 
@@ -564,7 +456,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 124.0, 173.0, 179.0, 21.0 ],
+									"patching_rect" : [ 124.0, 185.0, 179.0, 21.0 ],
 									"text" : "no argument gets all queues"
 								}
 
@@ -576,7 +468,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 79.0, 207.0, 66.0, 23.0 ],
+									"patching_rect" : [ 469.0, 184.0, 66.0, 23.0 ],
 									"text" : "getbuffers"
 								}
 
@@ -588,7 +480,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 55.0, 172.0, 63.0, 23.0 ],
+									"patching_rect" : [ 55.0, 184.0, 63.0, 23.0 ],
 									"text" : "getqueue"
 								}
 
@@ -600,7 +492,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 112.0, 132.0, 191.0, 36.0 ],
+									"patching_rect" : [ 112.0, 118.0, 191.0, 36.0 ],
 									"text" : "use the 'getqueue' message to get the queue contents"
 								}
 
@@ -625,14 +517,14 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 315.0, 172.0, 41.0, 23.0 ],
+									"patching_rect" : [ 315.0, 184.0, 41.0, 23.0 ],
 									"text" : "dump"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"code" : "{\n\t\"queue_buffer_name\" : \"pdm.queue.help\",\n\t\"metadata_buffer_name\" : \"pdm.queue.help_meta\",\n\t\"num_queues\" : 8,\n\t\"size\" : 16,\n\t\"queues\" : [ \t\t{\n\t\t\t\"channel\" : 1,\n\t\t\t\"read_position\" : 87,\n\t\t\t\"write_position\" : 96,\n\t\t\t\"loop_length\" : 12,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 6, 7, 8, 7, 5, 4, 3, 4, 5, 6, 7, 8 ],\n\t\t\t\"buffer_contents\" : [ 0, 1, 2, 4, 6, 7, 8, 7, 5, 4, 3, 4, 5, 6, 7, 8 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 2,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 3,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 4,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 5,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 6,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 7,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 8,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n ]\n}\n",
+									"code" : "{\n\t\"queue_buffer_name\" : \"pdm.queue.help\",\n\t\"metadata_buffer_name\" : \"pdm.queue.help_meta\",\n\t\"num_queues\" : 8,\n\t\"size\" : 16,\n\t\"queues\" : [ \t\t{\n\t\t\t\"channel\" : 1,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 22,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 8, 7, 6, 5, 6, 7, 5, 4, 3, 1, 0, 1, 2, 4, 5, 7, 8, 7, 6, 5, 6, 7 ],\n\t\t\t\"buffer_contents\" : [ 8, 7, 6, 5, 6, 7, 5, 4, 3, 1, 0, 1, 2, 4, 5, 7 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 2,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 3,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 4,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 5,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 6,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 7,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 8,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n ]\n}\n",
 									"fontface" : 0,
 									"fontname" : "<Monospaced>",
 									"fontsize" : 13.0,
@@ -641,7 +533,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 5,
 									"outlettype" : [ "dictionary", "", "", "", "" ],
-									"patching_rect" : [ 250.0, 265.0, 402.0, 298.0 ],
+									"patching_rect" : [ 268.0, 265.0, 448.0, 356.0 ],
 									"saved_object_attributes" : 									{
 										"legacy" : 0,
 										"parameter_enable" : 0,
@@ -738,15 +630,15 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-30", 1 ],
-									"source" : [ "obj-20", 1 ]
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-20", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-44", 0 ],
-									"source" : [ "obj-20", 0 ]
+									"destination" : [ "obj-30", 1 ],
+									"source" : [ "obj-20", 1 ]
 								}
 
 							}
@@ -774,6 +666,15 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-25", 0 ],
+									"order" : 0,
+									"source" : [ "obj-59", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-33", 0 ],
+									"order" : 1,
 									"source" : [ "obj-59", 0 ]
 								}
 
@@ -867,52 +768,6 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-52",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 31.0, 356.0, 155.0, 23.0 ],
-									"text" : "s pdm.queue.help.update"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-51",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "bang", "" ],
-									"patching_rect" : [ 31.0, 294.0, 64.0, 23.0 ],
-									"text" : "t b l"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-44",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "bang", "int" ],
-									"patching_rect" : [ 539.0, 239.0, 61.0, 23.0 ],
-									"text" : "t b i"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-38",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 539.0, 353.0, 155.0, 23.0 ],
-									"text" : "s pdm.queue.help.update"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-35",
 									"maxclass" : "message",
 									"numinlets" : 2,
@@ -994,7 +849,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 581.0, 296.0, 150.0, 36.0 ],
+									"patching_rect" : [ 539.0, 296.0, 150.0, 36.0 ],
 									"text" : "the queue slot most recently read"
 								}
 
@@ -1085,7 +940,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 581.0, 271.0, 50.0, 23.0 ]
+									"patching_rect" : [ 539.0, 271.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -1173,7 +1028,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 76.0, 323.0, 199.0, 23.0 ],
+									"patching_rect" : [ 31.0, 329.0, 199.0, 23.0 ],
 									"text" : "pdm.queue pdm.queue.help 8 16"
 								}
 
@@ -1243,7 +1098,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-44", 0 ],
+									"destination" : [ "obj-26", 0 ],
 									"source" : [ "obj-2", 1 ]
 								}
 
@@ -1271,14 +1126,14 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-51", 0 ],
+									"destination" : [ "obj-12", 0 ],
 									"source" : [ "obj-30", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-51", 0 ],
+									"destination" : [ "obj-12", 0 ],
 									"source" : [ "obj-31", 0 ]
 								}
 
@@ -1308,35 +1163,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-26", 0 ],
-									"source" : [ "obj-44", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-38", 0 ],
-									"source" : [ "obj-44", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-12", 0 ],
-									"source" : [ "obj-51", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-52", 0 ],
-									"source" : [ "obj-51", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-51", 0 ],
 									"source" : [ "obj-60", 0 ]
 								}
 
@@ -1363,7 +1190,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 147.0, 274.0, 152.0, 22.0 ],
+					"patching_rect" : [ 124.0, 244.0, 152.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "helpstarter.js",
 						"parameter_enable" : 0
@@ -1405,7 +1232,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 404.0, 290.0, 172.0, 23.0 ],
-									"text" : "write 1. 5."
+									"text" : "write 1. 7."
 								}
 
 							}
@@ -1863,7 +1690,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 74.0, 564.0, 62.0, 21.0 ],
-									"text" : "0"
+									"text" : "22"
 								}
 
 							}
@@ -2333,7 +2160,7 @@
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 131.0, 243.0, 50.0, 22.0 ],
+					"patching_rect" : [ 108.0, 213.0, 50.0, 22.0 ],
 					"text" : "p ?",
 					"varname" : "q_tab"
 				}
@@ -2402,6 +2229,13 @@
 			}
 , 			{
 				"name" : "pdm.queue.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdm.queue.notify.maxpat",
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.queue/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",

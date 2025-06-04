@@ -88,12 +88,90 @@
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"attr" : "markersize",
+									"id" : "obj-18",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 64.0, 289.0, 150.0, 22.0 ],
+									"text_width" : 87.0
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"attr" : "markers",
+									"id" : "obj-17",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 64.0, 265.0, 150.0, 22.0 ],
+									"text_width" : 67.0
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"attr" : "headers",
+									"id" : "obj-16",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 64.0, 239.0, 150.0, 22.0 ],
+									"text_width" : 67.0
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"attr" : "fontsize",
+									"id" : "obj-15",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 64.0, 215.0, 150.0, 22.0 ],
+									"text_width" : 67.0
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"border" : 0,
+									"filename" : "pdm.queue.view.js",
+									"id" : "obj-9",
+									"maxclass" : "v8ui",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 43.0, 329.0, 173.0, 94.0 ],
+									"textfile" : 									{
+										"filename" : "pdm.queue.view.js",
+										"flags" : 0,
+										"embed" : 0,
+										"autowatch" : 1
+									}
+,
+									"varname" : "v8ui_AA"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-10",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 471.0, 396.0, 109.0, 22.0 ],
+									"patching_rect" : [ 460.0, 286.0, 109.0, 22.0 ],
 									"text" : "create 1"
 								}
 
@@ -105,7 +183,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 393.0, 254.0, 68.0, 22.0 ],
+									"patching_rect" : [ 382.0, 144.0, 68.0, 22.0 ],
 									"text" : "r q.view.init"
 								}
 
@@ -117,7 +195,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 221.0, 126.0, 68.0, 22.0 ],
+									"patching_rect" : [ 43.0, 132.0, 68.0, 22.0 ],
 									"text" : "r q.view.init"
 								}
 
@@ -128,7 +206,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 393.0, 396.0, 70.0, 22.0 ],
+									"patching_rect" : [ 382.0, 286.0, 70.0, 22.0 ],
 									"text" : "s q.view.init"
 								}
 
@@ -140,7 +218,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 393.0, 369.0, 187.0, 22.0 ],
+									"patching_rect" : [ 382.0, 259.0, 187.0, 22.0 ],
 									"text" : "route buffers"
 								}
 
@@ -169,30 +247,6 @@
 ,
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-3",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 126.0, 126.0, 70.0, 22.0 ],
-									"text" : "loadmess 4"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-1",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 43.0, 126.0, 77.0, 22.0 ],
-									"text" : "loadmess 14"
 								}
 
 							}
@@ -481,19 +535,8 @@
  ]
 									}
 ,
-									"patching_rect" : [ 393.0, 313.0, 30.0, 22.0 ],
+									"patching_rect" : [ 382.0, 203.0, 30.0, 22.0 ],
 									"text" : "p fill"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-91",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 393.0, 424.0, 214.0, 20.0 ],
-									"text" : "create a pdm.queue.view like this: "
 								}
 
 							}
@@ -511,25 +554,12 @@
 							}
 , 							{
 								"box" : 								{
-									"fontface" : 1,
-									"id" : "obj-74",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 393.0, 446.0, 214.0, 33.0 ],
-									"text" : "v8ui @filename pdm.queue.view.js @jsarguments queue_name"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-72",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 274.0, 239.0, 89.0, 33.0 ],
+									"patching_rect" : [ 251.0, 218.0, 89.0, 33.0 ],
 									"text" : "bang updates the view"
 								}
 
@@ -541,7 +571,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 248.0, 212.0, 115.0, 22.0 ],
+									"patching_rect" : [ 225.0, 191.0, 115.0, 22.0 ],
 									"text" : "r q.view.help.redraw"
 								}
 
@@ -565,7 +595,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 248.0, 239.0, 24.0, 24.0 ]
+									"patching_rect" : [ 225.0, 218.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -576,7 +606,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 221.0, 180.0, 101.0, 22.0 ],
+									"patching_rect" : [ 43.0, 159.0, 101.0, 22.0 ],
 									"text" : "name q.view.help"
 								}
 
@@ -588,108 +618,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 293.0, 126.0, 105.0, 47.0 ],
-									"text" : "send the 'name' message to set the queue name"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-57",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 126.0, 241.0, 97.0, 22.0 ],
-									"text" : "showheaders $1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-58",
-									"maxclass" : "toggle",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 126.0, 211.0, 24.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-56",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 23.0, 241.0, 97.0, 22.0 ],
-									"text" : "showmarkers $1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-54",
-									"maxclass" : "toggle",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 23.0, 211.0, 24.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-51",
-									"maxclass" : "number",
-									"maximum" : 16,
-									"minimum" : 1,
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 126.0, 154.0, 50.0, 22.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-52",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 126.0, 180.0, 84.0, 22.0 ],
-									"text" : "markersize $1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-50",
-									"maxclass" : "number",
-									"maximum" : 48,
-									"minimum" : 8,
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 43.0, 154.0, 50.0, 22.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-48",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 43.0, 180.0, 67.0, 22.0 ],
-									"text" : "fontsize $1"
+									"patching_rect" : [ 145.0, 131.0, 142.0, 47.0 ],
+									"text" : "send the 'name' message to link the view to the queue buffer"
 								}
 
 							}
@@ -857,7 +787,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 393.0, 284.0, 24.0, 24.0 ]
+									"patching_rect" : [ 382.0, 174.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -868,64 +798,27 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 393.0, 342.0, 158.0, 22.0 ],
+									"patching_rect" : [ 382.0, 232.0, 158.0, 22.0 ],
 									"text" : "pdm.queue q.view.help 4 16"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"border" : 0,
-									"filename" : "pdm.queue.view.js",
-									"id" : "obj-7",
-									"maxclass" : "v8ui",
+									"attr" : "font",
+									"id" : "obj-14",
+									"maxclass" : "attrui",
 									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "" ],
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 43.0, 308.0, 175.0, 97.0 ],
-									"textfile" : 									{
-										"filename" : "pdm.queue.view.js",
-										"flags" : 0,
-										"embed" : 0,
-										"autowatch" : 1
-									}
-,
-									"varname" : "v8ui_AA"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"angle" : 270.0,
-									"background" : 1,
-									"bgcolor" : [ 0.079348079365577, 0.07934804057877, 0.079348050547289, 1.0 ],
-									"id" : "obj-11",
-									"maxclass" : "panel",
-									"mode" : 0,
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 35.0, 302.0, 192.0, 109.0 ],
-									"proportion" : 0.39,
-									"saved_attribute_attributes" : 									{
-										"bgfillcolor" : 										{
-											"expression" : "themecolor.live_lcd_bg"
-										}
-
-									}
-
+									"patching_rect" : [ 64.0, 191.0, 150.0, 22.0 ],
+									"text_width" : 54.0
 								}
 
 							}
  ],
 						"lines" : [ 							{
-								"patchline" : 								{
-									"destination" : [ "obj-50", 0 ],
-									"source" : [ "obj-1", 0 ]
-								}
-
-							}
-, 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-12", 0 ]
@@ -934,15 +827,43 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-94", 0 ],
-									"source" : [ "obj-22", 0 ]
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-14", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-51", 0 ],
-									"source" : [ "obj-3", 0 ]
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-15", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-16", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-17", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-18", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-94", 0 ],
+									"source" : [ "obj-22", 0 ]
 								}
 
 							}
@@ -1019,13 +940,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"source" : [ "obj-48", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-10", 1 ],
 									"source" : [ "obj-5", 1 ]
 								}
@@ -1040,63 +954,14 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-48", 0 ],
-									"source" : [ "obj-50", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-52", 0 ],
-									"source" : [ "obj-51", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"source" : [ "obj-52", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-56", 0 ],
-									"source" : [ "obj-54", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"source" : [ "obj-56", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
-									"source" : [ "obj-57", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-57", 0 ],
-									"source" : [ "obj-58", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
+									"destination" : [ "obj-9", 0 ],
 									"source" : [ "obj-66", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-7", 0 ],
+									"destination" : [ "obj-9", 0 ],
 									"source" : [ "obj-68", 0 ]
 								}
 
@@ -1237,13 +1102,6 @@
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/patchers",
 				"patcherrelativepath" : "../../pdm.abstract/patchers",
 				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "pdm.dynamiccolor.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm/javascript/jsui/_components",
-				"patcherrelativepath" : "../../pdm/javascript/jsui/_components",
-				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
