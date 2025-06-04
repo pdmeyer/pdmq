@@ -88,6 +88,17 @@
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-19",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 43.0, 427.0, 150.0, 20.0 ],
+									"text" : "pdm.queue.view"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"attr" : "markersize",
 									"id" : "obj-18",
 									"maxclass" : "attrui",
@@ -236,7 +247,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 225.0, 438.0, 20.0, 20.0 ],
+									"patching_rect" : [ 390.0, 378.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"saved_attribute_attributes" : 									{
 										"bgcolor" : 										{
@@ -547,7 +558,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 86.0, 442.0, 150.0, 33.0 ],
+									"patching_rect" : [ 251.0, 382.0, 150.0, 33.0 ],
 									"text" : "click the buttons to read from the queues"
 								}
 
@@ -582,7 +593,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 64.0, 582.0, 117.0, 22.0 ],
+									"patching_rect" : [ 229.0, 522.0, 117.0, 22.0 ],
 									"text" : "s q.view.help.redraw"
 								}
 
@@ -618,7 +629,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 145.0, 131.0, 142.0, 47.0 ],
+									"patching_rect" : [ 145.0, 131.0, 143.0, 47.0 ],
 									"text" : "send the 'name' message to link the view to the queue buffer"
 								}
 
@@ -630,7 +641,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 264.0, 582.0, 179.0, 22.0 ],
+									"patching_rect" : [ 429.0, 522.0, 179.0, 22.0 ],
 									"text" : "pdm.queue.reader q.view.help 4"
 								}
 
@@ -642,7 +653,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 205.0, 557.0, 179.0, 22.0 ],
+									"patching_rect" : [ 370.0, 497.0, 179.0, 22.0 ],
 									"text" : "pdm.queue.reader q.view.help 3"
 								}
 
@@ -654,7 +665,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 145.0, 532.0, 179.0, 22.0 ],
+									"patching_rect" : [ 310.0, 472.0, 179.0, 22.0 ],
 									"text" : "pdm.queue.reader q.view.help 2"
 								}
 
@@ -666,7 +677,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 86.0, 507.0, 179.0, 22.0 ],
+									"patching_rect" : [ 251.0, 447.0, 179.0, 22.0 ],
 									"text" : "pdm.queue.reader q.view.help 1"
 								}
 
@@ -680,7 +691,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 264.0, 481.0, 44.0, 15.0 ],
+									"patching_rect" : [ 429.0, 421.0, 44.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_enum" : [ "val1", "val2" ],
@@ -707,7 +718,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 204.0, 481.0, 44.0, 15.0 ],
+									"patching_rect" : [ 369.0, 421.0, 44.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_enum" : [ "val1", "val2" ],
@@ -734,7 +745,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 145.0, 481.0, 44.0, 15.0 ],
+									"patching_rect" : [ 310.0, 421.0, 44.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_enum" : [ "val1", "val2" ],
@@ -761,7 +772,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 86.0, 481.0, 44.0, 15.0 ],
+									"patching_rect" : [ 251.0, 421.0, 44.0, 15.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_enum" : [ "val1", "val2" ],

@@ -6,7 +6,7 @@ mgraphics.init();
 mgraphics.relative_coords = 0;
 mgraphics.autofill = 0;
 
-const QueueBuffer = require('pdm.queue.js').QueueBuffer;
+const QueueBuffer = require('pdmq.js').QueueBuffer;
 // const DynamicColor = require('pdm.v8ui.color.js').DynamicColor;
 
 //parameters 

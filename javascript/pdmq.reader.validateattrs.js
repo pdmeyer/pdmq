@@ -1,5 +1,5 @@
 outlets = 2;
-const QueueBuffer = require('pdm.queue.js').QueueBuffer;
+const QueueBuffer = require('pdmq.js').QueueBuffer;
 
 //stored queue data to use for validating channel (i.e. channelcount)
 let vdata = {}

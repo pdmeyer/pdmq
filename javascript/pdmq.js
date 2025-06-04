@@ -1,7 +1,7 @@
 /**
- * @file pdm.queue.js
+ * @file pdmq.js
  * @description Core queue buffer implementation for Max/MSP.
- * This module provides the fundamental queue buffer functionality used by pdm.queue.manager.
+ * This module provides the fundamental queue buffer functionality used by pdmq.manager.
  * It implements a multi-channel buffer system with synchronized data and metadata buffers.
  * 
  * The module contains several classes:
@@ -9,10 +9,10 @@
  * - QueueBuffer: Manages multiple Queue instances in a multichannel buffer
  * - QueueApi: Interface for QueueBuffer
  * - QueueBufferManager: Handles Max patcher scripting for automatic buffer creation 
- *        and management inside pdm.queue.maxpat
+ *        and management inside pdmq.maxpat
  * - QueueHostApi: Extends QueueApi add interface for QueueBufferManager
  *  
- * @module pdm.queue
+ * @module pdmq
  * @requires pdm.maxjsobject.js
  */
 
@@ -843,7 +843,11 @@ class QueueApi extends MaxJsObject {
         this._notify("write", channel, value);
     }
 
-    _back(channel, steps) {
+    _back(channel = 0, steps = 1) {
+        if(steps < 0) {
+            this._clear(channel);
+            return;
+        }
         function back(queueBuffer) {
             queueBuffer.advanceWritePosition(-steps, channel);
         }
@@ -863,7 +867,7 @@ class QueueApi extends MaxJsObject {
         function every(queueBuffer) {
             queueBuffer.setEvery(every, channel);
         }
-        this._withQueueBuffer(everyOperation);
+        this._withQueueBuffer(every);
     }
 
     _getbuffers() {
@@ -909,9 +913,9 @@ class QueueApi extends MaxJsObject {
         this._withQueueBuffer(getlength);
     }
     
-    _clear() {
+    _clear(channel = 0) {
         function clear(queueBuffer) {
-            queueBuffer.clear();
+            queueBuffer.clear(channel);
         }
         this._withQueueBuffer(clear);
     }
