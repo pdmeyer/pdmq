@@ -5,49 +5,61 @@
 	"author" : "Philip Meyer",
 	"authors" : [  ],
 	"description" : "abstractions for working with queues of values",
-	"tags" : [ "queue" ],
+	"tags" : [ "queue", "perfroamcne" ],
 	"website" : "",
 	"extends" : "",
 	"extensible" : 0,
-	"max_version_min" : "9.0.0",
+	"max_version_min" : "9.0.7",
 	"max_version_max" : "none",
 	"os" : 	{
 		"macintosh" : 		{
 			"min_version" : "10.15.x",
 			"platform" : [ "aarch64", "x64" ]
-		}
-,
+		},
 		"windows" : 		{
 			"min_version" : "8",
 			"platform" : [ "x64" ]
 		}
 
-	}
-,
-	"homepatcher" : "pdm.queue overview.maxpat",
+	},
+	"homepatcher" : "pdm.queue Overview.maxpat",
 	"filelist" : 	{
-		"examples" : [],
+		"extras" : ["pdm.queue/pdm.queue Overview.maxpat"],
 		"patchers" : [ 
+			"pdm.queue.maxpat",
 			"pdm.queue.frommtx.maxpat", 
 			"pdm.queue.reader~.maxpat", 
-			"pdm.queue.manager.maxpat",
-			"pdm.queue.lpd2.maxpat",
-			"pdm.queue.peek.maxpat"
+			"pdm.queue.reader.maxpat",
+			"pdm.queue.notify.maxpat"
+
 		],
-		"help" : [
-			"pdm.queue.manager.maxhelp"
+		"help" : [ 
+			"pdm.queue.maxhelp",
+			"pdm.queue.frommtx.maxhelp", 
+			"pdm.queue.reader~.maxhelp", 
+			"pdm.queue.reader.maxhelp",
+			"pdm.queue.notify.maxhelp",
+			"pdm.queue.view.maxhelp"
 		],
-		"docs" : [
-			"pdm.queue.manager.maxref.xml"
+		"docs" : [ 
+			"pdm.queue.maxref.xml",
+			"pdm.queue.frommtx.maxref.xml", 
+			"pdm.queue.reader~.maxref.xml", 
+			"pdm.queue.reader.maxref.xml",
+			"pdm.queue.notify.maxref.xml",
+			"pdm.queue.view.maxref.xml"
 		],
 		"javascript" : [ 
 			"pdm.queue.js", 
-			"pdm.queue.reporter.js", 
-			"pdm.queue.query.js",
-			"pdm.queue.manager.js"
+			"pdm.queue.host.js", 
+			"pdm.queue.view.js",
+			"pdm.queue.reader.validateattrs.js"
 		],
 		"code" : [ 
 			"pdm.queue.reader.gendsp" 
+		],
+		"examples" : [
+			"keyboard-control.maxpat"
 		]
 	}
 ,
