@@ -1,3 +1,4 @@
+outlets = 2;
 const QueueBuffer = require('pdm.queue.js').QueueBuffer;
 
 //stored queue data to use for validating channel (i.e. channelcount)
@@ -12,8 +13,8 @@ function name(n) {
 		vdata.name = n;
 		outlet(0, 'qbuf', vdata.qbufName);
 		outlet(0, 'metabuf', vdata.metabufName);
+		outlet(1, 'name', n);
 	}
-	
 }
 
 //queue channel setter
