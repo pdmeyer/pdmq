@@ -10,10 +10,23 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 119.0, 929.0, 776.0 ],
+		"rect" : [ 59.0, 119.0, 951.0, 829.0 ],
+		"openrect" : [ 0.0, 0.0, 800.0, 750.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 435.0, 264.0, 50.0, 22.0 ],
+					"text" : "compile"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-116",
 					"maxclass" : "newobj",
@@ -361,7 +374,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 175.0, 321.0, 120.0, 60.0 ],
-					"text" : "queue 1: clock freq\nqueue 2: pitch\nqueue 3: subdivision\nqueue 4: timbre"
+					"text" : "queue 1: clock freq\nqueue 2: subdiv\nqueue 3: pitch\nqueue 4: timbre"
 				}
 
 			}
@@ -373,7 +386,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 662.0, 264.0, 113.0, 22.0 ],
-					"text" : "4 6 6 5"
+					"text" : "8 5 3 4"
 				}
 
 			}
@@ -390,7 +403,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 190.0, 706.0, 20.0, 20.0 ],
+					"patching_rect" : [ 190.0, 669.0, 20.0, 20.0 ],
 					"rounded" : 60.0,
 					"saved_attribute_attributes" : 					{
 						"bgcolor" : 						{
@@ -411,7 +424,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 253.0, 547.0, 30.0, 22.0 ],
+					"patching_rect" : [ 253.0, 547.0, 78.0, 22.0 ],
 					"text" : "*~"
 				}
 
@@ -448,7 +461,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 10.0, 70.0, 707.0, 47.0 ],
-					"presentation_linecount" : 3,
 					"text" : "here we have a sequencer with a variable clock speed. the gen~ version of pdm.queue.reader is inside the clock generator to vary the clock speed on each iteration. pdm.queue.reader~ is also used throughout this patch to vary the pattern subdivision, synth timbre, and the melody"
 				}
 
@@ -471,25 +483,13 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-83",
-					"linecount" : 3,
-					"maxclass" : "comment",
-					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 749.0, 296.0, 150.0, 47.0 ],
-					"text" : "you can loop sections of the queues with the looplen message"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-79",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 646.0, 152.0, 100.0, 22.0 ],
-					"text" : "loadmess 4 6 3 5"
+					"text" : "loadmess 8 5 3 4"
 				}
 
 			}
@@ -525,7 +525,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 646.0, 176.0, 222.0, 81.0 ],
+					"patching_rect" : [ 646.0, 177.0, 129.0, 80.0 ],
 					"setminmax" : [ 1.0, 8.0 ],
 					"settype" : 0,
 					"size" : 4
@@ -591,7 +591,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "bang" ],
 					"patching_rect" : [ 103.0, 222.0, 196.0, 22.0 ],
-					"text" : "pdm.queue.reader~ pdmq.ex.seq 3"
+					"text" : "pdm.queue.reader~ pdmq.ex.seq 2"
 				}
 
 			}
@@ -601,7 +601,7 @@
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 69.0, 706.0, 45.0, 45.0 ]
+					"patching_rect" : [ 69.0, 669.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -1043,8 +1043,7 @@
 					}
 ,
 					"patching_rect" : [ 69.0, 581.0, 387.0, 22.0 ],
-					"presentation_linecount" : 2,
-					"text" : "gen~ @title harmonicity-PM @modulator 1.5"
+					"text" : "gen~ @title harmonicity-PM @modulator 3."
 				}
 
 			}
@@ -1055,8 +1054,8 @@
 					"numinlets" : 5,
 					"numoutlets" : 4,
 					"outlettype" : [ "signal", "signal", "", "" ],
-					"patching_rect" : [ 312.0, 456.0, 182.0, 22.0 ],
-					"text" : "adsr~ 1 0 0 150 @triggermode 1"
+					"patching_rect" : [ 312.0, 452.0, 240.0, 22.0 ],
+					"text" : "adsr~ 1 0 0 150 @triggermode 1 @legato 1"
 				}
 
 			}
@@ -1067,8 +1066,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 69.0, 514.0, 175.0, 22.0 ],
-					"text" : "mtof~ @scalename pelog_me3"
+					"patching_rect" : [ 69.0, 514.0, 160.0, 22.0 ],
+					"text" : "mtof~ @scalename hirajoshi"
 				}
 
 			}
@@ -1080,7 +1079,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 69.0, 486.0, 39.0, 22.0 ],
-					"text" : "+~ 48"
+					"text" : "+~ 52"
 				}
 
 			}
@@ -1108,7 +1107,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "bang" ],
 					"patching_rect" : [ 69.0, 452.0, 196.0, 22.0 ],
-					"text" : "pdm.queue.reader~ pdmq.ex.seq 2"
+					"text" : "pdm.queue.reader~ pdmq.ex.seq 3"
 				}
 
 			}
@@ -1181,7 +1180,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 313.0, 293.0, 151.0, 100.0 ],
+					"patching_rect" : [ 313.0, 295.0, 153.0, 98.0 ],
 					"textfile" : 					{
 						"filename" : "pdm.queue.view.js",
 						"flags" : 0,
@@ -1222,7 +1221,7 @@
 						}
 ,
 						"classnamespace" : "dsp.gen",
-						"rect" : [ 84.0, 144.0, 781.0, 547.0 ],
+						"rect" : [ 83.0, 144.0, 781.0, 547.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
@@ -1245,7 +1244,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 423.0, 92.0, 193.0, 22.0 ],
-									"text" : "param rate 1. @min 0.1 @max 10."
+									"text" : "param rate 2. @min 0.1 @max 10."
 								}
 
 							}
@@ -1522,7 +1521,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 495.0, 152.0, 129.0, 52.0 ],
-					"presentation_linecount" : 4,
 					"text" : "click around to build some queues"
 				}
 
@@ -1534,7 +1532,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 113.0, 717.0, 88.0, 24.0 ],
+					"patching_rect" : [ 113.0, 680.0, 88.0, 24.0 ],
 					"text" : "start audio"
 				}
 
@@ -1570,7 +1568,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 312.0, 426.0, 150.0, 22.0 ]
+					"patching_rect" : [ 312.0, 422.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -1584,6 +1582,19 @@
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 82.0, 547.0, 150.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"attr" : "attack",
+					"id" : "obj-3",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 465.0, 422.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -1693,6 +1704,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-54", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-109", 1 ],
 					"order" : 2,
 					"source" : [ "obj-43", 0 ]
@@ -1770,7 +1788,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-57", 2 ],
-					"order" : 1,
+					"order" : 0,
 					"source" : [ "obj-54", 0 ]
 				}
 
@@ -1778,7 +1796,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-93", 0 ],
-					"order" : 0,
+					"order" : 1,
 					"source" : [ "obj-54", 0 ]
 				}
 
@@ -1874,6 +1892,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-74", 0 ],
 					"source" : [ "obj-79", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}
