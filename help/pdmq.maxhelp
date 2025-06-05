@@ -308,7 +308,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 15.0, 80.0, 426.0, 36.0 ],
+									"patching_rect" : [ 10.0, 72.0, 426.0, 36.0 ],
 									"text" : "Send the getqueue message to pdmq to see the numbers remaining in the queue"
 								}
 
@@ -499,7 +499,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 554.0, 176.0, 122.0, 65.0 ],
+									"patching_rect" : [ 554.0, 183.0, 122.0, 65.0 ],
 									"text" : "getbuffers returns the names of the queue data and metadata buffers"
 								}
 
@@ -527,7 +527,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 4,
 									"outlettype" : [ "", "", "", "" ],
-									"patching_rect" : [ 33.0, 419.0, 215.0, 202.0 ],
+									"patching_rect" : [ 33.0, 414.0, 229.0, 207.0 ],
 									"saved_object_attributes" : 									{
 										"precision" : 6
 									}
@@ -554,7 +554,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 390.0, 178.0, 77.0, 36.0 ],
+									"patching_rect" : [ 390.0, 185.0, 77.0, 36.0 ],
 									"text" : "dump gets a dictionary"
 								}
 
@@ -562,11 +562,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-42",
+									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 124.0, 185.0, 179.0, 21.0 ],
-									"text" : "no argument gets all queues"
+									"patching_rect" : [ 92.0, 178.0, 149.0, 50.0 ],
+									"text" : "'getqueue' with no argument gets all queues",
+									"textjustification" : 2
 								}
 
 							}
@@ -577,7 +579,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 484.0, 184.5, 66.0, 23.0 ],
+									"patching_rect" : [ 484.0, 192.0, 66.0, 23.0 ],
 									"text" : "getbuffers"
 								}
 
@@ -589,7 +591,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 55.0, 184.5, 63.0, 23.0 ],
+									"patching_rect" : [ 245.0, 191.0, 63.0, 23.0 ],
 									"text" : "getqueue"
 								}
 
@@ -626,14 +628,14 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 346.0, 184.5, 41.0, 23.0 ],
+									"patching_rect" : [ 346.0, 192.0, 41.0, 23.0 ],
 									"text" : "dump"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"code" : "{\n\t\"queue_buffer_name\" : \"pdmq.help\",\n\t\"metadata_buffer_name\" : \"pdmq.help_meta\",\n\t\"num_queues\" : 8,\n\t\"size\" : 16,\n\t\"queues\" : [ \t\t{\n\t\t\t\"channel\" : 1,\n\t\t\t\"read_position\" : 12,\n\t\t\t\"write_position\" : 23,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 7, 5, 4, 2, 0, 1, 2, 3, 4, 6, 8 ],\n\t\t\t\"buffer_contents\" : [ 0, 1, 2, 3, 4, 6, 8, 0, 2, 4, 6, 8, 7, 5, 4, 2 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 2,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 3,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 4,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 5,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 6,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 7,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 8,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n ]\n}\n",
+									"code" : "{\n\t\"queue_buffer_name\" : \"pdmq.help\",\n\t\"metadata_buffer_name\" : \"pdmq.help_meta\",\n\t\"num_queues\" : 8,\n\t\"size\" : 16,\n\t\"queues\" : [ \t\t{\n\t\t\t\"channel\" : 1,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 55,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 2, 3, 4, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2 ],\n\t\t\t\"buffer_contents\" : [ 2, 3, 4, 5, 4, 3, 2, 7, 6, 5, 4, 3, 2, 1, 0, 1 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 2,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 3,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 4,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 5,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 6,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 7,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n, \t\t{\n\t\t\t\"channel\" : 8,\n\t\t\t\"read_position\" : 0,\n\t\t\t\"write_position\" : 0,\n\t\t\t\"loop_length\" : 1,\n\t\t\t\"every\" : 1,\n\t\t\t\"queue_contents\" : [ 0 ],\n\t\t\t\"buffer_contents\" : [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]\n\t\t}\n ]\n}\n",
 									"fontface" : 0,
 									"fontname" : "<Monospaced>",
 									"fontsize" : 13.0,
@@ -694,7 +696,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 15.0, 80.0, 426.0, 21.0 ],
+									"patching_rect" : [ 10.0, 72.0, 426.0, 21.0 ],
 									"text" : "pdmq can also report back to you about the status of the queue"
 								}
 
@@ -820,7 +822,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
+						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -1328,7 +1330,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -1341,7 +1343,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 404.0, 290.0, 172.0, 23.0 ],
-									"text" : "write 1. 8."
+									"text" : "write 1. 2."
 								}
 
 							}
@@ -1799,7 +1801,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 74.0, 564.0, 62.0, 21.0 ],
-									"text" : "23"
+									"text" : "55"
 								}
 
 							}
