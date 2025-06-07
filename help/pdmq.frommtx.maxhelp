@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 59.0, 100.0, 715.0, 574.0 ],
+		"rect" : [ 59.0, 100.0, 500.0, 500.0 ],
 		"openrect" : [ 0.0, 0.0, 500.0, 500.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"showrootpatcherontab" : 0,
@@ -35,7 +35,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 715.0, 548.0 ],
+						"rect" : [ 0.0, 26.0, 500.0, 474.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -82,7 +82,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 126.0, 715.0, 548.0 ],
+						"rect" : [ 59.0, 126.0, 500.0, 474.0 ],
 						"openrect" : [ 0.0, 0.0, 500.0, 500.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -134,7 +134,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 332.0, 141.0, 22.0 ],
+									"patching_rect" : [ 50.0, 328.0, 141.0, 22.0 ],
 									"text" : "write $1 $2, getqueue $1"
 								}
 
@@ -146,7 +146,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 363.0, 163.0, 22.0 ],
+									"patching_rect" : [ 50.0, 357.0, 163.0, 22.0 ],
 									"text" : "pdmq q.mtxctrl.help 8 8"
 								}
 
@@ -244,13 +244,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.abstract.validatemessage.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/patchers",
-				"patcherrelativepath" : "../../pdm.abstract/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "pdm.maxjsobject.js",
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/javascript",
 				"patcherrelativepath" : "../../pdm.abstract/javascript",
@@ -269,6 +262,13 @@
 				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdmq.init.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
