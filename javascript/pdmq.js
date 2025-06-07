@@ -990,7 +990,6 @@ class QueueHostApi extends QueueApi {
      * @param {number} length - Buffer length
      */
     _create(name, channelCount = 1, length = 16) {
-        post('create', name, channelCount, length);
         //generate and validate the buffer names using the queuebuffer name
         let {qbufName, metabufName, exists, isValid} = QueueBuffer.validateQueueName(name);
 
