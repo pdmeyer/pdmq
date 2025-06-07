@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 9,
-			"minor" : 0,
-			"revision" : 7,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -27,14 +27,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
+						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
@@ -296,8 +296,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 101.0, 335.0, 199.0, 23.0 ],
-									"text" : "pdmq pdmq.help 8 16"
+									"patching_rect" : [ 101.0, 335.0, 105.0, 23.0 ],
+									"text" : "pdmq pdmq.help"
 								}
 
 							}
@@ -469,8 +469,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -685,8 +685,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 33.0, 265.0, 199.0, 23.0 ],
-									"text" : "pdmq pdmq.help 8 16"
+									"patching_rect" : [ 33.0, 265.0, 105.0, 23.0 ],
+									"text" : "pdmq pdmq.help"
 								}
 
 							}
@@ -815,19 +815,31 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 134.0, 198.0, 770.0, 674.0 ],
+						"rect" : [ 0.0, 26.0, 770.0, 674.0 ],
 						"default_fontsize" : 13.0,
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-4",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 31.0, 369.0, 222.0, 50.0 ],
+									"text" : "pdmq with one argument (the name) can be used to interact with an already-existing queue buffer"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"bgcolor" : [ 0.9, 0.65, 0.05, 1.0 ],
 									"fontname" : "Arial Bold",
@@ -840,7 +852,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 363.0, 158.0, 20.0, 20.0 ],
+									"patching_rect" : [ 386.0, 181.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"saved_attribute_attributes" : 									{
 										"bgcolor" : 										{
@@ -869,10 +881,11 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-54",
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 564.0, 225.0, 182.0, 21.0 ],
+									"patching_rect" : [ 586.0, 241.0, 102.0, 36.0 ],
 									"text" : "args: name and queue index"
 								}
 
@@ -884,7 +897,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 35.0, 455.0, 86.0, 23.0 ],
+									"patching_rect" : [ 35.0, 467.0, 86.0, 23.0 ],
 									"text" : "chanoffset $1"
 								}
 
@@ -898,7 +911,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 35.0, 428.0, 33.0, 23.0 ]
+									"patching_rect" : [ 35.0, 440.0, 33.0, 23.0 ]
 								}
 
 							}
@@ -910,7 +923,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 360.0, 173.0, 185.0, 40.0 ],
+									"patching_rect" : [ 383.0, 196.0, 185.0, 40.0 ],
 									"text" : "click to advance the reader along the queue"
 								}
 
@@ -948,7 +961,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 336.0, 311.0, 150.0, 21.0 ],
+									"patching_rect" : [ 359.0, 334.0, 150.0, 21.0 ],
 									"text" : "queue value"
 								}
 
@@ -960,7 +973,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 539.0, 311.0, 150.0, 36.0 ],
+									"patching_rect" : [ 562.0, 334.0, 150.0, 36.0 ],
 									"text" : "the queue slot most recently read"
 								}
 
@@ -1051,7 +1064,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 539.0, 286.0, 50.0, 23.0 ]
+									"patching_rect" : [ 562.0, 309.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -1063,7 +1076,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 336.0, 286.0, 50.0, 23.0 ]
+									"patching_rect" : [ 359.0, 309.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -1075,7 +1088,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 336.0, 181.0, 24.0, 24.0 ]
+									"patching_rect" : [ 359.0, 204.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -1087,7 +1100,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 6,
 									"outlettype" : [ "float", "float", "float", "float", "list", "" ],
-									"patching_rect" : [ 388.0, 498.0, 256.0, 64.0 ],
+									"patching_rect" : [ 388.0, 510.0, 256.0, 64.0 ],
 									"voffset" : 1.0,
 									"vzoom" : 4.0
 								}
@@ -1102,7 +1115,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 388.0, 455.0, 246.0, 23.0 ]
+									"patching_rect" : [ 388.0, 467.0, 246.0, 23.0 ]
 								}
 
 							}
@@ -1114,7 +1127,7 @@
 									"numinlets" : 5,
 									"numoutlets" : 6,
 									"outlettype" : [ "float", "float", "float", "float", "list", "" ],
-									"patching_rect" : [ 125.0, 498.0, 256.0, 64.0 ],
+									"patching_rect" : [ 125.0, 510.0, 256.0, 64.0 ],
 									"voffset" : 1.0,
 									"vzoom" : 4.0
 								}
@@ -1127,7 +1140,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "int" ],
-									"patching_rect" : [ 336.0, 224.0, 222.0, 23.0 ],
+									"patching_rect" : [ 359.0, 247.0, 222.0, 23.0 ],
 									"text" : "pdmq.reader pdmq.help 1"
 								}
 
@@ -1139,8 +1152,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 31.0, 344.0, 199.0, 23.0 ],
-									"text" : "pdmq pdmq.help 8 16"
+									"patching_rect" : [ 31.0, 344.0, 105.0, 23.0 ],
+									"text" : "pdmq pdmq.help"
 								}
 
 							}
@@ -1153,7 +1166,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 125.0, 455.0, 246.0, 23.0 ]
+									"patching_rect" : [ 125.0, 467.0, 246.0, 23.0 ]
 								}
 
 							}
@@ -1323,8 +1336,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1475,8 +1488,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 9,
-											"minor" : 0,
-											"revision" : 7,
+											"minor" : 1,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1801,7 +1814,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 74.0, 564.0, 62.0, 21.0 ],
-									"text" : "55"
+									"text" : "0"
 								}
 
 							}
@@ -1907,8 +1920,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 9,
-											"minor" : 0,
-											"revision" : 7,
+											"minor" : 1,
+											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2256,8 +2269,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2304,20 +2317,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.abstract.validatemessage.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/patchers",
-				"patcherrelativepath" : "../../pdm.abstract/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "pdm.abstract.validatenumargs.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/patchers",
-				"patcherrelativepath" : "../../pdm.abstract/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "pdm.maxjsobject.js",
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/javascript",
 				"patcherrelativepath" : "../../pdm.abstract/javascript",
@@ -2329,6 +2328,13 @@
 				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdmq.init.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
