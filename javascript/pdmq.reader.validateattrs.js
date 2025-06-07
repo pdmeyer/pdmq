@@ -1,3 +1,7 @@
+// pdmq.reader.validateattrs.js
+// validate attributes of a pdmq.reader object
+// philip meyer 2025 / philip@inter-modal.com
+
 outlets = 2;
 const QueueBuffer = require('pdmq.js').QueueBuffer;
 
@@ -19,13 +23,27 @@ function name(n) {
 
 //queue channel setter
 function channel(c) {
+	//make sure a buffer is set
+	if(!validateBufferIsSet()) return;
+
+	//parse the channel as an integer
 	c = parseInt(c);
 	
-	if(c === vdata.channel) return; //already set
+	//move on if the channel is already set
+	if(c === vdata.channel) return; 
 
-	if(validateChannel(c)) {
-		outlet(0, 'channel', c);
-	}
+	//make sure the channel is valid for buffer channelcount
+	if(!validateChannel(c)) return;
+	
+	outlet(0, 'channel', c);
+}
+
+function mode(m) {
+	outlet(0, 'mode', Boolean(m));
+}
+
+function anything() {
+	error("pdmq.reader.validateattrs doesn't understand",messagename,"\n");
 }
 
 //helpers
@@ -41,16 +59,21 @@ function validateName(qname) {
 	}
 	return true;
 }
-validateName.local = 1;
+validateName.local = 1;	
 
-function validateChannel(c) {
-	if(!isNum(c)) {
-		error('Error. Channel value', c, 'must be a number)\n');
-		return false;
-	}
-	
+//validate that a buffer is set
+function validateBufferIsSet() {
 	if(Object.keys(vdata).length === 0) {
 		error('Failed to set channel', c ,'. No queue buffer is currently set.\n')
+		return false;
+	}
+	return true;
+}
+
+//validate the channel
+function validateChannel(c) {
+	if(isNaN(c)) {
+		error('Error. Channel value', c, 'must be a number)\n');
 		return false;
 	}
 	
@@ -64,14 +87,3 @@ function validateChannel(c) {
 	return true;
 }
 validateChannel.local = 1;
-
-function checkIsInitialized() {
-	if(vdata.isValid && vdata.channelcount > 0 && vdata.channel !== undefined) {
-		return true;
-	}
-	return false;
-}
-
-const isNum = n =>
-	typeof n === 'number' && !isNaN(n);
-
