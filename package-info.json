@@ -1,7 +1,7 @@
 {
 	"name" : "pdmq",
 	"displayname" : "",
-	"version" : "1.0.0",
+	"version" : "0.1.0",
 	"author" : "Philip Meyer",
 	"authors" : [  ],
 	"description" : "A package for managing multi-channel queues in buffers",
