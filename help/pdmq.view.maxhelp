@@ -10,7 +10,8 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 650.0, 726.0 ],
+		"rect" : [ 100.0, 100.0, 871.0, 848.0 ],
+		"openrect" : [ 0.0, 0.0, 650.0, 600.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"showrootpatcherontab" : 0,
 		"showontab" : 0,
@@ -34,7 +35,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 650.0, 700.0 ],
+						"rect" : [ 0.0, 26.0, 871.0, 822.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -60,7 +61,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 344.21600341796875, 57.599853515625 ]
+					"patching_rect" : [ 10.0, 10.0, 230.360015869140625, 57.599853515625 ]
 				}
 
 			}
@@ -81,8 +82,8 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 650.0, 700.0 ],
-						"openrect" : [ 0.0, 0.0, 650.0, 700.0 ],
+						"rect" : [ 100.0, 126.0, 871.0, 822.0 ],
+						"openrect" : [ 0.0, 0.0, 650.0, 600.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -182,20 +183,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 460.0, 286.0, 109.0, 22.0 ],
+									"patching_rect" : [ 460.0, 293.0, 109.0, 22.0 ],
 									"text" : "create 1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-4",
-									"maxclass" : "newobj",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 382.0, 144.0, 68.0, 22.0 ],
-									"text" : "r q.view.init"
 								}
 
 							}
@@ -217,7 +206,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 382.0, 286.0, 70.0, 22.0 ],
+									"patching_rect" : [ 382.0, 297.0, 70.0, 22.0 ],
 									"text" : "s q.view.init"
 								}
 
@@ -944,13 +933,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-22", 0 ],
-									"source" : [ "obj-4", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-10", 1 ],
 									"source" : [ "obj-5", 1 ]
 								}
@@ -958,7 +940,17 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"midpoints" : [ 391.5, 291.0, 371.36328125, 291.0, 371.36328125, 164.0, 391.5, 164.0 ],
+									"order" : 1,
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-6", 0 ],
+									"order" : 0,
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -1018,7 +1010,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 238.423995971679688, 57.599853515625 ]
+					"patching_rect" : [ 10.0, 10.0, 124.568008422851562, 57.599853515625 ]
 				}
 
 			}
@@ -1034,7 +1026,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 385.928009033203125, 57.599853515625 ]
+					"patching_rect" : [ 10.0, 10.0, 272.072021484375, 57.599853515625 ]
 				}
 
 			}
@@ -1050,7 +1042,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 385.928009033203125, 57.599853515625 ]
+					"patching_rect" : [ 10.0, 10.0, 272.072021484375, 57.599853515625 ]
 				}
 
 			}
@@ -1066,7 +1058,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 10.0, 10.0, 344.21600341796875, 57.599853515625 ]
+					"patching_rect" : [ 10.0, 10.0, 230.360015869140625, 57.599853515625 ]
 				}
 
 			}
@@ -1102,20 +1094,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.abstract.validatemessage.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/patchers",
-				"patcherrelativepath" : "../../pdm.abstract/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "pdm.abstract.validatenumargs.maxpat",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/patchers",
-				"patcherrelativepath" : "../../pdm.abstract/patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "pdm.maxjsobject.js",
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/javascript",
 				"patcherrelativepath" : "../../pdm.abstract/javascript",
@@ -1127,6 +1105,13 @@
 				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdmq.init.maxpat",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
