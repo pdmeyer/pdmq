@@ -237,11 +237,9 @@ class QueueBuffer {
         // Add new queues if we need more
         while (this.queues.length < qbufChannels) {
             const queue = new Queue(this.qbufName, this.metabufName, this.queues.length + 1);
-            // post("Created queue ", this.queues.length + 1, "\n");
             this.queues.push(queue);
         }
         return true;
-        // post("QueueBuffer now has ", this.queues.length, " queues\n");
     }
 
     /**
@@ -817,7 +815,15 @@ class QueueApi extends MaxJsObject {
     }
 
     _name(name) {
-        const {qbufName, metabufName} = QueueBuffer.createBufferNames(name);
+        let {qbufName, metabufName, exists, isValid} = QueueBuffer.validateQueueName(name);
+        if(!exists) {
+            error("Error: Buffers with name", name, "don't exist. Please create them first.\n");
+            return;
+        }
+        if(!isValid) {
+            error("Error: Buffers with name", name, "are not valid queue buffers. Please choose a different name.\n");
+            return;
+        }
         this.setBuffers(qbufName, metabufName);
     }
 
@@ -903,14 +909,16 @@ class QueueApi extends MaxJsObject {
         function getchannelcount(queueBuffer) {
             return queueBuffer.getChannelCount();
         }
-        this._withQueueBuffer(getchannelcount);
+        const channelcount = this._withQueueBuffer(getchannelcount);
+        if(channelcount) outlet(0, 'channelcount', channelcount);
     }   
 
     _getlength() {
         function getlength(queueBuffer) {
             return queueBuffer.getBufferSize();
         }
-        this._withQueueBuffer(getlength);
+        const length =this._withQueueBuffer(getlength);
+        if(length) outlet(0, 'length', length);
     }
     
     _clear(channel = 0) {
@@ -982,26 +990,31 @@ class QueueHostApi extends QueueApi {
      * @param {number} length - Buffer length
      */
     _create(name, channelCount = 1, length = 16) {
+        post('create', name, channelCount, length);
+        //generate and validate the buffer names using the queuebuffer name
         let {qbufName, metabufName, exists, isValid} = QueueBuffer.validateQueueName(name);
-        let valid = false;
+
+        //if the buffers don't exist, create them
         if(!exists) {
             const bufferNames = this.bufferManager.createBuffers(name, channelCount, length);
             qbufName = bufferNames.qbufName;
             metabufName = bufferNames.metabufName;
-            valid = true;
-        } else if(isValid) {
-            valid = true;
+            isValid = true;
         } 
 
-        if(valid) {
-            this.setBuffers(qbufName, metabufName);
-            this._getbuffers();
-            outlet(0, 'create', 1);
-            this._notify("create", 1);
-        } else {
-            error("Error: Buffers with name", qbufName, "and/or", metabufName, "already exist. Please choose a different name.\n");
+        //if the buffers are not valid, error and return
+        if(!isValid) {
+            error("Error: Buffers with name", qbufName, "and/or", metabufName, "already exist and are not valid queue buffers. Please choose a different name.\n");
             outlet(0, 'create', 0);
+            return;
         }
+        
+        //if the buffers are valid, set them and get the buffers
+        this.setBuffers(qbufName, metabufName);
+        this._getbuffers();
+        outlet(0, 'create', 1);
+        this._notify("create", 1);
+     
     }
 
     /**
