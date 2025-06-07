@@ -11,10 +11,12 @@
 ,
 		"classnamespace" : "box",
 		"openrect" : [ 50.0, 50.0, 400.0, 300.0 ],
+		"bglocked" : 1,
 		"gridsize" : [ 15.0, 15.0 ],
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
 				"box" : 				{
+					"background" : 1,
 					"id" : "obj-6",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -27,6 +29,7 @@
 , 			{
 				"box" : 				{
 					"align" : 0,
+					"background" : 1,
 					"id" : "obj-4",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -49,6 +52,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"id" : "obj-3",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -61,6 +65,7 @@
 , 			{
 				"box" : 				{
 					"align" : 0,
+					"background" : 1,
 					"id" : "obj-1",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -83,6 +88,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"id" : "obj-18",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -94,6 +100,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"id" : "obj-17",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -105,6 +112,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"id" : "obj-16",
 					"maxclass" : "comment",
 					"numinlets" : 1,
@@ -117,6 +125,7 @@
 , 			{
 				"box" : 				{
 					"align" : 0,
+					"background" : 1,
 					"id" : "obj-14",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -140,6 +149,7 @@
 , 			{
 				"box" : 				{
 					"align" : 0,
+					"background" : 1,
 					"id" : "obj-12",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -162,6 +172,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"hidden" : 1,
 					"id" : "obj-11",
 					"maxclass" : "newobj",
@@ -175,6 +186,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"hidden" : 1,
 					"id" : "obj-10",
 					"maxclass" : "newobj",
@@ -188,6 +200,7 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"hidden" : 1,
 					"id" : "obj-9",
 					"maxclass" : "message",
@@ -202,6 +215,7 @@
 , 			{
 				"box" : 				{
 					"align" : 0,
+					"background" : 1,
 					"id" : "obj-7",
 					"maxclass" : "textbutton",
 					"numinlets" : 1,
@@ -224,17 +238,19 @@
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"id" : "obj-5",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 23.0, 69.0, 327.0, 20.0 ],
-					"text" : "a package for working buffer-based queues."
+					"text" : " a package for queues in multichannel buffers"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"background" : 1,
 					"fontname" : "Lato",
 					"fontsize" : 36.0,
 					"id" : "obj-2",
