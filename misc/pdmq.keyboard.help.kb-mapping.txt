@@ -1,0 +1,1 @@
+96, toggle_kb;97, target 1;115, target 2;100, target 3;102, target 4;122, target 5;120, target 6;99, target 7;118, target 8;106, value 0;107, value 1;108, value 2;59, value 3;110, value 4;109, value 5;44, value 6;46, value 7;
