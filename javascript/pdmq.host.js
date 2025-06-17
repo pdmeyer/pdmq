@@ -7,12 +7,16 @@
  * @module pdmq.host
  * @requires pdmq.js
  */
-
+"use strict";
 autowatch = 1;
 
-const QueueHostApi = require('pdmq.js').QueueHostApi;
+const QueueHostApi = require('./pdmq.js').QueueHostApi;
 
 const api = new QueueHostApi(this);
 
-function anything() { api.anything(messagename, ...arrayfromargs(arguments)); }
-function loadbang() { api.init(); }     
+function anything() { 
+    api.anything(messagename, ...arrayfromargs(arguments)); 
+}
+function loadbang() { 
+    api.init(); 
+}     
