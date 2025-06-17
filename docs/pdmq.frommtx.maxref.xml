@@ -100,10 +100,9 @@
   </method>
 </methodlist>
 <description>
-    Create and manage multi-channel queues inside buffers. pdmq creates buffers internally that hold lists of numbers. You can write to the queue get its contents, and set settings for the reader. The queues can be read in the Max, MSP and gen~ domains.
-
+  Use matrixctrl as a performance interface for pdmq. A each row is a queue, and each column is a different value to write to the queue
 </description>
-<digest>Create and manage queues.</digest>
+<digest>Use matrixctrl to write to queues.</digest>
 <seealsolist>
   <seealso name="pdmq.reader~" />
   <seealso name="pdmq.reader" />

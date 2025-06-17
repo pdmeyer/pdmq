@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--If you edit this file, please place it in a safe place since future exports will overwrite this automatically generated reference file.-->
+<c74object name="pdmq.keyboard">
+<metadatalist>
+<metadata name="author">Philip Meyer</metadata>
+<metadata name="tag">buffers</metadata>
+<metadata name="tag">queues</metadata>
+<metadata name="tag">keyboard</metadata>
+</metadatalist>
+	<!--ARGUMENTS-->
+<objarglist>
+  <objarg name="enabled" optional="1" type="int">
+    <digest>
+      Enable or disable keyboard control
+    </digest>
+    <description>
+      When enabled, keyboard presses while the patcher is locked will trigger commands according to the keyboard mapping.
+    </description>
+  </objarg>
+    <objarg name="filepath" optional="1" type="symbol">
+    <digest>
+        The path to the keyboard mapping file. 
+    </digest>
+    <description>
+      The path to the keyboard mapping file.
+    </description>
+  </objarg>
+  <objarg name="usefullpath" optional="1" type="int">
+    <digest>
+      Whether to return the full file path or just the filename.
+    </digest>
+    <description>
+      When enabled, the full file path is returned. When disabled, only the filename is returned. If using a Max Project, choose `usefullpath 0`, and add the mapping file to the project. 
+    </description>
+  </objarg>
+</objarglist>
+<methodlist>
+  <method name="viewer">
+    <digest>Open the keyboard viewer</digest>
+    <description>
+      Opens the keyboard viewer as a floating window.
+    </description>
+  </method>
+  <method name="edit">
+    <digest>Open the mapping file in the default text editor</digest>
+    <description>
+      Opens the mapping file in the default text editor.
+    </description>
+  </method>
+  <method name="write">
+    <arglist>
+      <arg name="filename" optional="1" type="symbol" />
+    </arglist>
+    <digest>Save the keyboard mapping file.</digest>
+    <description>
+      Saves the keyboard mapping file. If no argument is provided, a dialog will open to select the file to save.
+    </description>
+  </method>
+  <method name="writeagain">
+    <digest>Save the keyboard mapping file again.</digest>
+    <description>
+      Saves the keyboard mapping file to the current filepath. The current filepath is set when the file is saved or opened, and can be set manually via the `filepath` attribute.
+    </description>
+  </method>
+  <method name="read">
+    <arglist>
+      <arg name="filepath" optional="1" type="symbol" />
+    </arglist>
+    <digest>Open a keyboard mapping file.</digest>
+    <description>
+      Opens a keyboard mapping file. If no argument is provided, a dialog will open to select the file to open.
+    </description>
+  </method>
+  <method name="readagain">
+    <digest>Open a keyboard mapping file again.</digest>
+    <description>
+      Opens the keyboard mapping file at the current filepath. The current filepath is set when the file is saved or opened, and can be set manually via the `filepath` attribute.
+    </description>
+  </method>
+  <method name="get">
+    <arglist>
+      <arg name="attribute" optional="0" type="symbol" />
+    </arglist>
+    <digest>Get the value of an attribute.</digest>
+    <description>
+      This message, followed by the argument 'filepath' or 'usefullpath', returns the value of the attribute. 
+    </description>
+  </method>
+</methodlist>
+<description>
+    Use the keyboard as an performance interface for pdmq. Uses a coll to create a mapping file that allows you to use key commands to target queues and write values to them.
+
+    The format of the mapping file is: `ascii_code, command value;`. The ASCII code is the integer returned by Max's `key` object when the key is pressed. The available commands are `target` and `value`. Use `target` to set the target queue, and `value` to write a value to the queue.
+
+    For example, the mapping row `97, target 1;` will set the target queue to 1 when the 'a' key is pressed. The mapping row `107, value 1;` will write the value 1 to the target queue when the 'k' key is pressed.
+</description>
+<digest>Write to queues with the keyboard</digest>
+<seealsolist>
+  <seealso name="pdmq" />
+</seealsolist>
+</c74object> 
