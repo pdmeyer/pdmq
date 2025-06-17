@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 9,
-			"minor" : 0,
-			"revision" : 7,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -14,6 +14,42 @@
 		"gridsize" : [ 15.0, 15.0 ],
 		"integercoordinates" : 1,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-34",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 421.0, 130.0, 43.0, 22.0 ],
+					"text" : "level 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-30",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 359.0, 115.0, 50.0, 22.0 ],
+					"text" : "compile"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 313.0, 103.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-6",
 					"linecount" : 3,
@@ -69,7 +105,7 @@
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 354.0, 206.0, 30.0, 30.0 ]
+					"patching_rect" : [ 392.0, 206.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -87,23 +123,23 @@
 			}
 , 			{
 				"box" : 				{
-					"filename" : "none",
+					"filename" : "pdm.abstract.patcherargs.js",
 					"id" : "obj-14",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 239.0, 105.0, 134.0, 22.0 ],
+					"patching_rect" : [ 239.0, 142.0, 172.0, 35.0 ],
 					"saved_object_attributes" : 					{
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "v8 @embed 1 @level 1",
+					"text" : "pdm.abstract.patcherargs @level 1",
 					"textfile" : 					{
-						"text" : "// pdm.abstract.patcherargs.js\n// get patcher arguments from a patcher in a patcher hierarchy\n// philip meyer 2025 / philip@inter-modal.com\n\noutlets = 2;\n\n//internal variables\n//patcher to be assigned when `level` is set\nlet p = null;\nconst self = this;\n\n//hierarchy of patchers\nconst hierarchy = getPatcherHierarchy();\n\n//whether we're at the top level of the hierarchy (if we are, we don't need to output the arguments)\nlet isTopLevel = false;\n\n//attributes\n\n//level of the patcher. 0 = this patcher, 1 = parent, 2 = grandparent, etc.\nvar level = 0;\ndeclareattribute(\"level\", {\n\ttype: \"long\",\n\tlabel: \"Level\",\n\tstyle: \"number\",\n\tdefault: 0,\n\tmin: 0, \n\tmax: 16,\n\tsetter: \"setLevel\"\n})\n\n//interface\n//only user-facing function is `bang`\n//when `bang` is called, we parse the arguments and output them\nfunction bang() {\n\t//if no patcher or at top level, do nothing\n\tif(!p || isTopLevel) return; \n\t//parse the arguments of the patcher\n\tconst args = parseArgs(p);\n\t//output the arguments in the style of Max's patcherargs object\n\toutputArgs(args);\n}\n\n//get the hierarchy of patchers\nfunction getPatcherHierarchy() {\n\tconst hierarchy = [];\n\tlet patcher = self.patcher;\n\twhile(patcher) {\n\t\thierarchy.push(patcher);\n\t\tpatcher = patcher.parentpatcher;\n\t}\n\treturn hierarchy;\n}\n\n//get the patcher at the given level\nfunction getPatcherAtLevel(level) {\n\treturn hierarchy[level];\n}\ngetPatcherAtLevel.local = 1;\n\n//setter for `level` attribute\nfunction setLevel(l) {\n\t//if we don't have a hierarchy, get it\n\tif(hierarchy.length === 0) {\n\t\thierarchy = getPatcherHierarchy();\n\t}\n\t//set the level to the new level, clamped to the hierarchy\n\tlevel = Math.max(0, Math.min(l, hierarchy.length - 1));\n\t//if we're at the top level, set the patcher to null\n\tisTopLevel = level === hierarchy.length - 1;\n\t//get the patcher at the new level, and assign it to `p`\n\tp = getPatcherAtLevel(level);\n}\nsetLevel.local = 1;\n\n//parse the arguments of the given patcher\nfunction parseArgs(patcher) {\n\t//get the arguments of the patcher\n\tconst pArgs = getPatcherArgs(patcher);\n\t//initialize the arrays for regular and attribute arguments\n\tconst regularArgs = [];\n\tconst attrArgs = [];\n\t//set the target to regular\n\tlet argTarget = 'regular';\n\t\n\t//iterate over the arguments\n\tpArgs.forEach((arg) => {\n\t\t//check if the argument is an attribute name\n\t\tconst isAttrName = arg[0] === \"@\";\n\n\t\t//handle the type of the argument\n\t\tif(!isAttrName) {\n\t\t\targ = parseType(arg);\n\t\t}\n\t\t//when we see our first @ attribute name, switch to the attribute target\n\t\tif(argTarget === 'regular' && isAttrName) {\n\t\t\targTarget = 'attr';\n\t\t}\n\n\t\t//add the argument to the appropriate target\n\t\tif(argTarget === 'regular') {\n\t\t\tregularArgs.push(arg);\n\t\t} else {\n\t\t\t//if this is an attribute name, create a new nested array for the attribute\n\t\t\tif(isAttrName) {\n\t\t\t\targ = arg.slice(1)\n\t\t\t\tattrArgs.push([]);\n\t\t\t}\n\t\t\t//if this is not an attribute name, it's a value. add it to the current attribute array\n\t\t\tattrArgs[attrArgs.length - 1].push(arg);\n\t\t}\t\n\t})\n\n\t//return the arguments\n\treturn {\n\t\tregularArgs: regularArgs,\n\t\tattrArgs: attrArgs\n\t}\n}\nparseArgs.local = 1;\n\n// parse the type of the argument\nfunction parseType(arg) {\n\t//try to parse the argument as an integer and return it if it's an integer\n\tconst asInt = parseInt(arg);\n\tconst asFloat = parseFloat(arg);\n\t\n\tif(asInt === asFloat) {\n\t\treturn asInt;\n\t}\n\tif(!isNaN(asFloat)) {\n\t\treturn asFloat;\n\t} \n\t//if it's not an integer or a float, return the argument as is\n\treturn arg;\n}\nparseType.local = 1;\n\n//get the arguments of the given patcher\nfunction getPatcherArgs(patcher) {\n\t//ignore the first argument, which is the patcher name\n\treturn patcher.box.boxtext.split(\" \").slice(1);\n}\ngetPatcherArgs.local = 1;\n\n//output the arguments in the style of Max's patcherargs object\nfunction outputArgs(args) {\n\t//output the attribute arguments one-by-one(2nd outlet)\n\targs.attrArgs.forEach((argArr) => {\n\t\toutlet(1, argArr)\n\t});\n\t//when attribute arguments are done, output 'done'\n\toutlet(1, 'done');\n\t//output the regular arguments (1st outlet)\n\toutlet(0, args.regularArgs);\n}\noutputArgs.local = 1;",
-						"filename" : "none",
-						"flags" : 1,
-						"embed" : 1,
+						"filename" : "pdm.abstract.patcherargs.js",
+						"flags" : 0,
+						"embed" : 0,
 						"autowatch" : 1
 					}
 
@@ -237,8 +273,29 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-30", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-34", 0 ]
 				}
 
 			}
