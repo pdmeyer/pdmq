@@ -13,12 +13,12 @@
  * - QueueHostApi: Extends QueueApi add interface for QueueBufferManager
  *  
  * @module pdmq
- * @requires pdm.maxjsobject.js
  */
-
-const MaxJsObject = require('pdm.maxjsobject.js').MaxJsObject;
+"use strict";
 const g = new Global('pdm_queue_global');
+const MaxJsObject = require('./pdmq.maxjsobject.js').MaxJsObject;
 
+/********************** Queue **********************/
 /**
  * Manages a single channel's queue with read/write positions and loop behavior.
  * Handles synchronization between data and metadata buffers for a single channel.
@@ -177,6 +177,7 @@ class Queue {
     }
 } 
 
+/********************** QueueBuffer **********************/
 /**
  * Manages a collection of queues for a multi-channel buffer.
  * Handles synchronization between data and metadata buffers across multiple channels.
@@ -482,6 +483,11 @@ class QueueBuffer {
      * @param {number} channel - Channel to write to (0 for all channels)
      */
     write(value, channel = 0) {
+        // if(!this.qbuf) return;
+        if(!this.qbuf) {
+            error("Error: No buffers set. Please set buffers before calling this method.\n");
+            return;
+        }
         if(channel < 0 || channel > this.getChannelCount()) {
             error("Error: Invalid channel number. Please use a number between 1 and ", this.getChannelCount(), "\n");
             return;
@@ -616,6 +622,12 @@ class QueueBuffer {
     }
 }
 
+
+
+
+
+
+/********************** QueueBufferManager **********************/
 /**
  * Manages scripting within the Max patcher to dynamically create and remove buffer~ objects.
  * Handles the creation, naming, and removal of buffer boxes in the Max patcher.
@@ -657,18 +669,14 @@ class QueueBufferManager {
      * Removes existing buffer boxes if they exist
      */
     removeBufferBoxes() {
-        if(this.qbufBox) {
-            if(this.qbufBox.valid) {
-                this.patcher.remove(this.qbufBox);
-            }
-            this.qbufBox = null;
+        if(this.qbufBox?.valid) {
+            this.patcher.remove(this.qbufBox);
         }
-        if(this.metabufBox) {
-            if(this.metabufBox.valid) {
-                this.patcher.remove(this.metabufBox);
-            }
-            this.metabufBox = null;
+        if(this.metabufBox?.valid) {
+            this.patcher.remove(this.metabufBox);
         }
+        this.metabufBox = null;
+        this.qbufBox = null;
     }
 
     /**
@@ -703,6 +711,7 @@ class QueueBufferManager {
     }
 }
 
+/********************** QueueApi **********************/
 /**
  * Provides an interface for interacting with QueueBuffer.
  * Handles message routing and basic queue operations.
@@ -948,6 +957,7 @@ class QueueApi extends MaxJsObject {
     }
 }
 
+/********************** QueueHostApi **********************/
 /**
  * Extends QueueApi to interact with the QueueBufferManager.
  * Adds buffer management capabilities to the base QueueApi functionality.
