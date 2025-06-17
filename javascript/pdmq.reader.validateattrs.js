@@ -1,9 +1,9 @@
 // pdmq.reader.validateattrs.js
 // validate attributes of a pdmq.reader object
 // philip meyer 2025 / philip@inter-modal.com
-
+"use strict";
 outlets = 2;
-const QueueBuffer = require('pdmq.js').QueueBuffer;
+const QueueBuffer = require('./pdmq.js').QueueBuffer;
 
 //stored queue data to use for validating channel (i.e. channelcount)
 let vdata = {}
