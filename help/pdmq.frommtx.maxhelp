@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 9,
-			"minor" : 0,
-			"revision" : 7,
+			"minor" : 1,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -28,8 +28,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -75,8 +75,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 9,
-							"minor" : 0,
-							"revision" : 7,
+							"minor" : 1,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -99,7 +99,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 10.0, 10.0, 453.0, 109.0 ]
+									"patching_rect" : [ 10.0, 10.0, 456.0, 138.0 ]
 								}
 
 							}
@@ -110,7 +110,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 420.0, 222.0, 22.0 ],
+									"patching_rect" : [ 51.0, 435.0, 222.0, 22.0 ],
 									"text" : "1 0"
 								}
 
@@ -122,7 +122,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 387.0, 73.0, 22.0 ],
+									"patching_rect" : [ 51.0, 402.0, 73.0, 22.0 ],
 									"text" : "route queue"
 								}
 
@@ -134,7 +134,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 328.0, 141.0, 22.0 ],
+									"patching_rect" : [ 51.0, 343.0, 141.0, 22.0 ],
 									"text" : "write $1 $2, getqueue $1"
 								}
 
@@ -146,7 +146,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 357.0, 163.0, 22.0 ],
+									"patching_rect" : [ 51.0, 372.0, 163.0, 22.0 ],
 									"text" : "pdmq q.mtxctrl.help 8 8"
 								}
 
@@ -160,7 +160,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "list", "list" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 50.0, 156.0, 130.0, 130.0 ],
+									"patching_rect" : [ 51.0, 171.0, 130.0, 130.0 ],
 									"rows" : 8
 								}
 
@@ -172,7 +172,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
-									"patching_rect" : [ 50.0, 294.0, 158.0, 22.0 ],
+									"patching_rect" : [ 51.0, 309.0, 158.0, 22.0 ],
 									"text" : "pdmq.frommtx.maxpat"
 								}
 
@@ -181,7 +181,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
-									"midpoints" : [ 198.5, 326.0, 217.98828125, 326.0, 217.98828125, 142.734375, 59.5, 142.734375 ],
+									"midpoints" : [ 199.5, 341.0, 218.98828125, 341.0, 218.98828125, 157.734375, 60.5, 157.734375 ],
 									"source" : [ "obj-1", 1 ]
 								}
 
@@ -244,13 +244,6 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.maxjsobject.js",
-				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/javascript",
-				"patcherrelativepath" : "../../pdm.abstract/javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "pdmq.frommtx.maxpat",
 				"bootpath" : "~/Documents/Max 9/Packages/pdmq/patchers",
 				"patcherrelativepath" : "../patchers",
@@ -273,6 +266,13 @@
 			}
 , 			{
 				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdmq.maxjsobject.js",
 				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
