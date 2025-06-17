@@ -149,6 +149,10 @@ class Queue {
     }
 
     clear() {
+        if(!this.qbuf) {
+            error("Error: No buffers set. Please set buffers before calling this method.\n");
+            return;
+        }
         let length = this.getBufferSize();
         let mlength = this.metabuf.framecount();
         let qClear = new Array(length).fill(0);

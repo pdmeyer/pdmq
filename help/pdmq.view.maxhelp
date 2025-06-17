@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 871.0, 848.0 ],
+		"rect" : [ 100.0, 100.0, 650.0, 600.0 ],
 		"openrect" : [ 0.0, 0.0, 650.0, 600.0 ],
 		"gridsize" : [ 15.0, 15.0 ],
 		"showrootpatcherontab" : 0,
@@ -35,7 +35,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 871.0, 822.0 ],
+						"rect" : [ 0.0, 26.0, 650.0, 574.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
@@ -82,12 +82,24 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 871.0, 822.0 ],
+						"rect" : [ 100.0, 126.0, 650.0, 574.0 ],
 						"openrect" : [ 0.0, 0.0, 650.0, 600.0 ],
 						"gridsize" : [ 15.0, 15.0 ],
 						"showontab" : 1,
 						"integercoordinates" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "bang" ],
+									"patching_rect" : [ 382.0, 285.0, 32.0, 22.0 ],
+									"text" : "t b b"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-19",
 									"maxclass" : "comment",
@@ -183,7 +195,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 460.0, 293.0, 109.0, 22.0 ],
+									"patching_rect" : [ 460.0, 297.0, 109.0, 22.0 ],
 									"text" : "create 1"
 								}
 
@@ -206,7 +218,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 382.0, 297.0, 70.0, 22.0 ],
+									"patching_rect" : [ 382.0, 326.0, 70.0, 22.0 ],
 									"text" : "s q.view.init"
 								}
 
@@ -798,7 +810,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 382.0, 232.0, 158.0, 22.0 ],
+									"patching_rect" : [ 382.0, 229.0, 128.0, 22.0 ],
 									"text" : "pdmq q.view.help 4 16"
 								}
 
@@ -819,6 +831,21 @@
 							}
  ],
 						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-22", 0 ],
+									"midpoints" : [ 404.5, 317.0, 368.859375, 317.0, 368.859375, 164.0, 391.5, 164.0 ],
+									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-12", 0 ]
@@ -933,25 +960,15 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-10", 1 ],
 									"source" : [ "obj-5", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-22", 0 ],
-									"midpoints" : [ 391.5, 291.0, 371.36328125, 291.0, 371.36328125, 164.0, 391.5, 164.0 ],
-									"order" : 1,
-									"source" : [ "obj-5", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"order" : 0,
-									"source" : [ "obj-5", 0 ]
 								}
 
 							}
@@ -1094,7 +1111,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "pdm.maxjsobject.js",
+				"name" : "pdm.abstract.patcherargs.js",
 				"bootpath" : "~/Documents/Max 9/Packages/pdm.abstract/javascript",
 				"patcherrelativepath" : "../../pdm.abstract/javascript",
 				"type" : "TEXT",
@@ -1116,6 +1133,13 @@
 			}
 , 			{
 				"name" : "pdmq.js",
+				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pdmq.maxjsobject.js",
 				"bootpath" : "~/Documents/Max 9/Packages/pdmq/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
