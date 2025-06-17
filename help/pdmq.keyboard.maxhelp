@@ -94,7 +94,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 118.0, 587.0, 80.0, 22.0 ],
+									"patching_rect" : [ 125.0, 615.0, 80.0, 22.0 ],
 									"text" : "write 1 5"
 								}
 
