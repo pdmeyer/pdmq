@@ -6,10 +6,9 @@ mgraphics.init();
 mgraphics.relative_coords = 0;
 mgraphics.autofill = 0;
 
-const QueueBuffer = require('pdmq.js').QueueBuffer;
-// const DynamicColor = require('pdm.v8ui.color.js').DynamicColor;
+const QueueBuffer = require('./pdmq.js').QueueBuffer;
 
-//parameters 
+/********************** attributes **********************/
 const PADDING_LEFT = 0;
 let ELIGIBLE_COLORS = null;
 
@@ -19,15 +18,6 @@ declareattribute("name", {
     paint: true,
     label: "Name"
 })
-
-//parameter setters
-function setname(args) {
-    loadEligibleColors();
-    initialized = assignQbuf(args);
-    name = args[0];
-    mgraphics.redraw();
-}
-setname.local = 1;
 
 var markersize = 4;
 declareattribute("markersize", {
@@ -39,11 +29,15 @@ declareattribute("markersize", {
     label: "Marker Size"
 })
 
-function setmarkersize(size) {
-    markersize = size;
-    size_changed = true;
-}
-setmarkersize.local = 1;
+var fontsize = 14;
+declareattribute("fontsize", {
+    setter: "setfontsize",
+    type: "long",
+    min: 1,
+    max: 128,
+    paint: true,
+    label: "Font Size"
+})
 
 var fontsize = 14;
 declareattribute("fontsize", {
@@ -55,11 +49,13 @@ declareattribute("fontsize", {
     label: "Font Size"
 })
 
-function setfontsize(size) {
-    fontsize = size;
-    size_changed = true;
-}
-setfontsize.local = 1;
+var headers = true;
+declareattribute("headers", {
+    setter: "setheaders",
+    paint: true,
+    style: "onoff",
+    label: "Show Headers"
+})
 
 var markers = true;
 declareattribute("markers", {
@@ -69,26 +65,6 @@ declareattribute("markers", {
     label: "Show Markers"
 })
 
-function setmarkers(show) {
-    markers = Boolean(show);
-    size_changed = true;
-}
-setmarkers.local = 1;
-
-var headers = true;
-declareattribute("headers", {
-    setter: "setheaders",
-    paint: true,
-    style: "onoff",
-    label: "Show Headers"
-})
-
-function setheaders(show) {
-    headers = Boolean(show);
-    size_changed = true;
-}
-setheaders.local = 1;
-
 var textcolor = "live_control_fg";
 declareattribute("textcolor", {
     setter: "settextcolor",
@@ -97,22 +73,6 @@ declareattribute("textcolor", {
     label: "Text Color",
     default: "live_control_fg"
 })
-// let _textcol = null;
-
-function settextcolor(color) {
-    if(validateColor(color)) {
-        textcolor = color;
-    }
-}
-settextcolor.local = 1;
-
-// function settextcolor(color) {
-//     _textcol = new DynamicColor(color);
-//     if(_textcol.id !== null) {
-//         textcolor = color
-//     }
-// }
-// settextcolor.local = 1;
 
 var markercolor = "live_control_selection";
 declareattribute("markercolor", {
@@ -122,22 +82,6 @@ declareattribute("markercolor", {
     label: "Marker Color",
     default: "live_control_selection"
 })
-// let _markercol = null;
-
-function setmarkercolor(color) {
-    if(validateColor(color)) {
-        markercolor = color;
-    }
-}
-setmarkercolor.local = 1;
-
-// function setmarkercolor(color) {
-//     _markercol = new DynamicColor(color);
-//     if(_markercol.id !== null) {
-//         markercolor = color
-//     }
-// }
-// setmarkercolor.local = 1;
 
 var font = "PT Mono";
 declareattribute("font", {
@@ -148,7 +92,54 @@ declareattribute("font", {
     enumvals: ["Andale Mono", "PT Mono", "PT Mono Bold"]
 })
 
-//internal variables
+/********************** parameter setters **********************/
+function setname(args) {
+    loadEligibleColors();
+    initialized = assignQbuf(args);
+    name = args[0];
+    mgraphics.redraw();
+}
+setname.local = 1;
+
+function setmarkersize(size) {
+    markersize = size;
+    size_changed = true;
+}
+setmarkersize.local = 1;
+
+function setfontsize(size) {
+    fontsize = size;
+    size_changed = true;
+}
+setfontsize.local = 1;
+
+function setmarkers(show) {
+    markers = Boolean(show);
+    size_changed = true;
+}
+setmarkers.local = 1;
+
+function setheaders(show) {
+    headers = Boolean(show);
+    size_changed = true;
+}
+setheaders.local = 1;
+
+function settextcolor(color) {
+    if(validateColor(color)) {
+        textcolor = color;
+    }
+}
+settextcolor.local = 1;
+
+function setmarkercolor(color) {
+    if(validateColor(color)) {
+        markercolor = color;
+    }
+}
+setmarkercolor.local = 1;
+
+/********************** internal variables **********************/
 let qbuf = null;
 let size_changed = true;
 let initialized = false;
@@ -156,7 +147,7 @@ const self = this;
 let char_dim = [0, 0];
 let max_text_length = 0;
 
-//initialization
+/********************** initialization **********************/
 function loadbang() { init(); }
 
 function init() {
@@ -164,7 +155,7 @@ function init() {
     setmarkercolor("live_control_selection")
 }
 
-//event handlers
+/********************** event handlers **********************/
 function onresize() {
     size_changed = true;
 }
@@ -173,52 +164,7 @@ function bang() {
     mgraphics.redraw();
 }
 
-//helper functions
-function assignQbuf(args) {
-    let names = {}
-    if (!Array.isArray(args)) {
-        args = [args];
-    }
-    if (args.length == 2) {
-        names.qbufName = args[0];
-        names.metabufName = args[1]
-    } else if (args.length == 1) {
-        names = QueueBuffer.createBufferNames(args[0]);
-    }
-
-    const { qbufName, metabufName, exists, isValid } = QueueBuffer.validateQueueName(names.qbufName);
-    if (!exists || !isValid) {
-        error('Error: Queue buffer does not exist or is not valid. qbufName: ', qbufName, ' metabufName: ', metabufName, '\n');
-        return false;
-    }
-    qbuf = new QueueBuffer(qbufName, metabufName);
-    return true;
-}
-assignQbuf.local = 1;
-
-function getDim() {
-    const rect = self.box.rect;
-    return [rect[2] - rect[0], rect[3] - rect[1]];
-}
-getDim.local = 1;
-
-function findCharDim() {
-    mgraphics.select_font_face(font);
-    mgraphics.set_font_size(fontsize);
-    return mgraphics.text_measure(" ");
-}
-findCharDim.local = 1;
-
-function getMaxTextLength() {
-    const dim = getDim();
-    const rowHeaderWidth = headers ? 3 * char_dim[0] : 0;
-    const max_px = dim[0] - PADDING_LEFT - rowHeaderWidth;
-    const max_chars = Math.floor(Math.floor(max_px / char_dim[0]) / 2);
-    return max_chars;
-}
-getMaxTextLength.local = 1;
-
-//drawing
+/********************** drawing **********************/
 function paint() {
     if (!initialized || !qbuf) return;
 
@@ -286,6 +232,51 @@ function paint() {
     }
 }
 paint.local = 1;
+
+/********************** helper functions **********************/
+function assignQbuf(args) {
+    let names = {}
+    if (!Array.isArray(args)) {
+        args = [args];
+    }
+    if (args.length == 2) {
+        names.qbufName = args[0];
+        names.metabufName = args[1]
+    } else if (args.length == 1) {
+        names = QueueBuffer.createBufferNames(args[0]);
+    }
+
+    const { qbufName, metabufName, exists, isValid } = QueueBuffer.validateQueueName(names.qbufName);
+    if (!exists || !isValid) {
+        error('Error: Queue buffer does not exist or is not valid. qbufName: ', qbufName, ' metabufName: ', metabufName, '\n');
+        return false;
+    }
+    qbuf = new QueueBuffer(qbufName, metabufName);
+    return true;
+}
+assignQbuf.local = 1;
+
+function getDim() {
+    const rect = self.box.rect;
+    return [rect[2] - rect[0], rect[3] - rect[1]];
+}
+getDim.local = 1;
+
+function findCharDim() {
+    mgraphics.select_font_face(font);
+    mgraphics.set_font_size(fontsize);
+    return mgraphics.text_measure(" ");
+}
+findCharDim.local = 1;
+
+function getMaxTextLength() {
+    const dim = getDim();
+    const rowHeaderWidth = headers ? 3 * char_dim[0] : 0;
+    const max_px = dim[0] - PADDING_LEFT - rowHeaderWidth;
+    const max_chars = Math.floor(Math.floor(max_px / char_dim[0]) / 2);
+    return max_chars;
+}
+getMaxTextLength.local = 1;
 
 function loadEligibleColors() {
     if (!ELIGIBLE_COLORS) {
